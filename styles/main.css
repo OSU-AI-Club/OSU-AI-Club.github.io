@@ -110,6 +110,11 @@ hr {
     margin-right: 6%;
 }
 
+.registration{
+    color:#1D51A6;
+}
+
+
 .contact-methods tr {
     border-bottom: 1px black dashed;
 }
@@ -142,5 +147,5 @@ footer div {
 }
 
 .meeting td {
-    display: block;   
+    display: block;
 }
