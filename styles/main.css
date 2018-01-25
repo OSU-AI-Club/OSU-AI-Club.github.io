@@ -1,0 +1,146 @@
+body {
+    margin: 0px;
+    font-family: Verdana;
+    line-height: 1.4;
+}
+
+table {
+    line-height: 1.4;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: top;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
+.logo {
+    position: relative;
+    color: white;
+    margin-top: 40px
+}
+
+.logo img {
+    height: 120px;
+}
+
+.motto {
+    font-size: 40px;
+    margin-top: 30px;
+}
+
+.nav {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-button {
+    color: #aaa;
+    font-size: 20px;
+    margin: 0px 20px;
+    transition: color 0.2s ease-out;
+}
+
+.nav-button:hover {
+    color: #222;
+}
+
+hr {
+    width: 100%;
+    margin: 0px;
+    border: 0;
+    border-bottom: #ddd 4px solid;
+}
+
+.content {
+    /* DO NOT DELETE */
+}
+
+.content-box {
+    margin: 20px auto;
+    width: 670px;
+}
+
+.mail {
+    font-size: 20px;
+    margin: 4px 0;
+}
+
+.subscribe {
+    background-color: #6fa;
+    border-radius: 10px;
+    padding: 8px;
+    margin-left: 10px;
+    transition: background-color 0.2s ease-out;
+}
+
+.subscribe:hover {
+    background-color: #ddd;
+}
+
+.about-us {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.about-us td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.officers tr {
+    border-bottom: 1px black dashed;
+}
+
+.officers {
+    width: 47%;
+    min-width: 150px;
+    margin-right: 6%;
+}
+
+.contact-methods tr {
+    border-bottom: 1px black dashed;
+}
+
+.contact-methods {
+    width: 47%;
+    min-width: 200px;
+}
+
+.contact-methods td {
+    padding-right: 5px;
+}
+
+footer {
+    background-color: rgba(0, 160, 170, 1);
+    width: 100vw;
+    color: white;
+}
+
+footer div {
+    padding: 20px;
+}
+
+/* meetings.html */
+.meeting {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px black dashed;;
+}
+
+.meeting td {
+    display: block;   
+}
