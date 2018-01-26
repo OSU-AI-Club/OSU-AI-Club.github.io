@@ -2,6 +2,10 @@ body {
     margin: 0px;
     font-family: Verdana;
     line-height: 1.4;
+    
+    position: relative;
+    padding-bottom: 4em;
+    min-height: 100%;
 }
 
 table {
@@ -132,6 +136,10 @@ footer {
     background-color: rgba(0, 160, 170, 1);
     width: 100vw;
     color: white;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 footer div {
@@ -141,11 +149,15 @@ footer div {
 /* meetings.html */
 .meeting {
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px black dashed;;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
 }
 
 .meeting td {
     display: block;
+}
+
+.meeting h3 {
+    margin-bottom: 0.5em;
 }
