@@ -96,7 +96,7 @@ hr {
 
 .about-us {
     display: flex;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .about-us td {
@@ -132,6 +132,11 @@ hr {
     padding-right: 5px;
 }
 
+.sponsors {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
 footer {
     background-color: rgba(0, 160, 170, 1);
     width: 100vw;
@@ -160,4 +165,11 @@ footer div {
 
 .meeting h3 {
     margin-bottom: 0.5em;
+}
+
+/* events.html */
+.event-description a {
+    width: 100px;
+    display: block;
+    margin-top: 20px;
 }
