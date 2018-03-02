@@ -170,7 +170,22 @@ footer div {
 
 /* events.html */
 .event-description a {
-    width: 100px;
+    margin-bottom: 15px;
     display: block;
     margin-top: 20px;
+}
+ul{
+    text-align:left;
+}
+.event-description-text{
+    text-align: left;
+}
+.faq{
+    margin-top: 50px;
+    margin-bottom: -20px;
+}
+a.linkstuff{
+        margin-top: 0px;
+    text-decoration:underline;
+    color: #4a2ad4;
 }
