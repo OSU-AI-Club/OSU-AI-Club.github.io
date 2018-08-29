@@ -46,21 +46,52 @@
         </header>
         <div class="content">
             <div class="content-box">
-                A list of this year's meetings is below.<br /><br />
+                <script>
+                    function httpGetAsync(theUrl, callback)
+                    {
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function() { 
+                            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                                callback(xmlHttp.responseText);
+                        }
+                        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                        xmlHttp.send(null);
+                    }
+                    
+                    function addMeeting(data)
+                    {
+                        var title = data["title"];
+                        var date = data["date"];
+                        var guest = data["guest"];
+                        var desc = data["description"];
+                        
+                        var meetingTable = document.getElementsByClassName("meeting-list")[0];
+                        
+                        var entry = '<tr class="meeting"><td>';
+                        entry += '<h3>' + title + '</h3>';
+                        entry += '<div class="meeting-date"> ' + date + ' </div>';
+                        if (typeof guest != 'undefined') entry += '<div class="meeting-guest"> ' + guest + ' </div>';
+                        if (typeof desc != 'undefined') entry += '<div class="meeting-desc"> ' + desc + ' </div>';
+                        entry += '</td></tr>';
+                        
+                        meetingTable.innerHTML += entry;
+                    }
+                    
+                    function updateMeetingTable(data)
+                    {
+                        console.log(data);
+                        
+                        var meetings = JSON.parse(data)["meetings"];
+                        
+                        meetings.forEach(function(meeting) {
+                            addMeeting(meeting);
+                        });
+                    }
+                    
+                    httpGetAsync("resources/meetings.json", updateMeetingTable);
+                </script>
                 
-                <table style="width: 100%; margin-bottom: 50px;">
-                    
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> TBA </h3>
-                            <div class="meeting-date"> <!--Date--> TBD</div>
-                            <div class="meeting-by"> <!--By--> Unknown </div>
-                            <div class="meeting-desc">
-                                Please wait until we have a meeting scheduled.
-                            </div>
-                        </td>
-                    </tr>
-                    
+                <table class="meeting-list">
                     
                 </table>
             </div>
