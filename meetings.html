@@ -15,7 +15,7 @@
                         events in AI.
                     </div>
                     <div class="subscribe-line">
-                        Join the mailing list: <a href="go.osu.edu/aiclub" class="subscribe">
+                        Join the mailing list: <a href="https://Go.osu.edu/aiclub" class="subscribe">
                         Subscribe
                         </a>
                     </div>
@@ -69,9 +69,11 @@
                         
                         var entry = '<tr class="meeting"><td>';
                         entry += '<h3>' + title + '</h3>';
-                        entry += '<div class="meeting-date"> ' + date + ' </div>';
-                        if (typeof guest != 'undefined') entry += '<div class="meeting-guest"> ' + guest + ' </div>';
-                        if (typeof desc != 'undefined') entry += '<div class="meeting-desc"> ' + desc + ' </div>';
+                        entry += '<div class="meeting-date"> <i class="fas fa-calendar-alt"></i> ' + date + ' </div>';
+                        if (typeof guest != 'undefined')
+                            entry += '<div class="meeting-guest"> <i class="fas fa-user"></i> ' + guest + ' </div>';
+                        if (typeof desc != 'undefined')
+                            entry += '<div class="meeting-desc"> <i class="fas fa-book-open"></i> ' + desc + ' </div>';
                         entry += '</td></tr>';
                         
                         meetingTable.innerHTML += entry;
