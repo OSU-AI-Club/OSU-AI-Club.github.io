@@ -1,0 +1,63 @@
+
+{"meetings": [
+    {
+        "title": "Michael White Talk",
+        "date": "April 9, 2018"
+    },
+    {
+        "title": "Hack.AI",
+        "date": "March 31, 2018"
+    },
+    {
+        "title": "Capital One SciKit Learn Workshop",
+        "date": "March 26, 2018"
+    },
+    {
+        "title": "Professor Alan Workshop",
+        "date": "March 19, 2018"
+    },
+    {
+        "title": "Lightning Talks",
+        "date": "March 5, 2018"
+    },
+    {
+        "title": "Illumination Works",
+        "date": "February 19, 2018"
+    },
+    {
+        "title": "Drive Capital",
+        "date": "February 5, 2018"
+    },
+    {
+        "title": "Westworld and Popcorn",
+        "date": "November 30, 2017"
+    },
+    {
+        "title": "Micha Elsner Talk",
+        "date": "November 16, 2017"
+    },
+    {
+        "title": "Microsoft",
+        "date": "October 20, 2017"
+    },
+    {
+        "title": "Intel Talk",
+        "date": "October 2, 2017"
+    },
+    {
+        "title": "Social",
+        "date": "September 26, 2017"
+    },
+    {
+        "title": "Accenture Talk",
+        "date": "September 18, 2017"
+    },
+    {
+        "title": "IBM Talk",
+        "date": "September 11, 2017"
+    },
+    {
+        "title": "Netflix and Chill with @Zo",
+        "date": "October 31, 2017"
+    }
+]}

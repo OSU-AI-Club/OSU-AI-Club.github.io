@@ -1,22 +1,23 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles/main.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     </head>
     <body>
         <header>
-            <div style="background: linear-gradient(150deg, rgba(0, 200, 255, 0.4), rgba(0, 255, 200, 0.4)); height: 320px">
-                <div style="height: 0px" align="center">
-                    <div style="mix-blend-mode: overlay; width: 100%; min-width: 400px; height: 320px; background-image: url(resources/Thompson.jpg); background-position: center; background-size: cover; filter: grayscale(100%) brightness(70%) contrast(50%); display: block; margin: auto" align="center">
-                    </div>
-                </div>
+            <div class="logo-content-box">
                 <div class="logo" align="center">
                     <a href="index.html">
-                        <img src="resources/AI_Logo_Final.png"/>
+                        <img src="resources/AI_Logo_Final_Black.png"/>
                     </a>
                     <div class="motto">
                         The latest talks and<br />
                         events in AI.
+                    </div>
+                    <div class="subscribe-line">
+                        Join the mailing list: <a href="go.osu.edu/aiclub" class="subscribe">
+                        Subscribe
+                        </a>
                     </div>
                 </div>
             </div>
@@ -32,54 +33,48 @@
                     </a>
                 </div>
                 <div class="nav-button">
-                    <a href="events.html">
-                        Events
+                    <a href="resources.html">
+                        Resources
+                    </a>
+                </div>
+                <div class="nav-button">
+                    <a href="sponsors.html">
+                        Sponsors
                     </a>
                 </div>
             </div>
-            <hr />
         </header>
         <div class="content">
-            <div class="content-box" align="center">
-                <div class="mail">
-                    Want to join our mailing list?
-                    <a href="go.osu.edu/aiclub" class="subscribe">
-                        Subscribe
-                    </a>
-                </div>
+            <div class="content-box description">
+                <h2 class="centered">
+                    Who are we?
+                </h2>
+                We are a platform for students to learn more about AI.<br />
+                We regularly host talks with industry, and special events for creativity.<br />
+                We're proud to count Intel, IBM, and Microsoft as among our guests.
+                
+                <div class="description-img"></div>
             </div>
-            <div style="background-color: #eee; padding: 30px 0;" >
-                <table class="content-box">
-                    <tr>
-                        <td style="width: 53%; padding-right: 6%;">
+            <table class="participation">
+                <tr>
+                    <td>
+                        <div>
                             <h2>
-                                Who are we?
+                                Want to join? <i class="fas fa-users"></i>
                             </h2>
-                            AI Club is a platform for students and professionals alike to share news about AI. We're proud to count Intel, IBM, and Microsoft among our guests.
-                        </td>
-                        <td style="width:50%">
-                            <div style="background-image: url(resources/IMG_1950.JPG); background-size: 150%; background-position: -0px -150px; width: 100%; height: 200px; border-radius: 0px; box-shadow: 10px 10px 0px #aaa"></div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="empty-line"></div>
-                <table class="content-box">
-                    <tr>
-                        <td style="width: 53%; padding-right: 6%;">
+                            Everyone is free to join! Yes you, bakers and coders. Join the <a href="go.osu.edu/aiclub">mailing list</a> and watch out for announcements.
+                        </div>
+                    </td>
+                    <td>
+                        <div>
                             <h2>
-                                Want to join?
+                                <i class="fas fa-chalkboard-teacher"></i> Want to present?
                             </h2>
-                            Everyone is free to join! Yes you, bakers and coders. Join the <a class="registration" href="https://go.osu.edu/aiclub">mailing list</a> and watch out for meeting announcements.
-                        </td>
-                        <td style="width: 47%;">
-                            <h2>
-                                Want to present?
-                            </h2>
-                            Wonderful! Contact us, and we'll reply with a list of dates on which we're open.
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                            Wonderful! Email us and we will start discussions. Event setup requires 4-6 business days notice.
+                        </div>
+                    </td>
+                </tr>
+            </table>
             <div class="about-us content-box">
                 <div class="officers">
                     <h2>Officers</h2>
@@ -135,7 +130,7 @@
                     <table>
                         <tr>
                             <td>
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                             </td>
                             <td>
                                 osuaiclub@gmail.com
@@ -143,7 +138,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home" aria-hidden="true"></i>
                             </td>
                             <td>
                                 136 West Woodruff Ave. Columbus, OH 43210
@@ -152,15 +147,11 @@
                     </table>
                 </div>
             </div>
-<!--             <div class="content-box sponsors" align="center">
-                <h2>Sponsors</h2>
-                <img src="resources/sponsors.png" alt="Mountain View">
-            </div> -->
         </div>
         <footer>
             <div align="center">
                 AI Club is an OSU Student Organization.<br />
-                See 'About Us' for more info.
+                See <a href="/index.html">About Us</a> for more information.
             </div>
         </footer>
     </body>

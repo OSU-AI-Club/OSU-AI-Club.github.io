@@ -5,18 +5,19 @@
     </head>
     <body>
         <header>
-            <div style="background: linear-gradient(150deg, rgba(0, 200, 255, 0.4), rgba(0, 255, 200, 0.4)); height: 320px">
-                <div style="height: 0px" align="center">
-                    <div style="mix-blend-mode: overlay; width: 100%; min-width: 400px; height: 320px; background-image: url(resources/Thompson.jpg); background-position: center; background-size: cover; filter: grayscale(100%) brightness(70%) contrast(50%); display: block; margin: auto" align="center">
-                    </div>
-                </div>
+            <div class="logo-content-box">
                 <div class="logo" align="center">
                     <a href="index.html">
-                        <img src="resources/AI_Logo_Final.png"/>
+                        <img src="resources/AI_Logo_Final_Black.png"/>
                     </a>
                     <div class="motto">
                         The latest talks and<br />
                         events in AI.
+                    </div>
+                    <div class="subscribe-line">
+                        Join the mailing list: <a href="go.osu.edu/aiclub" class="subscribe">
+                        Subscribe
+                        </a>
                     </div>
                 </div>
             </div>
@@ -32,125 +33,73 @@
                     </a>
                 </div>
                 <div class="nav-button">
-                    <a href="events.html">
-                        Events
+                    <a href="resources.html">
+                        Resources
+                    </a>
+                </div>
+                <div class="nav-button">
+                    <a href="sponsors.html">
+                        Sponsors
                     </a>
                 </div>
             </div>
-            <hr />
         </header>
         <div class="content">
             <div class="content-box">
-                A list of past and future meetings is below.<br /><br />
+                <script>
+                    function httpGetAsync(theUrl, callback)
+                    {
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function() { 
+                            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                                callback(xmlHttp.responseText);
+                        }
+                        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                        xmlHttp.send(null);
+                    }
+                    
+                    function addMeeting(data)
+                    {
+                        var title = data["title"];
+                        var date = data["date"];
+                        var guest = data["guest"];
+                        var desc = data["description"];
+                        
+                        var meetingTable = document.getElementsByClassName("meeting-list")[0];
+                        
+                        var entry = '<tr class="meeting"><td>';
+                        entry += '<h3>' + title + '</h3>';
+                        entry += '<div class="meeting-date"> ' + date + ' </div>';
+                        if (typeof guest != 'undefined') entry += '<div class="meeting-guest"> ' + guest + ' </div>';
+                        if (typeof desc != 'undefined') entry += '<div class="meeting-desc"> ' + desc + ' </div>';
+                        entry += '</td></tr>';
+                        
+                        meetingTable.innerHTML += entry;
+                    }
+                    
+                    function updateMeetingTable(data)
+                    {
+                        console.log(data);
+                        
+                        var meetings = JSON.parse(data)["meetings"];
+                        
+                        meetings.forEach(function(meeting) {
+                            addMeeting(meeting);
+                        });
+                    }
+                    
+                    httpGetAsync("resources/meetings.json", updateMeetingTable);
+                </script>
                 
-                <table style="width: 100%; margin-bottom: 50px;">
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Illumination Works </h3>
-                            <div class="meeting-date"> <!--Date--> February 19, 2018</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Drive Capital </h3>
-                            <div class="meeting-date"> <!--Date--> February 5, 2018</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Westworld and Popcorn </h3>
-                            <div class="meeting-date"> <!--Date--> November 30, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Micha Elsner Talk </h3>
-                            <div class="meeting-date"> <!--Date--> November 16, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Microsoft </h3>
-                            <div class="meeting-date"> <!--Date--> October 20, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Intel Talk </h3>
-                            <div class="meeting-date"> <!--Date--> October 2, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Social </h3>
-                            <div class="meeting-date"> <!--Date--> September 26, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Accenture Talk </h3>
-                            <div class="meeting-date"> <!--Date--> September 18, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> IBM Talk </h3>
-                            <div class="meeting-date"> <!--Date--> September 11, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="meeting">
-                        <td>
-                            <h3> <!--Title--> Netflix and Chill With @Zo </h3>
-                            <div class="meeting-date"> <!--Date--> October 31, 2017</div>
-                            <div class="meeting-by"> <!--By--> </div>
-                            <div class="meeting-desc">
-                                <!--Description-->
-                            </div>
-                        </td>
-                    </tr>
+                <table class="meeting-list">
+                    
                 </table>
             </div>
         </div>
         <footer>
             <div align="center">
                 AI Club is an OSU Student Organization.<br />
-                See 'About Us' for more info.
+                See <a href="/index.html">About Us</a> for more information.
             </div>
         </footer>
     </body>
