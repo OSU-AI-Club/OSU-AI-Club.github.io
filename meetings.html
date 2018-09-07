@@ -1,7 +1,13 @@
 <html>
     <head>
+        <!-- Page description -->
+        <title>OSU AI Club</title>
+        <meta name="description" content="A meeting list for the AI Club." />
+        
+        <!-- Styling -->
         <link rel="stylesheet" href="styles/main.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <meta name="viewport" content="width=500">
     </head>
     <body>
         <header>
@@ -41,6 +47,9 @@
         </header>
         <div class="content">
             <div class="content-box">
+                Want to learn about future meetings? Want to get reminders? Join the <a href="https://Go.osu.edu/aiclub">mailing list</a> today.
+            </div>
+            <div class="content-box">
                 <script>
                     function httpGetAsync(theUrl, callback)
                     {
@@ -64,7 +73,7 @@
                         
                         var entry = '<tr class="meeting"><td>';
                         entry += '<h3>' + title + '</h3>';
-                        entry += '<div class="meeting-date"> <i class="fas fa-calendar-alt"></i> ' + date + ' </div>';
+                        entry += '<div class="meeting-date"> <i class="far fa-calendar-alt"></i> ' + date + ' </div>';
                         if (typeof guest != 'undefined')
                             entry += '<div class="meeting-guest"> <i class="fas fa-user"></i> ' + guest + ' </div>';
                         if (typeof desc != 'undefined')
