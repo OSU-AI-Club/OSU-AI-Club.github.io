@@ -1,6 +1,10 @@
 
 {"meetings": [
     {
+        "title": "Hack Night",
+        "date": "September 17, 2018"
+    },
+    {
         "title": "2018-2019 Introduction",
         "date": "September 10, 2018"
     },
