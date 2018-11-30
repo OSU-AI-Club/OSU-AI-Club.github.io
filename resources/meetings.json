@@ -1,6 +1,23 @@
 
 {"meetings": [
     {
+        "title": "Hack Night",
+        "date": "November 25, 2018",
+        "location": "SEL 070",
+        "description": "This week's hack night consists of training a self driving car to drive down a highway as quickly as possible."
+    },
+    {
+        "title": "AI Club + BDAA Social",
+        "date": "November 15, 2018",
+        "location": "Donatos on High"
+    },
+    {
+        "title": "Hack Night",
+        "date": "October 30, 2018",
+        "location": "070 18th Ave Library",
+        "description": "This weeks Hack Night challenge consists of building a basic bot for a simple online game."
+    },
+    {
         "title": "Lightning Talks",
         "date": "October 22, 2018",
         "location": "Hitchcock 035"
