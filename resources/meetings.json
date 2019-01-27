@@ -1,6 +1,17 @@
 
 {"meetings": [
     {
+        "title": "CoreML Demo",
+        "date": "January 22, 2018",
+        "location": "HI 035",
+        "description": "Come learn about the basics of AI and how to implement and image classifier using Apple’s CoreML. No programming experience required, this is aimed at beginners."
+    },
+    {
+        "title": "Club Introduction",
+        "date": "January 15, 2018",
+        "location": "HI 035"
+    },
+    {
         "title": "Hack Night",
         "date": "November 25, 2018",
         "location": "SEL 070",
