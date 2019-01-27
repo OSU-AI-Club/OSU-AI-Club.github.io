@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "Modeling Language and Vision",
+        "date": "January 29, 2019",
+        "location": "HI 035",
+        "description": "When you try to give directions, or point out an object in a crowded scene, your brain gathers information from the visual cortex and uses it to create an effective description using language. Professor Micha Elsner will talk about how AI can help us to understand and model this process."
+    },
+    {
         "title": "CoreML Demo",
         "date": "January 22, 2019",
         "location": "HI 035",
