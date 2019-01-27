@@ -50,6 +50,7 @@
                 Want to learn about future meetings? Want to get reminders? Join the <a href="https://Go.osu.edu/aiclub">mailing list</a> today. Regular talks are on Tuesday at 7:30pm at HI 035.
             </div>
             <div class="content-box">
+                <!-- Pull in meeting information. -->
                 <script>
                     function httpGetAsync(theUrl, callback)
                     {
@@ -85,7 +86,7 @@
                     
                     function updateMeetingTable(data)
                     {
-                        console.log(data);
+                        //console.log(data);
                         
                         var meetings = JSON.parse(data)["meetings"];
                         
