@@ -1,6 +1,23 @@
 
 {"meetings": [
     {
+        "title": "AI Club + BDAA Social",
+        "date": "February 22nd, 7:00–12:00am, 2019",
+        "location": "Donatos on 2084 N High St"
+    },
+    {
+        "title": "Hack Night: Self-Driving Cars",
+        "date": "February 14th, 7:30–8:30pm, 2019",
+        "location": "18th Ave Library 070",
+        "description": "Program virtual self-driving cars during the semester's first hack night."
+    },
+    {
+        "title": "Capital One Natural Language Processing",
+        "date": "February 5th, 7:30pm, 2019",
+        "location": "HI 035",
+        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
+    },
+    {
         "title": "Modeling Language and Vision",
         "date": "January 29, 2019",
         "location": "HI 035",
