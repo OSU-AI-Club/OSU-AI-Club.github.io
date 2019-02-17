@@ -186,7 +186,7 @@ footer div {
     width: 50%;
     background-color: #444;
     color: white;
-    text-align: right;
+    
     padding: 20px;
 }
 
@@ -228,6 +228,39 @@ footer div {
 
 .contact-methods td {
     padding-right: 5px;
+}
+
+.sponsors {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.sponsors p {
+    padding-bottom: 20px;
+}
+
+.sponsor-logos img {
+    height: 80px;
+    max-height: 80px;
+    max-width: 200px;
+}
+
+.hackai-benefit-blurb {
+    background-color: #555;
+    margin: 15px 0;
+    padding: 15px;
+    height: 40px;
+}
+
+.hackai-benefit-blurb i {
+    min-width: 60px;
+    font-size: 40px;
+}
+
+.hackai-benefit-blurb span {
+    display: inline-block;
+    padding-top: 10px;
+    vertical-align: top;
 }
 
 /* 6). Misc */
