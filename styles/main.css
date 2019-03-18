@@ -230,21 +230,6 @@ footer div {
     padding-right: 5px;
 }
 
-.sponsors {
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.sponsors p {
-    padding-bottom: 20px;
-}
-
-.sponsor-logos img {
-    height: 80px;
-    max-height: 80px;
-    max-width: 200px;
-}
-
 .hackai-benefit-blurb {
     background-color: #555;
     margin: 15px 0;
@@ -263,8 +248,20 @@ footer div {
     vertical-align: top;
 }
 
+.sponsors {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.sponsors p {
+    padding-bottom: 20px;
+}
+
 .sponsor-logos img {
-    margin: 0 10px;
+    height: 80px;
+    max-height: 80px;
+    max-width: 300px;
+    margin: 5px 15px;
 }
 
 #StickerMule {
