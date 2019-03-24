@@ -1,6 +1,22 @@
 
 {"meetings": [
     {
+        "title": "Artificial Intelligence and the Law",
+        "date": "March 26th, 7:30–8:30pm",
+        "location": "HI 035",
+        "description": "Attorney Drew Stephens presents the legal implications of AI."
+    },
+    {
+        "title": "A Human Centric Approach to AI — UX Design and AI Workshop",
+        "date": "March 21st, 6–7pm",
+        "location": "Smith Lab 3011–3101"
+    },
+    {
+        "title": "Root Insurance Talk",
+        "date": "March 5th, 7:30pm",
+        "location": "HI 035"
+    },
+    {
         "title": "AI Club + BDAA Social",
         "date": "February 22nd, 7:00–12:00am, 2019",
         "location": "Donatos on 2084 N High St"
