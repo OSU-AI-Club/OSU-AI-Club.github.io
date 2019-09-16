@@ -1,6 +1,18 @@
 
 {"meetings": [
     {
+        "title": "First Meeting",
+        "date": "September 11th, 6:50–7:50pm",
+        "location": "HI 035",
+        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
+    },
+    {
+        "title": "First Meeting",
+        "date": "September 4th, 7:00–8:00pm",
+        "location": "HI 035",
+        "description": "In addition to an AI themed presentation, our club president will give an introduction to the club."
+    },
+    {
         "title": "The Internet Knows Who You Are and We Can Prove It",
         "date": "April 9th, 7:30–8:30pm",
         "location": "HI 035",
