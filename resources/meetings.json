@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "AI Club Workshop #1",
+        "date": "September 18th, 7:00–8:00pm",
+        "location": "HI 035",
+        "description": "This week AI club will be running a workshop alongside Business Builders Club to introduce members to Kaggle."
+    },
+    {
         "title": "Natural Language Processing in Capital One's Virtual Assistant",
         "date": "September 11th, 6:50–7:50pm",
         "location": "HI 035",
