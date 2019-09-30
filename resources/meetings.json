@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "AI Club Workshop #2",
+        "date": "September 25th, 7:00–8:00pm",
+        "location": "HI 035",
+        "description": "This week AI Club's advisor, professor Alan Ritter, will be presenting on his research using natural language processing to predict events through Twitter!"
+    },
+    {
         "title": "AI Club Workshop #1",
         "date": "September 18th, 7:00–8:00pm",
         "location": "HI 035",
