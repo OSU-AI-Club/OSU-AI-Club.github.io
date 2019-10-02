@@ -238,20 +238,22 @@ footer div {
 .participation-card-header i { /* Font awesome */
     display: inline-block;
     width: 50px;
-    font-size: 50px;
+    font-size: 55px;
 }
 
 .about-us {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    flex-grow: 1;
+    margin-bottom: 0;
 }
 
 .officers {
-    min-width: 200px;
+    min-width: 250px;
     margin-right: 4%;
     width: 48%;
+    flex-grow: 1;
+    margin-bottom: 20px;
 }
 
 .officers td {
@@ -275,8 +277,9 @@ footer div {
 }
 
 .contact-methods {
-    min-width: 200px;
+    min-width: 250px;
     width: 48%;
+    flex-grow: 1;
 }
 
 .contact-methods td {
@@ -292,11 +295,6 @@ footer div {
 
 .sponsors {
     text-align: center;
-    padding-bottom: 20px;
-}
-
-.sponsors p {
-    padding-bottom: 20px;
 }
 
 .sponsor-logos img {
