@@ -202,6 +202,7 @@ footer div {
     width: 100%;
     max-width: 100vw;
     margin-top: 20px;
+    border-radius: 10px;
 }
 
 .participation {
@@ -226,7 +227,7 @@ footer div {
     background-color: #368;
     max-width: 210px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 6px;
     margin: 10px 10px;
 }
 
