@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "Deep Lens VIPER",
+        "date": "October 15th, 7:00–8:00pm",
+        "location": "HI 035",
+        "description": "Utilizing machine vision to match cancer patients to clinical trails."
+    },
+    {
         "title": "AI Club Workshop #2",
         "date": "September 25th, 7:00–8:00pm",
         "location": "HI 035",
