@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "Ghostery: Utilizing machine learning for internet privacy ",
+        "date": "October 23rd, 7:00–8:00pm",
+        "location": "HI 035",
+        "description": "What’s the cost of using the internet? It depends who you ask. Join us as we discuss how the internet business model works from both the consumer and professional side of things."
+    },
+    {
         "title": "Deep Lens VIPER",
         "date": "October 15th, 7:00–8:00pm",
         "location": "HI 035",
