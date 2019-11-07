@@ -1,26 +1,32 @@
 
 {"meetings": [
     {
+        "title": "Root Insurance",
+        "date": "October 30th, 7–8pm",
+        "location": "HI 035",
+        "description": "Root's core data science challenge is understanding driving behavior from smartphone sensor data. Come and meet Dr. Matt Bonakdarpour and Dr. David Martin, the VP of Data Science and Chief Data Scientist."
+    },
+    {
         "title": "Ghostery: Utilizing machine learning for internet privacy ",
-        "date": "October 23rd, 7:00–8:00pm",
+        "date": "October 23rd, 7–8pm",
         "location": "HI 035",
         "description": "What’s the cost of using the internet? It depends who you ask. Join us as we discuss how the internet business model works from both the consumer and professional side of things."
     },
     {
         "title": "Deep Lens VIPER",
-        "date": "October 15th, 7:00–8:00pm",
+        "date": "October 15th, 7–8pm",
         "location": "HI 035",
         "description": "Utilizing machine vision to match cancer patients to clinical trails."
     },
     {
         "title": "AI Club Workshop #2",
-        "date": "September 25th, 7:00–8:00pm",
+        "date": "September 25th, 7–8pm",
         "location": "HI 035",
         "description": "This week AI Club's advisor, professor Alan Ritter, will be presenting on his research using natural language processing to predict events through Twitter!"
     },
     {
         "title": "AI Club Workshop #1",
-        "date": "September 18th, 7:00–8:00pm",
+        "date": "September 18th, 7–8pm",
         "location": "HI 035",
         "description": "This week AI club will be running a workshop alongside Business Builders Club to introduce members to Kaggle."
     },
@@ -32,7 +38,7 @@
     },
     {
         "title": "First Meeting",
-        "date": "September 4th, 7:00–8:00pm",
+        "date": "September 4th, 7–8pm",
         "location": "HI 035",
         "description": "In addition to an AI themed presentation, our club president will give an introduction to the club."
     },
