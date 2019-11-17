@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+        "title": "AI Safety Discussion",
+        "date": "November 13th, 7–8pm",
+        "location": "Keith B. Key Center (Union)",
+        "description": "The AI Club will be hosting a discussion on AI Safety. We will be talking about far and near-future scenarios, and will be watching two videos before the talk."
+    },
+    {
         "title": "Root Insurance",
         "date": "October 30th, 7–8pm",
         "location": "HI 035",
