@@ -1,6 +1,24 @@
 
 {"meetings": [
     {
+        "title": "Club Meeting #1",
+        "date": "January 8, 7–8pm",
+        "location": "HI 035",
+        "description": "This week AI club will be running a meeting to introduce students to Artificial Intelligence."
+    },
+    {
+        "title": "ACM-W Colab Talk",
+        "date": "November 21st, 7–8pm",
+        "location": "Baker 144",
+        "description": "Our president, Jack Dubbs, will be giving a presentation on using AI to do stock price prediction from daily news articles."
+    },
+    {
+        "title": "AI Club: Aware",
+        "date": "November 20th, 7–8pm",
+        "location": "HI 035",
+        "description": "Come hear Aware talk about how they use artificial intelligence to help workplace security and understand behavioral analytics!"
+    },
+    {
         "title": "AI Safety Discussion",
         "date": "November 13th, 7–8pm",
         "location": "Keith B. Key Center (Union)",
