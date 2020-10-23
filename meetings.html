@@ -3,7 +3,7 @@
         <!-- Page description -->
         <title>OSU AI Club</title>
         <meta name="description" content="A meeting list for the AI Club." />
-        
+
         <!-- Styling -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -36,37 +36,42 @@
                 </div>
                 <div class="nav-button">
                     <a href="resources.html" role="button">
-                        Resources
+                        Learning Resources
+                    </a>
+                </div>
+                <div class="nav-button">
+                    <a href="confs.html" role="button">
+                        AI conferences
                     </a>
                 </div>
             </div>
         </header>
         <div class="content" role="main">
             <div class="content-box">
-                Want to learn about future meetings? Want to get reminders? Join the <a href="https://Go.osu.edu/aiclub">mailing list</a> today. Regular talks are held at 7pm, Wednesday, with most meetings located at Hitchcock 035.
+                Want to learn about future meetings? Want to get reminders? Join the <a href="https://Go.osu.edu/aiclub">mailing list</a> today. Regular talks are held online at 7pm on Tuesdays.
             </div>
             <div class="content-box">
                 <script>
                     function httpGetAsync(theUrl, callback)
                     {
                         var xmlHttp = new XMLHttpRequest();
-                        xmlHttp.onreadystatechange = function() { 
+                        xmlHttp.onreadystatechange = function() {
                             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                                 callback(xmlHttp.responseText);
                         }
-                        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                        xmlHttp.open("GET", theUrl, true); // true for asynchronous
                         xmlHttp.send(null);
                     }
-                    
+
                     function addMeeting(data)
                     {
                         var title = data["title"];
                         var date = data["date"];
                         var location = data["location"];
                         var desc = data["description"];
-                        
+
                         var meetingTable = document.getElementsByClassName("meeting-list")[0];
-                        
+
                         var entry = '<tr class="meeting"><td>';
                         entry += '<h3>' + title + '</h3>';
                         entry += '<div class="meeting-date"> <i class="far fa-calendar-alt"></i> ' + date + ' </div>';
@@ -75,26 +80,26 @@
                         if (typeof desc != 'undefined')
                             entry += '<div class="meeting-desc"> <i class="fas fa-book-open"></i> ' + desc + ' </div>';
                         entry += '</td></tr>';
-                        
+
                         meetingTable.innerHTML += entry;
                     }
-                    
+
                     function updateMeetingTable(data)
                     {
                         //console.log(data);
-                        
+
                         var meetings = JSON.parse(data)["meetings"];
-                        
+
                         meetings.forEach(function(meeting) {
                             addMeeting(meeting);
                         });
                     }
-                    
+
                     httpGetAsync("resources/meetings.json", updateMeetingTable);
                 </script>
-                
+
                 <table class="meeting-list">
-                    
+
                 </table>
             </div>
         </div>
