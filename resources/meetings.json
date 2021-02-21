@@ -1,6 +1,12 @@
 
 {"meetings": [
     {
+      "title": "NVIDIA - Kristopher Keipert",
+      "date": "March 23 2021, 7pm–8pm",
+      "location": "Online over Zoom",
+      "description": "Kristopher Keipert is a Senior Solutions Architect at NVIDIA who will be giving a talk about the unique offerings that NVIDIA has to help lower the barrier to entry for AI researchers. "
+    },
+    {
         "title": "Eddy Liang",
         "date": "February 12, 6:45–8pm",
         "location": "HI 035",
