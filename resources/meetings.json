@@ -1,6 +1,11 @@
 
 {"meetings": [
-    
+    {
+    "title": "Google - Wesley Chun",
+    "date": "March 16 2021, 7pm–8pm",
+    "location": "Online over Zoom",
+    "description": "Wesley Chun is a developer advocate at Google with over 25 years of experience. Wesley will be giving a developers overview of ML concepts and their inner workings. He will also be giving a overview of the various Google Cloud Machine Learning APIs.  "
+    },
     {
       "title": "NVIDIA - Kristopher Keipert",
       "date": "February 23 2021, 7pm–8pm",
