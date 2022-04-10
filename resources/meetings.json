@@ -1,273 +1,196 @@
 
 {"meetings": [
     {
-    "title": "Google - Wesley Chun",
-    "date": "March 16 2021, 7pm–8pm",
-    "location": "Online over Zoom",
-    "description": "Wesley Chun is a developer advocate at Google with over 25 years of experience. Wesley will be giving a developers overview of ML concepts and their inner workings. He will also be giving a overview of the various Google Cloud Machine Learning APIs.  "
-    },
+        "title": "Harry Chao",
+        "date": "April 18 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": ""
+        },
     {
-      "title": "NVIDIA - Kristopher Keipert",
-      "date": "February 23 2021, 7pm–8pm",
-      "location": "Online over Zoom",
-      "description": "Kristopher Keipert is a Senior Solutions Architect at NVIDIA who will be giving a talk about the unique offerings that NVIDIA has to help lower the barrier to entry for AI researchers. "
-    },
+        "title": "HackAI Winners Presentation - Russel Zhu",
+        "date": "April 11 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": ""
+        },
     {
-        "title": "Eddy Liang",
-        "date": "February 12, 6:45–8pm",
-        "location": "HI 035",
-        "description": "Eddy is a senior Computer Science student expanding on his AI capstone project."
-    },
+        "title": "HackAI",
+        "date": "April 9-10 2022",
+        "location": "18th Ave Basement",
+        "description": ""
+        },
     {
-        "title": "Will Burrus & Lower",
-        "date": "February 5, 6:45–8pm",
-        "location": "HI 035",
-        "description": "Lower is a company using AI to offer consumers better home loans. They will be talking about how they use these skills on the job."
-    },
+        "title": "HackAI Intro Pt 2 - Russel Zhu",
+        "date": "April 4 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": ""
+        },
     {
-        "title": "TensorFlow Hub Workshop",
-        "date": "January 29, 6:45–8pm",
-        "location": "HI 035",
-        "description": "We will be learning how to use pre-made tensorflow projects for fast and easy prototyping."
-    },
+        "title": "HackAI Intro Pt 1 - Russel Zhu & Pranav Chati",
+        "date": "March 28 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": ""
+        },
     {
-        "title": "Mathworks Handwriting Recognition Workshop",
-        "date": "January 22, 6:45–8pm",
-        "location": "HI 035",
-        "description": "We will be making a machine learning program which can recognize & label numbers in a dataset."
-    },
+        "title": "Olive - Alex Reutter, Willa Skeehan, and Marie Klosterman",
+        "date": "March 21 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": "Engineers from Olive will come in and talk about the current problems in healthcare can be solved using ML to make the process cheaper for hospitals and easier for patients."
+        },
     {
-        "title": "Video Games & AI ",
-        "date": "January 15, 7–8pm",
-        "location": "HI 035",
-        "description": "We will be talking about how to build AI in video games and discuss the best games that include AI!"
-    },
-    {
-        "title": "Club Meeting #1",
-        "date": "January 8, 7–8pm",
-        "location": "HI 035",
-        "description": "This week AI club will be running a meeting to introduce students to Artificial Intelligence."
-    },
-    {
-        "title": "ACM-W Colab Talk",
-        "date": "November 21st, 7–8pm",
-        "location": "Baker 144",
-        "description": "Our president, Jack Dubbs, will be giving a presentation on using AI to do stock price prediction from daily news articles."
-    },
-    {
-        "title": "AI Club: Aware",
-        "date": "November 20th, 7–8pm",
-        "location": "HI 035",
-        "description": "Come hear Aware talk about how they use artificial intelligence to help workplace security and understand behavioral analytics!"
-    },
-    {
-        "title": "AI Safety Discussion",
-        "date": "November 13th, 7–8pm",
-        "location": "Keith B. Key Center (Union)",
-        "description": "The AI Club will be hosting a discussion on AI Safety. We will be talking about far and near-future scenarios, and will be watching two videos before the talk."
-    },
-    {
-        "title": "Root Insurance",
-        "date": "October 30th, 7–8pm",
-        "location": "HI 035",
-        "description": "Root's core data science challenge is understanding driving behavior from smartphone sensor data. Come and meet Dr. Matt Bonakdarpour and Dr. David Martin, the VP of Data Science and Chief Data Scientist."
-    },
-    {
-        "title": "Ghostery: Utilizing machine learning for internet privacy ",
-        "date": "October 23rd, 7–8pm",
-        "location": "HI 035",
-        "description": "What’s the cost of using the internet? It depends who you ask. Join us as we discuss how the internet business model works from both the consumer and professional side of things."
-    },
-    {
-        "title": "Deep Lens VIPER",
-        "date": "October 15th, 7–8pm",
-        "location": "HI 035",
-        "description": "Utilizing machine vision to match cancer patients to clinical trails."
-    },
-    {
-        "title": "AI Club Workshop #2",
-        "date": "September 25th, 7–8pm",
-        "location": "HI 035",
-        "description": "This week AI Club's advisor, professor Alan Ritter, will be presenting on his research using natural language processing to predict events through Twitter!"
-    },
-    {
-        "title": "AI Club Workshop #1",
-        "date": "September 18th, 7–8pm",
-        "location": "HI 035",
-        "description": "This week AI club will be running a workshop alongside Business Builders Club to introduce members to Kaggle."
-    },
-    {
-        "title": "Natural Language Processing in Capital One's Virtual Assistant",
-        "date": "September 11th, 6:50–7:50pm",
-        "location": "HI 035",
-        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
-    },
-    {
-        "title": "First Meeting",
-        "date": "September 4th, 7–8pm",
-        "location": "HI 035",
-        "description": "In addition to an AI themed presentation, our club president will give an introduction to the club."
-    },
-    {
-        "title": "The Internet Knows Who You Are and We Can Prove It",
-        "date": "April 9th, 7:30–8:30pm",
-        "location": "HI 035",
-        "description": "The Ghostery team presents how they use AI to enhance security."
-    },
-    {
-        "title": "Artificial Intelligence and the Law",
-        "date": "March 26th, 7:30–8:30pm",
-        "location": "HI 035",
-        "description": "Attorney Drew Stephens presents the legal implications of AI."
-    },
-    {
-        "title": "A Human Centric Approach to AI — UX Design and AI Workshop",
-        "date": "March 21st, 6–7pm",
-        "location": "Smith Lab 3011–3101"
-    },
-    {
-        "title": "Root Insurance Talk",
-        "date": "March 5th, 7:30pm",
-        "location": "HI 035"
-    },
-    {
-        "title": "AI Club + BDAA Social",
-        "date": "February 22nd, 7:00–12:00am, 2019",
-        "location": "Donatos on 2084 N High St"
-    },
-    {
-        "title": "Hack Night: Self-Driving Cars",
-        "date": "February 14th, 7:30–8:30pm, 2019",
-        "location": "18th Ave Library 070",
-        "description": "Program virtual self-driving cars during the semester's first hack night."
-    },
-    {
-        "title": "Capital One Natural Language Processing",
-        "date": "February 5th, 7:30pm, 2019",
-        "location": "HI 035",
-        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
-    },
-    {
-        "title": "Modeling Language and Vision",
-        "date": "January 29, 2019",
-        "location": "HI 035",
-        "description": "When you try to give directions, or point out an object in a crowded scene, your brain gathers information from the visual cortex and uses it to create an effective description using language. Professor Micha Elsner will talk about how AI can help us to understand and model this process."
-    },
-    {
-        "title": "CoreML Demo",
-        "date": "January 22, 2019",
-        "location": "HI 035",
-        "description": "Come learn about the basics of AI and how to implement and image classifier using Apple’s CoreML. No programming experience required, this is aimed at beginners."
-    },
-    {
-        "title": "Club Introduction",
-        "date": "January 15, 2019",
-        "location": "HI 035"
-    },
-    {
-        "title": "Hack Night",
-        "date": "November 25, 2018",
-        "location": "SEL 070",
-        "description": "This week's hack night consists of training a self driving car to drive down a highway as quickly as possible."
-    },
-    {
-        "title": "AI Club + BDAA Social",
-        "date": "November 15, 2018",
-        "location": "Donatos on High"
-    },
-    {
-        "title": "Hack Night",
-        "date": "October 30, 2018",
-        "location": "070 18th Ave Library",
-        "description": "This weeks Hack Night challenge consists of building a basic bot for a simple online game."
-    },
-    {
-        "title": "Lightning Talks",
-        "date": "October 22, 2018",
-        "location": "Hitchcock 035"
-    },
-    {
-        "title": "Modern Machine Learning",
-        "date": "October 15, 2018"
-    },
-    {
-        "title": "AI Club + BDAA Trivia Night",
-        "date": "October 9, 2018"
-    },
-    {
-        "title": "Wiretap",
-        "date": "October 8, 2018"
-    },
-    {
-        "title": "Hack Night",
-        "date": "October 1, 2018"
-    },
+        "title": "Xueru Zhang",
+        "date": "March 7 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": "Dr. Zhang is an assistant professor here at OSU who will be talking about efforts of removing bias in ML systems and their effectiveness."
+        },
     {
         "title": "Capital One",
-        "date": "September 24, 2018"
-    },
+        "date": "February 28 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": "Engineers from Capital One will come in to talk about how they utilize machine learning and opportunites for students."
+        },
     {
-        "title": "2018-2019 Introduction",
-        "date": "September 10, 2018"
-    },
+        "title": "Andrew Perrault",
+        "date": "February 21 2022, 7:30–8:30pm",
+        "location": "Online over Zoom",
+        "description": "Dr. Perrault is an assistant professor here at OSU who will be talking about the uses of multi-agent planning techniques in public health and conservation."
+        },
     {
-        "title": "Michael White Talk",
-        "date": "April 9, 2018"
-    },
+        "title": "Portfolio Project presentation & breakdown - Ethan Harpster",
+        "date": "February 14 2022, 7:30–8:30pm",
+        "location": "Hitchcock 030",
+        "description": "Ethan Harpster is the CTO of the OSU AI Club and will be breaking down his portfolio project in a way to display what makes a good project."
+        },
     {
-        "title": "Hack.AI",
-        "date": "March 31, 2018"
-    },
+        "title": "Intro to TensorFlow - Ethan Harpster",
+        "date": "February 7 2022, 7:30–8:30pm",
+        "location": "Dreese Labs 113",
+        "description": "Ethan Harpster is the CTO of the OSU AI Club and will be giving a beginner tutorial in using TensorFlow."
+        },
     {
-        "title": "Capital One SciKit Learn Workshop",
-        "date": "March 26, 2018"
-    },
+        "title": "Intro to Pytortch Pt 2 - Alexander Ventura",
+        "date": "January 31 2022, 7:30–8:30pm",
+        "location": "Dreese Labs 113",
+        "description": "Alexander Ventura is the vice president of the OSU AI Club and will be giving a pt 2 to a beginner tutorial in using Pytorch."
+        },
     {
-        "title": "Professor Alan Workshop",
-        "date": "March 19, 2018"
-    },
+        "title": "Intro to AI Club & Intro to Pytorch - Alexander Ventura",
+        "date": "January 24 2022, 7:30–8:30pm",
+        "location": "Dreese Labs 113",
+        "description": "Alexander Ventura is the vice president of the OSU AI Club and will be giving a beginner tutorial in using Pytorch."
+        },
     {
-        "title": "Lightning Talks",
-        "date": "March 5, 2018"
-    },
+        "title": "Upstart - Filipp Shelobolin",
+        "date": "December 1 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "Filipp Shelobolin works at Upstart and will be talking about how Upstart has utilized machine learning algorithms to enhance the process of applying for a loan."
+        },
     {
-        "title": "Illumination Works",
-        "date": "February 19, 2018"
-    },
+        "title": "Grubhub robots - Zia Ahmed",
+        "date": "Novemer 17 2021, 7:30–8:30pm",
+        "location": "Dreese Labs 113",
+        "description": "Zia Ahmed is the senior director of dining services here at OSU. He has worked closely with the grubhub rover partnership and will be talking about the project overall and answering any questions."
+        },
     {
-        "title": "Drive Capital",
-        "date": "February 5, 2018"
-    },
+        "title": "Nerual Nets (CNN & RNN) - Vardaan Gangal",
+        "date": "November 15 2021, 7:30–8:30pm",
+        "location": "Online over Zoom",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind neural networks, convalutional neural networks, and recurrent neural networks."
+        },
     {
-        "title": "Westworld and Popcorn",
-        "date": "November 30, 2017"
-    },
+        "title": "Demo Day - Vardaan Gangal",
+        "date": "November 10 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be doing a demo to convey the topics of the previous neural networks in a hands-on/real-world way."
+        },
     {
-        "title": "Micha Elsner Talk",
-        "date": "November 16, 2017"
-    },
+        "title": "Neural Networks (BackProp) - Vardaan Gangal",
+        "date": "November 3 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind neural networks and back propagation."
+        },
     {
-        "title": "Microsoft",
-        "date": "October 20, 2017"
-    },
+        "title": "Neural Networks (MLP) - Vardaan Gangal",
+        "date": "October 27 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind neural networks and the multi-layer perceptron."
+        },
     {
-        "title": "Intel Talk",
-        "date": "October 2, 2017"
-    },
+        "title": "Neural Networks (Intro) - Vardaan Gangal",
+        "date": "October 25 2021, 7:30–8:30pm",
+        "location": "Hitchcock 031",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind neural networks."
+        },
     {
-        "title": "Social",
-        "date": "September 26, 2017"
-    },
+        "title": "Aware - Jason Morgan",
+        "date": "October 20 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "Jason Morgan is the vice president of Aware and will be giving a presentation in how Aware uses natural language processing to display effectiveness of teams within companies."
+        },
     {
-        "title": "Accenture Talk",
-        "date": "September 18, 2017"
-    },
+        "title": "Perceptron - Vardaan Gangal",
+        "date": "October 18 2021, 7:30–8:30pm",
+        "location": "Hitchcock 031",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind a perceptron."
+        },
     {
-        "title": "IBM Talk",
-        "date": "September 11, 2017"
-    },
+        "title": "Logistic Regression Demo - Vardaan Gangal",
+        "date": "October 11 2021, 7:30–8:30pm",
+        "location": "Hitchcock 031",
+        "description": "This week, Vardaan will be doing a demo to convey the topics of last week's meeting in a hands-on/real-world way."
+        },
     {
-        "title": "Netflix and Chill with @Zo",
-        "date": "October 31, 2017"
-    }
+        "title": "Logistic Regression - Vardaan Gangal",
+        "date": "Octover 6 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind logistic regression."
+        },
+    {
+        "title": "HackAI Planning & Help",
+        "date": "October 4 2021, 7:30–8:30pm",
+        "location": "Online over Zoom",
+        "description": "Talk to members about what HackAI is and find people that are interested in helping plan the event."
+        },
+    {
+        "title": "Ghostery - Pete Knowlton",
+        "date": "September 29 2021, 7:30–8:30pm",
+        "location": "Online over Zoom",
+        "description": "Pete Knowlton is the Senior Director of Operations at Ghostery who will be talking about tracking on the internet and how Ghostery helps."
+        },
+    {
+        "title": "Intro to Supervised Learning & Linear Regression Demo - Vardaan Gangal",
+        "date": "September 22 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be doing a demo to convey the topics of last week's meeting in a hands-on/real-world way."
+        },
+    {
+        "title": "Intro to Supervised Learning & Linear Regression - Vardaan Gangal",
+        "date": "September 20 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be giving an introduction into the logic behind supervised learning and linear regression."
+        },
+    {
+        "title": "Linear Algebra & Numpy Tutorial - Vardaan Gangal",
+        "date": "September 15 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be demonstrating how the linear algebra topics from the previous week can be recreated using Numpy."
+        },
+    {
+        "title": "Linear Algebra Review - Vardaan Gangal",
+        "date": "September 13 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be reviewing linear algebra as a refresher of the topis that are most relevant for the upcoming content."
+        },
+    {
+        "title": "Probability Review - Vardaan Gangal",
+        "date": "September 8 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "This week, Vardaan will be reviewing probability as a refresher of the topics that are most relevant for the upcoming content."
+        },
+    {
+        "title": "Intro to ML Course - Vardaan Gangal",
+        "date": "September 1 2021, 7:30–8:30pm",
+        "location": "Hitchcock 035",
+        "description": "Vardaan Gangal is a former member of the club that is now working in the industry. He will be teaching a beginners course to machine learning over the semester."
+        }
+    
 ]}

@@ -1,0 +1,410 @@
+
+{"meetings": [
+    {
+        "title": "Harry Chao",
+        "date": "April 20 2021, 8:30–9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+        },
+    {
+        "title": "Abdur Rahman",
+        "date": "April 11 2021, 8:30–9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+        },
+    {
+        "title": "Cheng Zhang",
+        "date": "March 30 2021, 8:30–9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+        },
+    {
+        "title": "Parinaz Naghizadeh",
+        "date": "March 23 2021, 8:30–9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+        },
+    {
+        "title": "Google - Wesley Chun",
+        "date": "March 16 2021, 8:30–9:30pm",
+        "location": "Online over Zoom",
+        "description": "Wesley Chun is a developer advocate at Google with over 25 years of experience. Wesley will be giving a developers overview of ML concepts and their inner workings. He will also be giving a overview of the various Google Cloud Machine Learning APIs.  "
+        },
+    {
+        "title": "Vardaan Gangal",
+        "date": "March 2021, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+        },
+    {
+      "title": "NVIDIA - Kristopher Keipert",
+      "date": "February 23 2021, 8:30–9:30pm",
+      "location": "Online over Zoom",
+      "description": "Kristopher Keipert is a Senior Solutions Architect at NVIDIA who will be giving a talk about the unique offerings that NVIDIA has to help lower the barrier to entry for AI researchers. "
+    },
+    {
+        "title": "Buiness Builders Collab",
+        "date": "February 18 2021, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Ziyu Yao",
+        "date": "January 26 2021, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Nationwide - Anurag Sahai",
+        "date": "November 3 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Harry Chao",
+        "date": "October 20 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Ghostery - Jordanna Kalkhof",
+        "date": "October 6 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Zoox - Kelsey Odom",
+        "date": "September 29 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "AWS - Shashank Prasanna",
+        "date": "September 22 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Mathworks Workshop - Jim Xu",
+        "date": "September 15 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Intro to AI Club - Bennet Heyn",
+        "date": "September 8 2020, 8:30-9:30pm",
+        "location": "Online over Zoom",
+        "description": ""
+    },
+    {
+        "title": "Club Social",
+        "date": "April 15 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Lightning Talks #2",
+        "date": "April 8 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Wei Xu",
+        "date": "April 1 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Spatial AI",
+        "date": "March 25 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Capital One & Business Builders",
+        "date": "March 18 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Path Robotics - Mark Vance",
+        "date": "March 4 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "JPMorgan Chase - Jason Van Hulse",
+        "date": "February 26 2020, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Harry Chao",
+        "date": "February 19, 6:45–8pm",
+        "location": "",
+        "description": ""
+    },
+    {
+        "title": "Eddy Liang",
+        "date": "February 12, 6:45–8pm",
+        "location": "HI 035",
+        "description": "Eddy is a senior Computer Science student expanding on his AI capstone project."
+    },
+    {
+        "title": "Will Burrus & Lower",
+        "date": "February 5, 6:45–8pm",
+        "location": "HI 035",
+        "description": "Lower is a company using AI to offer consumers better home loans. They will be talking about how they use these skills on the job."
+    },
+    {
+        "title": "TensorFlow Hub Workshop",
+        "date": "January 29, 6:45–8pm",
+        "location": "HI 035",
+        "description": "We will be learning how to use pre-made tensorflow projects for fast and easy prototyping."
+    },
+    {
+        "title": "Mathworks Handwriting Recognition Workshop",
+        "date": "January 22, 6:45–8pm",
+        "location": "HI 035",
+        "description": "We will be making a machine learning program which can recognize & label numbers in a dataset."
+    },
+    {
+        "title": "Video Games & AI ",
+        "date": "January 15, 7–8pm",
+        "location": "HI 035",
+        "description": "We will be talking about how to build AI in video games and discuss the best games that include AI!"
+    },
+    {
+        "title": "Club Meeting #1",
+        "date": "January 8, 7–8pm",
+        "location": "HI 035",
+        "description": "This week AI club will be running a meeting to introduce students to Artificial Intelligence."
+    },
+    {
+        "title": "ACM-W Colab Talk",
+        "date": "November 21st, 7–8pm",
+        "location": "Baker 144",
+        "description": "Our president, Jack Dubbs, will be giving a presentation on using AI to do stock price prediction from daily news articles."
+    },
+    {
+        "title": "Aware - Jason Morgan",
+        "date": "November 20th, 7–8pm",
+        "location": "HI 035",
+        "description": "Come hear Aware talk about how they use artificial intelligence to help workplace security and understand behavioral analytics!"
+    },
+    {
+        "title": "AI Safety Discussion",
+        "date": "November 13th, 7–8pm",
+        "location": "Keith B. Key Center (Union)",
+        "description": "The AI Club will be hosting a discussion on AI Safety. We will be talking about far and near-future scenarios, and will be watching two videos before the talk."
+    },
+    {
+        "title": "Root Insurance - Bryan Croft",
+        "date": "October 30th, 7–8pm",
+        "location": "HI 035",
+        "description": "Root's core data science challenge is understanding driving behavior from smartphone sensor data. Come and meet Dr. Matt Bonakdarpour and Dr. David Martin, the VP of Data Science and Chief Data Scientist."
+    },
+    {
+        "title": "Ghostery: Utilizing machine learning for internet privacy - Jordanna Kalkof",
+        "date": "October 23rd, 7–8pm",
+        "location": "HI 035",
+        "description": "What’s the cost of using the internet? It depends who you ask. Join us as we discuss how the internet business model works from both the consumer and professional side of things."
+    },
+    {
+        "title": "Deep Lens VIPER - Mark Vance",
+        "date": "October 15th, 7–8pm",
+        "location": "HI 035",
+        "description": "Utilizing machine vision to match cancer patients to clinical trails."
+    },
+    {
+        "title": "AI Club Workshop #2 - Alan Ritter",
+        "date": "September 25th, 7–8pm",
+        "location": "HI 035",
+        "description": "This week AI Club's advisor, professor Alan Ritter, will be presenting on his research using natural language processing to predict events through Twitter!"
+    },
+    {
+        "title": "AI Club Workshop #1",
+        "date": "September 18th, 7–8pm",
+        "location": "HI 035",
+        "description": "This week AI club will be running a workshop alongside Business Builders Club to introduce members to Kaggle."
+    },
+    {
+        "title": "Natural Language Processing in Capital One's Virtual Assistant - Megan Brew",
+        "date": "September 11th, 6:50–7:50pm",
+        "location": "HI 035",
+        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
+    },
+    {
+        "title": "First Meeting - Jack Dubbs",
+        "date": "September 4th, 7–8pm",
+        "location": "HI 035",
+        "description": "In addition to an AI themed presentation, our club president will give an introduction to the club."
+    },
+    {
+        "title": "Ghostery - The Internet Knows Who You Are and We Can Prove It",
+        "date": "April 9th, 7:30–8:30pm",
+        "location": "HI 035",
+        "description": "The Ghostery team presents how they use AI to enhance security."
+    },
+    {
+        "title": "Artificial Intelligence and the Law - Drew Stephens",
+        "date": "March 26th, 7:30–8:30pm",
+        "location": "HI 035",
+        "description": "Attorney Drew Stephens presents the legal implications of AI."
+    },
+    {
+        "title": "A Human Centric Approach to AI — UX Design and AI Workshop",
+        "date": "March 21st, 6–7pm",
+        "location": "Smith Lab 3011–3101"
+    },
+    {
+        "title": "Root Insurance Talk - Bryan Croft",
+        "date": "March 5th, 7:30pm",
+        "location": "HI 035"
+    },
+    {
+        "title": "Natural Language Processing - Alan Ritter",
+        "date": "March 5th, 7:30pm",
+        "location": "HI 035"
+    },
+    {
+        "title": "AI Club + BDAA Social",
+        "date": "February 22nd, 7:00–12:00am, 2019",
+        "location": "Donatos on 2084 N High St"
+    },
+    {
+        "title": "Hack Night: Self-Driving Cars",
+        "date": "February 14th, 7:30–8:30pm, 2019",
+        "location": "18th Ave Library 070",
+        "description": "Program virtual self-driving cars during the semester's first hack night."
+    },
+    {
+        "title": "Capital One Natural Language Processing - Megan Brew",
+        "date": "February 5th, 7:30pm, 2019",
+        "location": "HI 035",
+        "description": "Learn how Capital One uses Eno to understand how customers text about their money."
+    },
+    {
+        "title": "Modeling Language and Vision - Micha Elsner",
+        "date": "January 29, 2019",
+        "location": "HI 035",
+        "description": "When you try to give directions, or point out an object in a crowded scene, your brain gathers information from the visual cortex and uses it to create an effective description using language. Professor Micha Elsner will talk about how AI can help us to understand and model this process."
+    },
+    {
+        "title": "CoreML Demo - Daniel Matar",
+        "date": "January 22, 2019",
+        "location": "HI 035",
+        "description": "Come learn about the basics of AI and how to implement and image classifier using Apple’s CoreML. No programming experience required, this is aimed at beginners."
+    },
+    {
+        "title": "Club Introduction",
+        "date": "January 15, 2019",
+        "location": "HI 035"
+    },
+    {
+        "title": "Hack Night",
+        "date": "November 25, 2018",
+        "location": "SEL 070",
+        "description": "This week's hack night consists of training a self driving car to drive down a highway as quickly as possible."
+    },
+    {
+        "title": "AI Club + BDAA Social",
+        "date": "November 15, 2018",
+        "location": "Donatos on High"
+    },
+    {
+        "title": "Hack Night",
+        "date": "October 30, 2018",
+        "location": "070 18th Ave Library",
+        "description": "This weeks Hack Night challenge consists of building a basic bot for a simple online game."
+    },
+    {
+        "title": "Lightning Talks",
+        "date": "October 22, 2018",
+        "location": "Hitchcock 035"
+    },
+    {
+        "title": "Modern Machine Learning - Mikhail Belkin",
+        "date": "October 15, 2018"
+    },
+    {
+        "title": "AI Club + BDAA Trivia Night",
+        "date": "October 9, 2018"
+    },
+    {
+        "title": "Wiretap - Jason Morgan",
+        "date": "October 8, 2018"
+    },
+    {
+        "title": "Hack Night",
+        "date": "October 1, 2018"
+    },
+    {
+        "title": "Capital One - Megan Brew",
+        "date": "September 24, 2018"
+    },
+    {
+        "title": "2018-2019 Introduction",
+        "date": "September 10, 2018"
+    },
+    {
+        "title": "Michael White Talk",
+        "date": "April 9, 2018"
+    },
+    {
+        "title": "Hack.AI",
+        "date": "March 31, 2018"
+    },
+    {
+        "title": "Capital One SciKit Learn Workshop - Megan Brew",
+        "date": "March 26, 2018"
+    },
+    {
+        "title": "Pytorch Workshop - Alan Ritter",
+        "date": "March 19, 2018"
+    },
+    {
+        "title": "Lightning Talks",
+        "date": "March 5, 2018"
+    },
+    {
+        "title": "Illumination Works",
+        "date": "February 19, 2018"
+    },
+    {
+        "title": "Drive Capital - Zach Boeger",
+        "date": "February 5, 2018"
+    },
+    {
+        "title": "Westworld and Popcorn",
+        "date": "November 30, 2017"
+    },
+    {
+        "title": "Modeling Language and Vision - Micha Elsner",
+        "date": "November 16, 2017"
+    },
+    {
+        "title": "Microsoft - Rafael Williams",
+        "date": "October 20, 2017"
+    },
+    {
+        "title": "Intel Talk - Paula Benevidas",
+        "date": "October 2, 2017"
+    },
+    {
+        "title": "Social",
+        "date": "September 26, 2017"
+    },
+    {
+        "title": "Accenture Talk",
+        "date": "September 18, 2017"
+    },
+    {
+        "title": "IBM Talk",
+        "date": "September 11, 2017"
+    },
+    {
+        "title": "Netflix and Chill with @Zo",
+        "date": "October 31, 2017"
+    }
+]}

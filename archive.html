@@ -48,7 +48,8 @@
         </header>
         <div class="content" role="main">
             <div class="content-box">
-                Want to learn about future meetings? Want to get reminders? Join the <a href="https://Go.osu.edu/aiclub">mailing list</a> today. Regular talks are held in person and virtually at 7:30pm on Mondays.
+                Here is a collection of all of our past meetings throughout our five years! To go back, click 
+                <a href="/meetings.html">here</a>.
             </div>
             <div class="content-box">
                 <script>
@@ -95,16 +96,13 @@
                         });
                     }
 
-                    httpGetAsync("resources/meetings.json", updateMeetingTable);
+                    httpGetAsync("resources/archive.json", updateMeetingTable);
                 </script>
 
                 <table class="meeting-list">
 
                 </table>
             </div>
-        </div>
-        <div align="center">
-            <a href="/archive.html">Archive of Past Meetings</a> <br /> <br /> <br />
         </div>
         <footer role="contentinfo">
             <div align="center">
