@@ -69,6 +69,7 @@
                         var date = data["date"];
                         var location = data["location"];
                         var desc = data["description"];
+                        var rec = data["recording"]
 
                         var meetingTable = document.getElementsByClassName("meeting-list")[0];
 
@@ -79,6 +80,8 @@
                             entry += '<div class="meeting-location"> <i class="fas fa-building"></i> ' + location + ' </div>';
                         if (typeof desc != 'undefined')
                             entry += '<div class="meeting-desc"> <i class="fas fa-book-open"></i> ' + desc + ' </div>';
+                        if (typeof rec != 'undefined')
+                            entry += '<div class="meeting-rec"> <i class="fas fa-book-open"></i> ' + rec + ' </div>';
                         entry += '</td></tr>';
 
                         meetingTable.innerHTML += entry;
