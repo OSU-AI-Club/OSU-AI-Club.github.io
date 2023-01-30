@@ -97,7 +97,7 @@ header {
 }
 
 .nav {
-    background-image: linear-gradient(to right, #47d , #3d8);
+    background-color: #47d; /*#3d8*/
     display: flex;
     justify-content: center;
 }
