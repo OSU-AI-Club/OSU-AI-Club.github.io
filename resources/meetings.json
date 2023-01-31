@@ -1,95 +1,45 @@
 
 {"meetings": [
-
     {
-        "title": "Project Series: Wrap Up/Documentation",
-        "date": "November 28 2022, 7:00-8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Final work day for the project series. Also, talk about getting it portfolio ready.",
-        "slides": "https://docs.google.com/presentation/d/1HpENHsWAXF-fHiiizptSBsNO464oC600EbNqvdTBoz0/edit?usp=sharing"
+        "title": "Intro to AI Club + TE Connectivity",
+        "date": "January 23 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Go over plans for the semester. Sonny Osunkwo from TE Connectivity will talk about TE Connectivity and their AI Cup."
         },
     {
-        "title": "Research Expo",
-        "date": "November 14 2022, 7:00-8:00pm",
-        "location": "TBD",
-        "description": "Several research labs present on their work and answer any questions students have."
+        "title": "Workshop: Yolov5",
+        "date": "January 30 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Fellow AI Club member David Novikov gives a presentation on Yolo architectures and training a new object detection model."
         },
     {
-        "title": "Project Series: Modeling",
-        "date": "November 7 2022, 7:00-8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Ethan shows how to use different models in order to perform classification on the datasets.",
-        "recording": "https://osu.zoom.us/rec/share/TLtGFHnC9rfoyhjjciMnBqs1zOhKLlmswayvM3_WanxiOguR4FsjfXgdjZf-kC1a.1i3RClBvP3rexsnm?startTime=1667865913000",
-        "slides": "https://docs.google.com/presentation/d/17GOVJcowAomQGLjPlwcNDOestST_ggfVq31ecXca-iY/edit"
+        "title": "Hack AI: Introduction, Team formation, and Socializing",
+        "date": "Febuary 6 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Presentation of Hack AI information and a great chance to meet new team members."
         },
     {
-        "title": "Halloween Social",
-        "date": "October 31 2022, 7:00-8:00pm",
-        "location": "Curl Viewpoint",
-        "description": "Halloween social put on by several CSE clubs."
+        "title": "Mantel Technologies - AI Futures",
+        "date": "Febuary 13 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Workshop introducing Mantel Technologies."
         },
     {
-        "title": "Dr. Tanya Berger-Wolf",
-        "date": "October 24 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Dr. Berger-Wolf explains how massive collections of images can be used to learn more about our planet's biodiversity.",
-        "recording": "https://osu.zoom.us/rec/share/Fu6I1wfMV1YmFK8kASF1YHqSgDQb_rHKHoRSnmO-RZT73YyMzf8pdiDJIDa0WU6D.qhmcFwBqvGNyttE0?startTime=1666652951000"
+        "title": "Hack AI",
+        "date": "Febuary 18 2023, 10:00am",
+        "location": "Pomerene Hall 280",
+        "description": "Hack AI! Event begins at 10:00am Febuary 18th. Video project submissions are due 11:00am Feburary 19th."
+        },    
+    {
+        "title": "Hack AI: Project Presentations",
+        "date": "Febuary 20 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Presentations of projects created during the 2023 Hack AI event."
         },
     {
-        "title": "Project Series: Modeling Lecture",
-        "date": "October 17 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "The AI Club advisor Wei-Lun (Harry) Chao gives a presentation about different models used for classification.",
-        "recording": "https://osu.zoom.us/rec/share/KSX7IUzRRE-6vRAY_akSMrjLhRauOiLFWXTBoON6_zX6bmxzV3o4ugXTYmi-mGFD.TpszNVjOgxEKBAca?startTime=1666048039000",
-        "slides": "https://docs.google.com/presentation/d/1TIAQnCV-2DclG4VAz2iehYbI2UhXFEQD/edit?usp=sharing&ouid=103356259377796835264&rtpof=true&sd=true"
-        },
-    {
-        "title": "Project Series: Work Day",
-        "date": "October 10 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "General work day to allow people to catch up.",
-        "recording": "https://osu.zoom.us/rec/share/P2K8z0PkSgBOXC_PXHe4PpFyEfVznTH41MeDIAHuP8YEp4vUeUVEPMZCAIBByXFW.EQT2oluKerdPXiVM?startTime=1665443440000",
-        "slides": "https://docs.google.com/presentation/d/1l5B0pstvIU2EcT19p6uje_aLI3EyooHS2GbNfub-jjY/edit?usp=sharing"
-        },
-    {
-        "title": "Project Series: Feature Engineering",
-        "date": "October 3 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Ethan goes over imputation and normalization of the features in the dataset.",
-        "recording": "https://osu.zoom.us/rec/share/rHVUkgy0kBeMCy-3MDmvr_pt7tfVbSLy0YO8v9jBX-iqCF-dzswxtAjtBDrdRQ_G.H0aqFAn1r5qzcwtk?startTime=1664838342000",
-        "slides": "https://docs.google.com/presentation/d/1bZxuNIuipPijH-ijpmNwrlBLx0d4dyfrLDz_qw1F6co/edit?usp=sharing"
-        },
-    {
-        "title": "ARTificial Intelligence Trivia Social",
-        "date": "September 26 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Russell hosts a triva game utilizing text to image generators like DALL-E 2.",
-        "recording": "https://osu.zoom.us/rec/share/GXV15cW4Swe5ZulY_qkFzaO7VKi6Rv_m8gW3bZY6tUKQSUbsd7n9V-2pR1ADbtQy.E1-Io1q-TZ18FYza?startTime=1664233828000",
-        "slides": "https://docs.google.com/presentation/d/1BWkRIqCUVxso0kwsur9amBqzjM8Of3kptA0k9TONWWM/edit?usp=sharing"
-        },
-    {
-        "title": "Project Series: Exploratory Data Analysis",
-        "date": "September 12 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Ethan goes over enumeration, missing/duplicated values, and graphing trends in the datasets.",
-        "recording": "https://osu.zoom.us/rec/share/sffYHT5Ky7YeVAjsJErFUi8aFaxw7Hwy5eaHVpQou48uitM71tihwCqTkQ4b4mlb.quC87CjGvTDJXQz-?startTime=1663628804000",
-        "slides": "https://docs.google.com/presentation/d/1MU5y6KJX31a6aCL7TbeDEaRiTPl4goUZ52AilLUeNzo/edit?usp=sharing"
-        },
-    {
-        "title": "Project Series: Setup",
-        "date": "September 12 2022, 7:00–8:00pm",
-        "location": "Hitchcock 324",
-        "description": "Ethan gives an intro the the project series. Goal is to pick a dataset and set up google colab.",
-        "recording": "https://osu.zoom.us/rec/share/9xj3EhjZiXpwLZzdrv1rBFy6SSGcKN1IHBuNmPxJZYRR15LVuF96AJJMdpPe9HMe.Cf7yyRLrgPD0b4Up?startTime=1663023705000",
-        "slides": "https://docs.google.com/presentation/d/1zTt5YnMyRiIdXtvJeDWBjuZPvPzAcjMBRdFX7_9pyQI/edit?usp=sharing"
-        },
-    {
-        "title": "Kickoff Meeting",
-        "date": "August 29 2022, 7:00–8:00pm",
-        "location": "Hitchcock 035",
-        "description": "Russell talks about plans for this semester.",
-        "recording": "https://osu.zoom.us/rec/share/Q49eITGi_1DJ0_fW8MqxClIimtnlu15qQj7TYbnONbLOlLZxIzeg_Z3G6guB8TcG.weC2SjOmyMnUfXn2?startTime=1661814421000",
-        "slides": "https://docs.google.com/presentation/d/1w_uQwx595SEJreZwkrcBbmaXK5OeqN_v_G4GWOFI7o4/edit?usp=sharing."
-        }
-    
+        "title": "Capital One: Eno",
+        "date": "Febuary 27 2023, 7:00-8:00pm",
+        "location": "University Hall 038",
+        "description": "Speaker from Capital One gives presentation on their new AI virtual assistant, Eno."
+        } 
 ]}
