@@ -1,0 +1,19 @@
+{
+  "name": "osu-ai-club.github.io",
+  "version": "1.0.0",
+  "description": "The AI club website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css-build": "node-sass --omit-source-map-url styles/bulmastyles.scss styles/bulmastyles.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "bulma": "^0.9.4",
+    "node-sass": "^8.0.0",
+    "postcss-cli": "^10.1.0",
+    "purgecss": "^5.0.0"
+  }
+}
