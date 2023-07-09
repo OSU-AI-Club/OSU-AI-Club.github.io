@@ -58,6 +58,10 @@ header {
     width: 100%;
 }
 
+.homepage-box-height-override {
+  height: 200px !important;
+}
+
 @media screen and (min-width: 640px) {
     .logo-content-box {
         margin-top:-20px;
