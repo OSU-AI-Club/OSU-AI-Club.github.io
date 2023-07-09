@@ -5,15 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css-build": "node-sass --omit-source-map-url styles/bulmastyles.scss styles/bulmastyles.css"
+    "css-build": "node-sass --omit-source-map-url styles/bulmastyles.scss styles/bulmastyles.css",
+    "purge-css": "postcss styles/bulmastyles.css -o styles/bulmastyles.css --use @fullhuman/postcss-purgecss --no-map --content index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^5.0.0",
     "bulma": "^0.9.4",
     "node-sass": "^8.0.0",
+    "postcss": "^8.4.25",
     "postcss-cli": "^10.1.0",
     "purgecss": "^5.0.0"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0"
   }
 }
