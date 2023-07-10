@@ -1,11 +1,11 @@
 <html>
     <head>
         <!-- Page description -->
-        <title>OSU AI Club</title>
+        <title>AI @ OSU</title>
 
         <!-- Styling -->
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <meta name="viewport" content="width=530">
 
         <!-- Favicon -->
@@ -13,17 +13,11 @@
         <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="resources/favicon_io/site.webmanifest">
+        <!-- Favicon -->
+
     </head>
-    <body>
-        <header>
-            <div class="logo-content-box">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="resources/AI_Logo_Final.png"/>
-                    </a>
-                </div>
-            </div>
-            <div class="nav" align="center" role="navigation">
+    <body class="has-navbar-fixed-top">
+        <nav class="nav navbar is-fixed-top is-flex is-justify-content-center">
                 <div class="nav-button">
                     <a href="index.html" role="button">
                         About Us
@@ -49,226 +43,217 @@
                         AI conferences
                     </a>
                 </div>
-            </div>
-        </header>
+        </nav>
         <div class="content" role="main">
-            <div class="content-box">
-                <h1>Artificial Intelligence Club @ OSU</h1>
-            </div>
-            <div class="content-box">
-                <div class="introduction">
-                    <div class="introduction-blurb">
-                        <div class="motto">
-                            <div>Talks, workshops, and more.</div>
-                            <div>Meeting Location: University Hall 038</div>
-                            <div>Meeting Times: Monday - 7:00-8:00 pm</div>
+            <div class="section is-medium has-background-dark ">
+                <div class="columns mb-5">
+                    <div class="column">
+                        <img class="p-2" src="./resources/AI_Logo_Final.png">
+                    </div> 
+                    <div class="column has-text-white">
+                        <p class="is-size-2 has-text-weight-semibold mb-4">Artificial Intelligence @ OSU</p>
+                        <p class="is-size-3 has-text-weight-semibold mb-2">Workshops and lectures on everything AI!</p>
+                        <p class="is-size-3 has-text-weight-semibold mb-2">2070 Neil Ave, Columbus, OH 43210</p>
+                        <p class="is-size-3 has-text-weight-semibold mb-2">Hitchcock Hall 038</p>
+                        <p class="is-size-3 has-text-weight-semibold mb-6">Mondays at 7:00PM</p>
+                        <div class="container is-flex is-flex-direction-row mb-5">
+                            <a href="https://www.instagram.com/ohiostateaiclub/" target="_blank">
+                                <button class="button has-background-white mr-4">
+                                    <span class="icon">
+                                        <i class="fas fa-brands fa-instagram has-text-black fa-lg"></i>
+                                    </span> 
+                                    <p class="inline has-text-black is-size-5">Instagram</p>
+                                </button>
+                            </a>
+                            <a href="https://www.linkedin.com/company/artificial-intelligence-club/" target="_blank">
+                                <button class="button has-background-white mr-4">
+                                    <span class="icon">
+                                        <i class="fas fa-brands fa-linkedin has-text-black fa-lg"></i>
+                                    </span>
+                                    <p class="inline has-text-black is-size-5">LinkedIn</p>
+                                </button>
+                            </a>
+                            <a href="mailto:osuaiclub@gmail.com">
+                                <button class="button has-background-white mr-4">
+                                    <span class="icon">
+                                        <i class="fas fa-envelope has-text-black fa-lg"></i>
+                                    </span>
+                                    <p class="inline has-text-black is-size-5">Email</p>
+                                </button>
+                            </a>
                         </div>
-                        <div class="subscribe-line">
-                            Join the Discord:<br />
+                        <div class="container is-flex is-flex-direction-row">
+                            <a href="https://go.osu.edu/aiclubdiscord" target="_blank">
+                                <button class="button has-background-white mr-4">
+                                    <span class="icon">
+                                        <i class="fas fa-brands fa-discord has-text-black fa-lg"></i>
+                                    </span>
+                                    <p class="inline has-text-black is-size-5">Join our Discord</p>
+                                </button>
+                            </a>
+                            <a href="https://go.osu.edu/aiclub" target="_blank">
+                                <button class="button has-background-white mr-4">
+                                    <span class="icon">
+                                        <i class="fas fa-inbox has-text-black fa-lg"></i>
+                                    </span>
+                                    <p class="inline has-text-black is-size-5">Subscribe to our Newsletter</p>
+                                </button>
+                            </a>
                         </div>
-                        <a href="https://go.osu.edu/aiclubdiscord" class="subscribe-button" role="button">
-                            Discord
-                        </a><br />
-                        
-                    </div>
-                    <img src="../resources/House_Graphic.svg"/>
-                    <div class="introduction-blurb">
-                        <br />
-                        
                     </div>
                 </div>
             </div>
-            <div class="content-box description">
-
-                <h2>
-                    Who are we?
-                </h2>
-
-                We are a student organization run by passionate students and researchers. Our goal is to educate, inspire, and connect students on the topic of Artificial Intelligence. We're proud to have hosted Intel, Microsoft, and many others.
-
-                <img src="resources/IMG_2824%20cropped.JPG" class="meeting-img"/>
-            </div>
-            <div class="content-box description">
-
-                <h2>
-                    What do we do?
-                </h2>
-
-                We bring in speakers from the industry and academia. In addition, we host our own workshops for students to learn about AI. Once a year we put on an artifical intelligence focused hackathon called <a href="https://www.osuaiclub.com/hackai.html">HackAI</a>.
-
+            <div class="section is-medium has-background-light">
+                <h1 class="title">Who We Are</h1>
+                <div class="columns">
+                    <div class="column">
+                        <p class="is-size-4">We are a student organization run by passionate students and researchers.</p>
+                        <p class="is-size-4">Our goal is to educate, inspire, and connect students on the topic of Artificial Intelligence.</p> 
+                        <p class="is-size-4">We're proud to have hosted Intel, Microsoft, and many others.</p>
+                    </div>
+                    <div class="column">
+                        <img align="right" width="640" src="resources/IMG_2824%20cropped.JPG">
+                    </div>
+                </div>
                 
             </div>
-            <div class="participation">
-                <div class="participation-content-box">
-                    <div class="participation-card">
-                        <div class="participation-card-header">
-                            <h2>
-                                Want to join?
-                            </h2>
-                            <i class="fas fa-users"></i>
-                        </div>
-                        Everyone of all skill levels is welcome! If you are interested in joining make sure to subscribe to our <a href="https://Go.osu.edu/aiclub">newsletter</a>,  join the <a href="https://go.osu.edu/aiclubdiscord">Discord</a>, fill out the <a href="http://go.osu.edu/aiclubnew">registration form</a>, and come to our weekly meetings every Monday 7:00-8:00 pm in Hitchcock 035!
+            <div class="section is-medium has-text-right">
+                <h1 class="title">What We Do</h1>
+                <div class="columns">
+                    <div class="columns">
+                        <img class=" mr-4" align="left" src="resources/Hack AI Logo.png" width="256">
                     </div>
-                    <div class="participation-card">
-                        <div class="participation-card-header">
-                            <h2>
-                                Want to present?
-                            </h2>
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        Many AI topics are wanted. When you're ready, email us, and we'll discuss what events are possible.
+                    <div class="column">
+                        <p class="is-size-4">We bring in speakers from the industry and academia.</p>
+                        <p class="is-size-4">We host our own workshops for students to learn about AI.</p> 
+                        <p class="is-size-4">Once a year, we put on an Artifical Intelligence hackathon called HackAI.</p>
                     </div>
-                    <div class="participation-card">
-                        <div class="participation-card-header">
-                            <h2>
-                                Want to sponsor?
-                            </h2>
-                            <i class="fas fa-hand-holding-heart"></i>
+
+                </div>
+                
+                
+            </div>
+            <div class="section is-small has-background-light">
+                <h1 class="title" align="center">Get Involved</h1>
+                <div class="columns">
+                    <div class="column m-3">
+                        <div class="box homepage-box-height-override" align="center">
+                            <h3 >Want to join?</h3>
+                            <p>Everyone of all skill levels is welcome! 
+                                If you are interested in joining make sure to subscribe to our newsletter, 
+                                join the Discord, fill out the registration form, and come to our weekly meetings 
+                                every Monday 7:00-8:00 pm in Hitchcock 035! </p>
                         </div>
-                        Sponsors get many benefits, including access to resumes. Check out our sponsorship packet <a href="resources/2022-2023 AI Club Sponsorship Packet.pdf">Here</a>. Please email us for further information. 
+                    </div>
+                    <div class="column m-3">
+                        <div class="box homepage-box-height-override" align="center">
+                            <h3 >Want to Present?</h3>
+                            <p>We welcome presentations of any topic in AI. When you're ready, email us, and we'll discuss what events are possible.</p>
+                        </div>
+                    </div>
+                    <div class="column m-3">
+                        <div class="box homepage-box-height-override" align="center">
+                            <h3 >Want to Sponsor?</h3>
+                            <p>Sponsors get many benefits, including access to resumes. 
+                                Check out our sponsorship packet <a href="resources/2022-2023 AI Club Sponsorship Packet.pdf">here</a>. 
+                                Please email us for further information. </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="content-box about-us">
-                <div class="officers">
-                    <h2>Officers</h2>
-                    <table>
-                        <tr>
-                            <td>
-                                <div>Advisor</div>
-                            </td>
-                            <td>
-                                <div>Wei-Lun (Harry) Chao</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>President <i class="fas fa-crown"></i></div>
-                            </td>
-                            <td>
-                                <div>Russell Zhu</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Vice President</div>
-                            </td>
-                            <td>
-                                <div>Alexander Ventura</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Treasurer</div>
-                            </td>
-                            <td>
-                                <div>Marty Khahn</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Chief Technology Officer</div>
-                            </td>
-                            <td>
-                                <div>Ethan Harpster</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Outreach Coordinator</div>
-                            </td>
-                            <td>
-                                <div>Defne Ceyhan</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Outreach Coordinator</div>
-                            </td>
-                            <td>
-                                <div>Pranav Chati</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Events Coordinator</div>
-                            </td>
-                            <td>
-                                <div>Nate Crowder</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Social Media Coordinator</div>
-                            </td>
-                            <td>
-                                <div>Emmanuel Key</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>Social Media Coordinator</div>
-                            </td>
-                            <td>
-                                <div>Olivia Yang</div>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="section is-small">
+                <h1 class="title" align="center">Officers</h1>
+                <div class="columns mt-4">
+                    <div class="column" align="center">
+                        <h3>Marty Khan</h3>
+                        <p>President</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Wei-Lun (Harry) Chao</h3>
+                        <p>Advisor</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Defne Ceyhan</h3>
+                        <p>Vice President</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Tomasz Frelek</h3>
+                        <p>Treasurer</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Pranav Chati</h3>
+                        <p>Chief Technology Officer</p>
+                    </div>
                 </div>
-                <div class="contact-methods" align="left">
-                    <h2>Contact Us</h2>
-                    <table>
-                        <tr>
-                            <td>
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
-                            </td>
-                            <td align="center">
-                                <a href="mailto:osuaiclub@gmail.com">
-                                    osuaiclub@gmail.com
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fas fa-paper-plane"></i>
-                            </td>
-                            <td align="center">
-                                Mailing Address: <br/> Artificial Intelligence Club<br/> 2095 Ohio Union<br/> 1739 N High Street<br/> Columbus, OH 43210
-                            </td>
-                        </tr>
-                        <tr>
-                             <td >
-                                 <i class="fas fa-home" aria-hidden="true"></i>
-                            </td>
-                            <td align="center">
-                                Meeting Location: Hitchcock 035
-                                <br>Meeting Times: Monday - 7:00-8:00 pm
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="content-box sponsors">
-                <h2>
-                    Sponsors
-                </h2>
-
-                <p>
-                    Thank you to all of our kind sponsors for supporting the OSU AI Club. Without you, we wouldn't be possible.<br />
-                </p>
-
-                <div class="sponsor-logos">
-                    <a href="https://www.capitalone.com/"><img src="resources/CapitalOne_logo.png" alt="Capital One Logo"/></a>
-                    <a href="https://manteltechnologies.ac-page.com/aifutures"><img src="resources/AI_Futures_Logo.png" alt="AI Futures Logo"/></a>
+                <div class="columns mt-4">
+                    <div class="column" align="center">
+                        <h3>Rahul Nalam</h3>
+                        <p>Outreach Coordinator</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Sammy Aidja</h3>
+                        <p>Outreach Coordinator</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Nate Crowder</h3>
+                        <p>Events Coordinator</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Emmanuel Key</h3>
+                        <p>Social Media Coordinator</p>
+                    </div>
+                    <div class="column" align="center">
+                        <h3>Olivia Yang</h3>
+                        <p>Social Media Coordinator</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <footer role="contentinfo">
-            <div align="center">
-                AI Club is a student organization at The Ohio State University.<br />
-                    See <a href="/index.html">About Us</a> for more information.
-                
+        <div class="section is-small has-background-light" align="center">
+            <h1 class="title">Sponsors</h1>
+            <div class="sponsor-logos mt-4">
+                <a href="https://www.capitalone.com/"><img src="resources/CapitalOne_logo.png" alt="Capital One Logo"></a>
+                <a href="https://aifutures.us"><img src="resources/AI_Futures_Logo.png" alt="AI Futures Logo"></a>
             </div>
-        </footer>
+        </div>
+        <footer>
+            <p align="center">Copyright of Artificial Intelligence Club @ The Ohio State University<br>
+            <a href="https://discord.com/invite/GPCmTECWRu">Discord</a><br>
+            <a href="https://www.linkedin.com/company/ai-club-at-the-ohio-state-university">LinkedIn</a></br>
+            <a href="https://www.instagram.com/ohiostateaiclub/">Instagram</a><br>
+            <a href="https://github.com/OSU-AI-Club">Github</a></br>
+            <a href="osuaiclub@gmail.com">osuaiclub@gmail.com</a></br>
+            <a href="https://osu.us15.list-manage.com/subscribe?u=3b46570dc52d455d9fce5c47b&id=12580f6080">Subscribe to newsletter</a><br>
+            Meeting Location: Hitchcock 035</br>
+            Meeting Times: Monday - 7:00-8:00 pm</p>
+            
+            <div class="nav" align="center" role="navigation">
+                          <div class="nav-button">
+                              <a href="index.html" role="button">
+                                  About Us
+                              </a>
+                          </div>
+                          <div class="nav-button">
+                              <a href="meetings.html" role="button">
+                                  Meetings
+                              </a>
+                          </div>
+                          <div class="nav-button">
+                              <a href="hackai.html" role="button">
+                                  Hack AI
+                              </a>
+                          </div>
+                          <div class="nav-button">
+                              <a href="resources.html" role="button">
+                                  Learning Resources
+                              </a>
+                          </div>
+                          <div class="nav-button">
+                              <a href="confs.html" role="button">
+                                  AI conferences
+                              </a>
+                          </div>
+                      </div>
+          </footer>
     </body>
 </html>
