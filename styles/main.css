@@ -16,7 +16,8 @@ File layout:
 
 body {
     margin: 0px;
-    font-family: Verdana;
+    /*font-family: Verdana;*/
+    font-family: sans-serif;
     line-height: 1.4;
     
     position: relative;
