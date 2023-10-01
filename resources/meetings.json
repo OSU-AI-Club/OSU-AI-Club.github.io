@@ -1,6 +1,12 @@
 {
   "meetings": [
     {
+      "title": "Module #5",
+      "date": "Wednesday, October 4th 7:00-8:00pm",
+      "location": "Hitchcock Hall 031",
+      "description": "Module #5 of our Project Learning Series"
+    },
+    {
       "title": "Module #4",
       "date": "Wednesday, September 27th, 7:00-8:00pm",
       "location": "Pomerane Hall 160",
