@@ -13,7 +13,7 @@
   "dependencies": {
     "bulma": "^0.9.4",
     "node-sass": "^8.0.0",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "purgecss": "^5.0.0"
   },
