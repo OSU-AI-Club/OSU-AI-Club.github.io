@@ -20,33 +20,7 @@
   Meeting Location: Hitchcock 035</br>
   Meeting Times: Monday - 7:00-8:00 pm</p>
   
-  <div class="nav" align="center" role="navigation">
-                <div class="nav-button">
-                    <a href="index.html" role="button">
-                        About Us
-                    </a>
-                </div>
-                <div class="nav-button">
-                    <a href="meetings.html" role="button">
-                        Meetings
-                    </a>
-                </div>
-                <div class="nav-button">
-                    <a href="hackai.html" role="button">
-                        Hack AI
-                    </a>
-                </div>
-                <div class="nav-button">
-                    <a href="resources.html" role="button">
-                        Learning Resources
-                    </a>
-                </div>
-                <div class="nav-button">
-                    <a href="confs.html" role="button">
-                        AI conferences
-                    </a>
-                </div>
-            </div>
+  
 </footer>
 
 </body>
