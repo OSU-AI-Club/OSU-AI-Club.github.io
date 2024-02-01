@@ -18,15 +18,15 @@ Go to the URL located next to "Local: ". The port may be different (I know on ma
 - Any file named "page.jsx" is the main page for the URL implied by the folder. Edit this file to change the contents of the page.
 - NextJS supports a few other page types, including "loading.jsx" and "error.jsx" in each subdirectory. We will use these as needed.
 - Do NOT put React components within subfolders in the app directory. Use the global components folder.
-- We will add new subdirectories as needed. Add any extra pages that you add to the following list before marking your task as finished.\\
-app/page.jsx: Home Page \\
-app/meetings/page.jsx: Meetings Page \\
-app/meetings/archive/page.jsx: Meetings Archives Pages \\
-app/hackai/page.jsx: HackAI Page \\
-app/researchexpo/page.jsx: Research Expo Page \\
-app/resources/page.jsx: Student Resources Page \\
-app/sponsors/page.jsx: Sponsors Page \\
+- We will add new subdirectories as needed. Add any extra pages that you add to the following list before marking your task as finished.\
+app/page.jsx: Home Page \
+app/meetings/page.jsx: Meetings Page \
+app/meetings/archive/page.jsx: Meetings Archives Pages \
+app/hackai/page.jsx: HackAI Page \
+app/researchexpo/page.jsx: Research Expo Page \
+app/resources/page.jsx: Student Resources Page \
+app/sponsors/page.jsx: Sponsors Page \
 
-public/: Website Resources Directory (Try to keep it organized) \\
-app/components/: Components Directory \\
+public/: Website Resources Directory (Try to keep it organized) \
+app/components/: Components Directory \
 
