@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the AI Club website redesign. We will be working in NextJS.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Running in a Dev Environment
+1. Install the latest LTS version of NodeJS on your computer. https://nodejs.org/en
+2. Clone the repository.
+3. In a command line, cd to this folder and run "npm i". This will install all dependencies automatically.
+4. To test dependencies, run "npm run dev". You should see something similar to this:
 ```
+> next dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Next.js 14.1.0
+    - Local:    http://localhost:3000
+```
+Go to the URL located next to "Local: ". The port may be different (I know on macOS, Airplay sometimes takes up port 3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Folder Structure
+- NextJS uses Filesystem Routing. Within the foler named "app", the folder structure follows the URL structure of the website.
+- Any file named "page.jsx" is the main page for the URL implied by the folder. Edit this file to change the contents of the page.
+- NextJS supports a few other page types, including "loading.jsx" and "error.jsx" in each subdirectory. We will use these as needed.
+- Do NOT put React components within subfolders in the app directory. Use the global components folder.
+- We will add new subdirectories as needed. Add any extra pages that you add to the following list before marking your task as finished.
+app/page.jsx: Home Page
+app/meetings/page.jsx: Meetings Page
+app/meetings/archive/page.jsx: Meetings Archives Pages
+app/hackai/page.jsx: HackAI Page
+app/researchexpo/page.jsx: Research Expo Page
+app/resources/page.jsx: Student Resources Page
+app/sponsors/page.jsx: Sponsors Page
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+public/: Website Resources Directory (Try to keep it organized)
+app/components/: Components Directory
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
