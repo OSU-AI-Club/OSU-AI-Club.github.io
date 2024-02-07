@@ -1,3 +1,4 @@
+import Navbar from "./components/navbar";
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
             <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">Subscribe to our Newsletter</button>
           </div>
         </div>
+
+        <Navbar />
       </div>
     </main>
   );
