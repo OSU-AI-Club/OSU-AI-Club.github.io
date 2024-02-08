@@ -1,4 +1,7 @@
 import Navbar from "./components/navbar";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faLinkedin, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
   return (
@@ -14,13 +17,13 @@ export default function Home() {
           <p className = "text-2xl text-white mt-6 font-mono font-thin">Wednesdays at 7:00PM</p>
           <p className = "text-2xl text-white mt-6 font-mono font-thin">2070 Neil Ave, Columbus, OH 43210</p>
           <div className = "h-48 w-1/2 flex flex-row justify-evenly items-center">
-            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">Instagram</button>
-            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">LinkedIn</button>
-            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">Email</button>
+            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" />Instagram</button>
+            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faLinkedin} className = "text-white size-7 mr-3" />LinkedIn</button>
+            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faEnvelope} className = "text-white size-7 mr-3" />Email</button>
           </div>
           <div className = "h-2 w-1/2 flex flex-row justify-evenly items-center">
-            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">Club Discord Server</button>
-            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black">Subscribe to our Newsletter</button>
+            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faDiscord} className = "text-white size-7 mr-3" />Club Discord Server</button>
+            <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faNewspaper} className = "text-white size-7 mr-3" />Subscribe to our Newsletter</button>
           </div>
         </div>
 
