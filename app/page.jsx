@@ -6,6 +6,7 @@ import { faEnvelope, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 export default function Home() {
   return (
     <main className="overflow-x-hidden">
+
       <div className = "relative h-screen overflow-y-hidden">
         <video autoPlay muted loop className = "w-screen absolute -top-24 left-0 right-0 z-1 ">
           <source src="/videos/splash-screen-video.mp4" type="video/mp4" />
@@ -26,8 +27,8 @@ export default function Home() {
             <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faNewspaper} className = "text-white size-7 mr-3" />Subscribe to our Newsletter</button>
           </div>
         </div>
+        <Navbar homepage={true} /> 
 
-        <Navbar />
       </div>
     </main>
   );
