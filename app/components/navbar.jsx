@@ -4,7 +4,7 @@ export default function Navbar(props) {
 
     let hsClassString = "absolute top-0 left-0 right-0 p-8"
     return (
-        <nav class={props.homepage ? hsClassString :  "dark:bg-gray-900 p-4"}>
+        <nav class={props.homepage ? hsClassString :  "bg-sky-600 p-4"}>
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
                 <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <Image src="/logos/AI_Logo_Final.png" width="64" height="64" />
