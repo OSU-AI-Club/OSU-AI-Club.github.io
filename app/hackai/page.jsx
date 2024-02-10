@@ -5,8 +5,7 @@ export default function HackAI() {
   return (
     <main className="">
       <Navbar homepage={false} />
-      <div class="min-h-screen bg-blue-300"></div>
-      <Footer></Footer>
+      <Footer />
     </main>
   );
 }
