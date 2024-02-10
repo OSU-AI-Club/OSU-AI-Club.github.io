@@ -21,8 +21,9 @@ export default function Footer() {
                         <a href="http://www.instagram.com/ohiostateaiclub">
                             <button><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" /></button>
                         </a>
-                        <a href="http://www.linkedin.com/company/artificial-intelligence-club/about"></a>
+                        <a href="http://www.linkedin.com/company/artificial-intelligence-club/about">
                             <button><FontAwesomeIcon icon={faLinkedin} className = "text-white size-7 mr-3" /></button>
+                        </a>
                         <a href="https://go.osu.edu/aiclubdiscord">
                             <button><FontAwesomeIcon icon={faDiscord} className = "text-white size-7 mr-3" /></button>
                         </a>
