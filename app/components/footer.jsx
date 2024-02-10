@@ -18,10 +18,17 @@ export default function Footer() {
                     <h1 class="text-2xl text-white mt-2">Baker Systems 198</h1>
                     <h1 class="text-2xl text-white mt-2">Wednesdays at 7:00pm</h1>
                     <div class="flex flex-row mt-2 mb-2">
-                        <button><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" /></button>
-                        <button><FontAwesomeIcon icon={faLinkedin} className = "text-white size-7 mr-3" /></button>
-                        <button><FontAwesomeIcon icon={faDiscord} className = "text-white size-7 mr-3" /></button>
-                        <button><FontAwesomeIcon icon={faNewspaper} className = "text-white size-7 mr-3" /></button>
+                        <a href="http://www.instagram.com/ohiostateaiclub">
+                            <button><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" /></button>
+                        </a>
+                        <a href="http://www.linkedin.com/company/artificial-intelligence-club/about"></a>
+                            <button><FontAwesomeIcon icon={faLinkedin} className = "text-white size-7 mr-3" /></button>
+                        <a href="https://go.osu.edu/aiclubdiscord">
+                            <button><FontAwesomeIcon icon={faDiscord} className = "text-white size-7 mr-3" /></button>
+                        </a>
+                        <a href="http://go.osu.edu/aiclub">
+                            <button><FontAwesomeIcon icon={faNewspaper} className = "text-white size-7 mr-3" /></button>
+                        </a>
                     </div>
                 </div>
 
