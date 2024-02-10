@@ -9,7 +9,6 @@ export default function HackAI() {
       
       <div class="bg-gray-300 shadow-md p-6">
         <div class ="flex flex-col items-center text-center">
-          <h1 class="text-5xl font-bold mb-4">The OSU Annual AI Hackathon</h1>
           <Image src="/logos/HackAI_Logo_Final.png" width="384" height="384" />
         </div>
       </div>
