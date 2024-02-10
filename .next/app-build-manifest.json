@@ -1,75 +1,75 @@
 {
   "pages": {
     "/_not-found": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
       "static/chunks/app/_not-found-4e5c3b73d883060d.js"
     ],
     "/layout": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/css/638705705b30d376.css",
-      "static/chunks/app/layout-96a743e57f7743e1.js"
-    ],
-    "/meetings/archive/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
-      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
-      "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/meetings/archive/page-291da2c66e9069f9.js"
-    ],
-    "/meetings/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
-      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
-      "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/meetings/page-705b68f3cf66a99b.js"
-    ],
-    "/researchexpo/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
-      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
-      "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/researchexpo/page-53b0359b919bc6df.js"
+      "static/css/8d770d49b80383ec.css",
+      "static/chunks/app/layout-db614f113549ae82.js"
     ],
     "/hackai/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/hackai/page-21dfb7ca50aed409.js"
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/hackai/page-ad43ab6c406912cc.js"
     ],
-    "/resources/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+    "/meetings/archive/page": [
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/resources/page-92a93d4207f2221b.js"
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/meetings/archive/page-411de7f033115dd9.js"
+    ],
+    "/meetings/page": [
+      "static/chunks/webpack-95ba55986de3161b.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-1bf918f163080941.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/meetings/page-3e41a29446cf5a7a.js"
     ],
     "/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/page-e31bc33f43cfddda.js"
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/page-96096443283cf15c.js"
+    ],
+    "/researchexpo/page": [
+      "static/chunks/webpack-95ba55986de3161b.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-1bf918f163080941.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/researchexpo/page-4016e2cdc765043e.js"
+    ],
+    "/resources/page": [
+      "static/chunks/webpack-95ba55986de3161b.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-1bf918f163080941.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/resources/page-58f55b0df3c38845.js"
     ],
     "/sponsors/page": [
-      "static/chunks/webpack-f01a08550569a5ea.js",
+      "static/chunks/webpack-95ba55986de3161b.js",
       "static/chunks/fd9d1056-cc48c28d170fddc2.js",
-      "static/chunks/69-13ca070fa041b21d.js",
+      "static/chunks/69-1bf918f163080941.js",
       "static/chunks/main-app-7d403ead96ef122b.js",
-      "static/chunks/749-4d7017935b244c9d.js",
-      "static/chunks/app/sponsors/page-72b767631ce784d0.js"
+      "static/chunks/749-81873353e1309329.js",
+      "static/chunks/app/sponsors/page-4f1366491050ff38.js"
     ]
   }
 }
