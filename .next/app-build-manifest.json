@@ -1,20 +1,75 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/_not-found": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/app/_not-found-4e5c3b73d883060d.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/css/2b36fb045eb6d8e9.css",
+      "static/chunks/app/layout-82f8c000e5fb2cce.js"
     ],
     "/hackai/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/hackai/page.js"
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/hackai/page-24df590b3d07c17b.js"
+    ],
+    "/meetings/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/meetings/page-f15ded82f43566fa.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/page-f1347b517d845cc0.js"
+    ],
+    "/resources/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/resources/page-82535f5ad682418b.js"
+    ],
+    "/researchexpo/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/researchexpo/page-3512f3051f5289ed.js"
+    ],
+    "/meetings/archive/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/meetings/archive/page-0060f3432d5e409f.js"
+    ],
+    "/sponsors/page": [
+      "static/chunks/webpack-5701d2acde2b7670.js",
+      "static/chunks/fd9d1056-cc48c28d170fddc2.js",
+      "static/chunks/69-927db32e5f1d7d7c.js",
+      "static/chunks/main-app-7d403ead96ef122b.js",
+      "static/chunks/749-4a4684ca1ac5ecdf.js",
+      "static/chunks/app/sponsors/page-18440ce499161663.js"
     ]
   }
 }

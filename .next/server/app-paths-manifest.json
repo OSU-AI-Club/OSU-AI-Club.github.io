@@ -1,4 +1,11 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/hackai/page": "app/hackai/page.js",
+  "/meetings/page": "app/meetings/page.js",
   "/page": "app/page.js",
-  "/hackai/page": "app/hackai/page.js"
+  "/resources/page": "app/resources/page.js",
+  "/researchexpo/page": "app/researchexpo/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/meetings/archive/page": "app/meetings/archive/page.js",
+  "/sponsors/page": "app/sponsors/page.js"
 }
