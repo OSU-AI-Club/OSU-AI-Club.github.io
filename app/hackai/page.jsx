@@ -23,7 +23,7 @@ export default function HackAI() {
                 </button>
               </a>
 
-              <a href="INSERTLINKHERE">
+              <a href="https://discord.gg/E8VrPeqhNy">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-10 px-10 rounded">
                   <p class="text-xl">HackAI 2024 Discord</p>
                 </button>
@@ -56,10 +56,6 @@ export default function HackAI() {
                 <Image src="/logos/AIFutures_Logo_Final.png" width="256" height="256" class="mr-16" />
                 <Image src="/logos/99PLabs_Logo_Final.png" width="256" height="256" />
               </div>
-            </div>
-
-            <div class="mt-8 text-left">
-              <p class="text-sky-400"><a href="https://www.osuaiclub.com/recap.html">See Past HackAIs and Winners</a></p>
             </div>
 
           </div>       
