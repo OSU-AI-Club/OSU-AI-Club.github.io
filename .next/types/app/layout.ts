@@ -1,4 +1,4 @@
-// File: /Users/inesh/Code/OSU-AI-Club.github.io/app/layout.js
+// File: C:\Users\aayus\OneDrive\Documents\ai-club-website\OSU-AI-Club.github.io\app\layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
