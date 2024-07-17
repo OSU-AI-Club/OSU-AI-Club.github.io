@@ -1,8 +1,8 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/meetings/archive/page": "app/meetings/archive/page.js",
-  "/hackai/page": "app/hackai/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/hackai/page": "app/hackai/page.js",
+  "/meetings/archive/page": "app/meetings/archive/page.js",
   "/meetings/page": "app/meetings/page.js",
   "/page": "app/page.js",
   "/researchexpo/page": "app/researchexpo/page.js",
