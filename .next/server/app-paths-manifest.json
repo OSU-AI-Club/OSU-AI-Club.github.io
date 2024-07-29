@@ -1,11 +1,11 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
   "/hackai/page": "app/hackai/page.js",
   "/meetings/archive/page": "app/meetings/archive/page.js",
   "/meetings/page": "app/meetings/page.js",
-  "/page": "app/page.js",
   "/researchexpo/page": "app/researchexpo/page.js",
   "/resources/page": "app/resources/page.js",
-  "/sponsors/page": "app/sponsors/page.js"
+  "/sponsors/page": "app/sponsors/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

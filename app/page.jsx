@@ -103,7 +103,7 @@ export default function Home() {
                   <h1 className="text-4xl font-bold mb-8 text-center">Officers</h1>
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                       <div className="text-center">
-                          <h3>Marty Kahn</h3>
+                          <h3>Defne Ceyhan</h3>
                           <p>President</p>
                       </div>
                       <div className="text-center">
@@ -111,36 +111,20 @@ export default function Home() {
                           <p>Advisor</p>
                       </div>
                       <div className="text-center">
-                          <h3>Defne Ceyhan</h3>
-                          <p>Vice President</p>
+                          <h3>Jared Alonzo</h3>
+                          <p>Vice President (External)</p>
                       </div>
                       <div className="text-center">
-                          <h3>Tomasz Frelek</h3>
+                            <h3>Alex Fizer</h3>
+                            <p>Vice President (Internal)</p>
+                      </div>
+                      <div className="text-center">
+                          <h3>Katie Duffey</h3>
                           <p>Treasurer</p>
                       </div>
                       <div className="text-center">
-                          <h3>Pranav Chati</h3>
+                          <h3>Inesh Loka</h3>
                           <p>Chief Technology Officer</p>
-                      </div>
-                      <div className="text-center">
-                          <h3>Rahul Nalam</h3>
-                          <p>Outreach Coordinator</p>
-                      </div>
-                      <div className="text-center">
-                          <h3>Sammy Aidja</h3>
-                          <p>Outreach Coordinator</p>
-                      </div>
-                      <div className="text-center">
-                          <h3>Nate Crowder</h3>
-                          <p>Events Coordinator</p>
-                      </div>
-                      <div className="text-center">
-                          <h3>Emmanuel Key</h3>
-                          <p>Social Media Coordinator</p>
-                      </div>
-                      <div className="text-center">
-                          <h3>Olivia Yang</h3>
-                          <p>Social Media Coordinator</p>
                       </div>
                   </div>
               </div>
