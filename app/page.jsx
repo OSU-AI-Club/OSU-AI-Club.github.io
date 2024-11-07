@@ -16,7 +16,7 @@ export default function Home() {
         <div className = "h-screen w-screen absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-zinc-900 to-blue-700 opacity-50 z-2"></div>
         <div className = "h-screen w-screen relative z-3 flex flex-col justify-center items-center">
           <h1 className = "text-6xl text-white font-mono font-bold">Artificial Intelligence Club @ OSU</h1>
-          <p className = "text-2xl text-white mt-8 font-mono font-thin">Pomerene Hall 280</p>
+          <p className = "text-2xl text-white mt-8 font-mono font-thin">Pomerene Hall 260</p>
           <p className = "text-2xl text-white mt-6 font-mono font-thin">Wednesdays at 7:00PM</p>
           <p className = "text-2xl text-white mt-6 font-mono font-thin">1760 Neil Ave Building 067, Columbus, OH 43210</p>
           <div className = "h-48 w-1/2 flex flex-row justify-evenly items-center">
