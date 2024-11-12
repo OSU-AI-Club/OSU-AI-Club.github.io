@@ -111,6 +111,10 @@ export default function Home() {
                           <p>Advisor</p>
                       </div>
                       <div className="text-center">
+                          <h3>Sachin Kumar</h3>
+                          <p>Advisor</p>
+                      </div>
+                      <div className="text-center">
                           <h3>Jared Alonzo</h3>
                           <p>Vice President (External)</p>
                       </div>
