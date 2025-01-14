@@ -14,7 +14,7 @@ export default function Footer() {
 
                 {/* Info Row */}
                 <div class="basis-1/2 flex flex-col items-center">
-                    <h1 class="text-2xl text-white mt-2">Pomerene Hall 260</h1>
+                    <h1 class="text-2xl text-white mt-2">Enarson 258</h1>
                     <h1 class="text-2xl text-white mt-2">Wednesdays at 7:00pm</h1>
                     <div class="flex flex-row mt-2 mb-2">
                         <a href="http://www.instagram.com/ohiostateaiclub">

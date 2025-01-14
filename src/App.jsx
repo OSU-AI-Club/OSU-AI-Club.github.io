@@ -15,9 +15,8 @@ export default function Home() {
         <div className = "h-screen w-screen absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-zinc-900 to-blue-700 opacity-50 z-2"></div>
         <div className = "h-screen w-screen relative z-3 flex flex-col justify-center items-center">
           <h1 className = "text-6xl text-white font-mono font-bold">Artificial Intelligence Club @ OSU</h1>
-          <p className = "text-2xl text-white mt-8 font-mono font-thin">Pomerene Hall 260</p>
+          <p className = "text-2xl text-white mt-8 font-mono font-thin">Enarson 258</p>
           <p className = "text-2xl text-white mt-6 font-mono font-thin">Wednesdays at 7:00PM</p>
-          <p className = "text-2xl text-white mt-6 font-mono font-thin">1760 Neil Ave Building 067, Columbus, OH 43210</p>
           <div className = "h-48 w-1/2 flex flex-row justify-evenly items-center">
             <a href="http://www.instagram.com/ohiostateaiclub">
               <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" />Instagram</button>
@@ -137,10 +136,7 @@ export default function Home() {
                   <h1 className="text-4xl font-bold mb-8 text-center">Sponsors</h1>
                   <div className="flex justify-center">
                       <a href="https://www.honda.osu.edu/affiliations/99p-labs" target="_blank" rel="noopener noreferrer" className="mr-4">
-                          <img src="/images/99PLabs_Logo.png" alt="Honda 99PLabs Logo" className="w-48 h-auto" />
-                      </a>
-                      <a href="https://aifutures.us" target="_blank" rel="noopener noreferrer">
-                          <img src="/images/AI_Futures_Logo.png" alt="AI Futures Logo" className="w-48 h-auto" />
+                          <img src="/logos/99PLabs_Logo_Final.png" alt="Honda 99PLabs Logo" className="w-48 h-auto" />
                       </a>
                       <a href="https://cisco.com" target="_blank" rel="noopener noreferrer">
                           <img src="/images/Cisco_logo_blue_2016.svg.png" alt="Cisco Logo" className="w-48 h-auto" />
