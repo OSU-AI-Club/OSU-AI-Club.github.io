@@ -25,10 +25,10 @@ export default function HackAI() {
 
             <div class="mt-8 text-left">
               <h1 class="text-3xl font-bold mb-6">About HackAI</h1>
-
-              <p class="mb-4">HackAI is a 2-day hackathon where students can choose from challenges or tackle their own projects with the help of artificial intelligence. Mentors will be provided throughout the day, and judging will occur on the second day to determine the best AI projects of HackAI 2024. Tutorials, datasets, and meals will be provided.</p>
+              <p class="mb-4">HackAI is a 2-day hackathon where students can choose from challenges or tackle their own projects with the help of artificial intelligence. Mentors will be provided throughout the day, and judging will occur on the second day to determine the best AI projects of HackAI 2025. Tutorials, datasets, and meals will be provided.</p>
               <p class="mb-4">The event will be held in the <b>Keenan Center for Entrepreneurship</b> and Zoom links will be provided in our HackAI 2025 Discord (Coming Soon)</p>
               <p class="mb-4">Teams of 1-4 members consisting of all OSU students are eligible for prizes.</p>
+              <b>Check-in begins at 8:30 AM on Saturday, February 22nd</b>
             </div>
 
           </div>       
