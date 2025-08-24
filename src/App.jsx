@@ -15,8 +15,8 @@ export default function Home() {
         <div className = "h-screen w-screen absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-zinc-900 to-blue-700 opacity-50 z-2"></div>
         <div className = "h-screen w-screen relative z-3 flex flex-col justify-center items-center">
           <h1 className = "text-6xl text-white font-mono font-bold">Artificial Intelligence Club @ OSU</h1>
-          <p className = "text-2xl text-white mt-8 font-mono font-thin">Enarson 258</p>
-          <p className = "text-2xl text-white mt-6 font-mono font-thin">Wednesdays at 7:00PM</p>
+          <p className = "text-2xl text-white mt-8 font-mono font-thin">Hitchcock 035</p>
+          <p className = "text-2xl text-white mt-6 font-mono font-thin">Tuesdays 6-7pm</p>
           <div className = "h-48 w-1/2 flex flex-row justify-evenly items-center">
             <a href="http://www.instagram.com/ohiostateaiclub">
               <button className = "h-12 pl-10 pr-10 text-white border border-white rounded-lg duration-1000 hover:bg-white hover:text-black flex flex-row justify-center items-center"><FontAwesomeIcon icon={faInstagram} className = "text-white size-7 mr-3" />Instagram</button>
@@ -140,6 +140,9 @@ export default function Home() {
                       </a>
                       <a href="https://cisco.com" target="_blank" rel="noopener noreferrer">
                           <img src="/images/Cisco_logo_blue_2016.svg.png" alt="Cisco Logo" className="w-48 h-auto" />
+                      </a>
+                      <a href="https://www.janestreet.com/" target="_blank" rel="noopener noreferrer">
+                          <img src="/images/Jane_Street_Logo" alt="Jane Street Logo" className="w-48 h-auto" />
                       </a>
                   </div>
               </div>
