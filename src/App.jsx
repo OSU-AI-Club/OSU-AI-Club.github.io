@@ -142,7 +142,7 @@ export default function Home() {
                           <img src="/images/Cisco_logo_blue_2016.svg.png" alt="Cisco Logo" className="w-48 h-auto" />
                       </a>
                       <a href="https://www.janestreet.com/" target="_blank" rel="noopener noreferrer">
-                          <img src="/images/Jane_Street_Logo" alt="Jane Street Logo" className="w-48 h-auto" />
+                          <img src="/images/Jane_Street_Logo.png" alt="Jane Street Logo" className="w-48 h-auto" />
                       </a>
                   </div>
               </div>
