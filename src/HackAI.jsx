@@ -16,7 +16,7 @@ export default function HackAI() {
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto text-center">
           <div class="mb-8">
             <div class="mt-4 mb-4">
-              <a href="https://forms.gle/aAbTFLeWkzwAhSnd8">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3Aj_10MRloCjjvdpF_HnvoOI8poBr6LveJTUvKTZkrhiDuA/viewform?usp=header">
                 <button class="mr-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-10 px-10 rounded">
                   <p class="text-xl">Registration Form</p>
                 </button>
@@ -26,9 +26,9 @@ export default function HackAI() {
             <div class="mt-8 text-left">
               <h1 class="text-3xl font-bold mb-6">About HackAI</h1>
               <p class="mb-4">HackAI is a 2-day hackathon where students can choose from challenges or tackle their own projects with the help of artificial intelligence. Mentors will be provided throughout the day, and judging will occur on the second day to determine the best AI projects of HackAI 2025. Tutorials, datasets, and meals will be provided.</p>
-              <p class="mb-4">The event will be held in the <b>Keenan Center for Entrepreneurship</b> and Zoom links will be provided in our HackAI 2025 Discord (Coming Soon)</p>
+              <p class="mb-4">The event will be held in the <b>Fontana Lab</b> and Zoom links will be provided in our HackAI 2026 Discord (Coming Soon)</p>
               <p class="mb-4">Teams of 1-4 members consisting of all OSU students are eligible for prizes.</p>
-              <b>Check-in begins at 8:30 AM on Saturday, February 22nd</b>
+              <b>Check-in begins at 8:30 AM on Saturday, February 21st</b>
             </div>
 
           </div>       
