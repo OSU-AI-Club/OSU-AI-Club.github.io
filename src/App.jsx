@@ -101,7 +101,7 @@ export default function Home() {
                   <h1 className="text-4xl font-bold mb-8 text-center">Officers</h1>
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                       <div className="text-center">
-                          <h3>Defne Ceyhan</h3>
+                          <h3>Kathleen Duffey</h3>
                           <p>President</p>
                       </div>
                       <div className="text-center">
@@ -113,7 +113,7 @@ export default function Home() {
                           <p>Advisor</p>
                       </div>
                       <div className="text-center">
-                          <h3>Jared Alonzo</h3>
+                          <h3>Anirudh Chinthagunta</h3>
                           <p>Vice President (External)</p>
                       </div>
                       <div className="text-center">
@@ -121,11 +121,11 @@ export default function Home() {
                             <p>Vice President (Internal)</p>
                       </div>
                       <div className="text-center">
-                          <h3>Katie Duffey</h3>
+                          <h3>Aayush Paul</h3>
                           <p>Treasurer</p>
                       </div>
                       <div className="text-center">
-                          <h3>Inesh Loka</h3>
+                          <h3>Ben Lampe</h3>
                           <p>Chief Technology Officer</p>
                       </div>
                   </div>
