@@ -1,8 +1,111 @@
-# React + Vite
+# Artificial Intelligence Club at Ohio State (AI @ OSU)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An elegant, high-performance, and feature-rich official web application for the **Artificial Intelligence Club at Ohio State (AI @ OSU)**. This platform serves as the central hub for student-led innovation, workshops, academic events, the semi-annual Projects Incubator, and the premier annual HackAI event.
 
-Currently, two official plugins are available:
+> 📚 **Developer & AI-agent documentation lives in [`docs/`](docs/README.md).**
+> Editing site content? Go straight to [`docs/content-and-data.md`](docs/content-and-data.md) — nearly
+> every string, date, link, and roster on the site is a named export somewhere under [`src/data/`](src/data/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 🎨 Creative Architecture & Key Features
+
+*   **Interactive Hero Canvas**: An elegant, responsive, and performance-optimized interactive neural network background canvas representing node connectivity and signal pulses.
+*   **The Projects Incubator Program**: An interactive, dynamic projects panel with keyword searches, technology filtering (e.g., CV, NLP, RL), detailed architecture deep-dives modal, and online student program registration or lead project proposal pitch forms.
+*   **Integrated Scrambled Typography**: Dynamic text scramble animations on primary pages and titles using fluid tracking and a unified Roboto type system.
+*   **HackAI Centerstage**: A customized dashboard highlighting previous years' metrics, upcoming deadlines, interactive registration wizards, and scheduled tracks.
+*   **Academic Events Hub**: A filterable events calendar displaying current speaker sessions, research workshops, social mixers, and custom RSVP states.
+*   **Fluid Responsive Layout**: Built screen-agnostically styled with Tailwind CSS, touch-safe interactives, custom scroll draw SVG paths, and a dark twilight color profile paired with rich carbon slate accents.
+
+---
+
+## 🛠️ Technology Stack & Libraries
+
+This application is built using modern frontend technologies optimized for stability, performance, and type-safety:
+
+*   **Runtime & Framework**: [React 19](https://react.dev/) + [Vite](https://vite.dev/) (Client-side single-page architecture)
+*   **Programming Language**: [TypeScript](https://www.typescriptlang.org/) (Strict compilation guidelines)
+*   **Styling Engine**: [Tailwind CSS v4](https://tailwindcss.com/)
+*   **Animations Utility**: [Motion Framework](https://motion.dev/)
+*   **Iconography**: [Lucide React](https://lucide.dev/) (Sourced systematically)
+
+---
+
+## 🚀 Getting Started Locally
+
+### Prerequisites
+
+Ensure you have **Node.js** (v18 or higher) and **npm** installed on your machine.
+
+### Installation
+
+1. Clone or download your repository:
+   ```bash
+   git clone <https://github.com/3venthatguy/OSU_AI_Club_Web>
+   cd ai-club-osu-web
+   ```
+
+2. Install all node program dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running Development Server
+
+To boot up the dynamic Hot Module Replacement development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your web browser to preview.
+
+### Building for Production
+
+Compile a production-ready optimized build bundle:
+```bash
+npm run build
+```
+This will compile assets and output static files into the `dist/` directory, ready to be served or exported.
+
+---
+
+## 📁 Custom Directory Structure
+
+```text
+├── assets/                  # High-resolution logos, brand guidelines & assets
+├── src/
+│   ├── components/          # Extracted, highly modular UI components
+│   │   ├── NeuralNetworkCanvas.tsx  # Dynamic interactive background logic
+│   │   ├── TextScramble.tsx         # Modern scrambled text typography effect
+│   │   ├── Navbar.tsx / Footer.tsx  # App navigation and footer social hubs
+│   │   └── ...
+│   ├── pages/               # Primary site views for route rendering
+│   │   ├── Home.tsx                 # Core landing page with status bars
+│   │   ├── About.tsx                # Our story, team bios, FAQ accordions
+│   │   ├── Events.tsx               # Academic calendar & RSVPs
+│   │   ├── HackAI.tsx               # Premier annual hackathon portal
+│   │   └── Projects.tsx             # Incubator pipelines browser and filter
+│   ├── data/                # Static data references for rosters, events, and projects
+│   │   ├── general.ts             # Contact links, meeting info, HackAI event details
+│   │   ├── officers.ts            # OFFICERS
+│   │   ├── events.ts              # EVENTS
+│   │   ├── projects.ts            # PROJECTS
+│   │   ├── faqs.ts                # FAQS, HACKAI_FAQS
+│   │   └── index.ts               # Barrel re-export — `from '../data'` still works
+│   ├── types.ts             # Global shared interface and model properties
+│   └── main.tsx / App.tsx   # Client bootstrap entry points and state router
+├── package.json             # Build commands, active dev packages, and engine limits
+└── vite.config.ts           # Bundler plugins and server binding parameters
+```
+
+---
+
+## 👥 Core Representatives & Contacts
+
+*   **Advisor / Leadership**: reach out to our executive council via [osuaiclub@gmail.com](mailto:osuaiclub@gmail.com)
+*   **Discord Server**: Join our active online community at [Discord Link](https://discord.com/invite/GPCmTECWRu)
+*   **Instagram**: Follow visual updates and weekly recaps on Instagram at [@ohiostateaiclub](http://www.instagram.com/ohiostateaiclub)
+*   **LinkedIn**: Professional networking and alumni relations on [LinkedIn Directory](https://www.linkedin.com/company/artificial-intelligence-club/about/)
+
+---
+
+*Made with 🌐 by the Ohio State AI Club Development Team. Go Buckeyes!*

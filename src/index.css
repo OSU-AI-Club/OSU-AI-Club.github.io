@@ -1,4 +1,477 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
+/* Class-based dark mode. Tailwind v4 defaults `dark:` to prefers-color-scheme;
+   we drive it from a `dark` class on <html> so the navbar toggle can override
+   the OS setting. See src/theme.ts. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   LAYER 1 — raw values, swapped per theme.
+
+   These are NOT visible to Tailwind. Every one of them is re-declared under
+   `.dark` below. Edit colors here, never in JSX.
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --ui-bg-primary: #F4F7FA;
+  --ui-bg-secondary: #E8EEF5;
+  --ui-bg-elevated: #FFFFFF;
+  --ui-bg-sunken: #E2E9F2;
+
+  /* Type ramp */
+  --ui-text-primary: #16191D;
+  --ui-text-secondary: #4A5563;
+  --ui-text-muted: #8792A3;
+  --ui-text-nav: #2C333D;
+
+  /* Brand blue. #4F9DDB is only 2.9:1 on white, so light mode uses the same
+     hue darkened to 4.9:1 — it has to work both as link text and as a button
+     fill carrying a white label. Dark mode gets the real #4F9DDB. */
+  --ui-accent-primary: #2A75B3;
+  --ui-accent-primary-hover: #1F5B8E;
+  --ui-accent-primary-dim: rgba(42, 117, 179, 0.10);
+
+  /* Brand green */
+  --ui-accent-secondary: #1A7A4A;
+  --ui-accent-secondary-dim: rgba(26, 122, 74, 0.10);
+
+  /* Brand purple */
+  --ui-accent-tertiary: #6B33B8;
+  --ui-accent-tertiary-dim: rgba(107, 51, 184, 0.10);
+
+  /* Label color that sits on top of an accent fill */
+  --ui-on-accent: #FFFFFF;
+
+  /* Inverse surfaces: elements that are deliberately dark islands on a light
+     page (logo chip, HackAI grand-prize card, HackAI teaser panel). In dark
+     mode these resolve LIGHTER than the page so they still read as panels. */
+  --ui-surface-inverse: #16191D;
+  --ui-surface-inverse-deep: #0B0E12;
+  --ui-text-on-inverse: #FFFFFF;
+  --ui-text-on-inverse-muted: #8792A3;
+  --ui-border-inverse: rgba(255, 255, 255, 0.06);
+
+  /* Accents used INSIDE an inverse panel. Those panels are dark in both themes,
+     so these stay at the bright end of the ramp and are identical in `.dark`.
+     Tertiary takes the lifted #A87BE8 rather than the raw #8B4FDB for the same
+     reason it does in `.dark`: on the two inverse panel fills it measures
+     5.8:1 (#16191D) and 4.6:1 (#252A32), where #8B4FDB would fall under 3:1
+     against the lighter of the two. */
+  --ui-accent-primary-on-inverse: #4F9DDB;
+  --ui-accent-secondary-on-inverse: #4FDB8B;
+  --ui-accent-tertiary-on-inverse: #A87BE8;
+
+  /* Scrims */
+  --ui-overlay: rgba(11, 14, 18, 0.60);
+  --ui-nav-scrim: rgba(244, 247, 250, 0.82);
+
+  /* Borders */
+  --ui-border-subtle: rgba(42, 117, 179, 0.12);
+  --ui-border-medium: rgba(42, 117, 179, 0.28);
+  --ui-border-strong: rgba(42, 117, 179, 0.45);
+
+  /* Status */
+  --ui-status-success: #1A7A4A;
+  --ui-status-warning: #B45309;
+  --ui-status-danger: #C2261D;
+
+  /* Effects. --ui-accent-glow is the tint under accent button shadows;
+     --ui-shadow-color is the neutral drop shadow under cards. */
+  --ui-accent-glow: rgba(42, 117, 179, 0.25);
+  --ui-shadow-color: rgba(22, 25, 29, 0.10);
+  --ui-shadow-card: 0 2px 12px rgba(22, 25, 29, 0.05);
+  --ui-shadow-card-hover: 0 8px 28px rgba(22, 25, 29, 0.10);
+  --ui-badge-accent: rgba(26, 122, 74, 0.12);
+
+  /* Ambient page mesh — painted by BackgroundMesh.tsx on a fixed, full-viewport
+     layer behind everything. Blue dominates; purple and green are corner
+     accents. Alphas are calibrated against the #F4F7FA base: the old page
+     gradient's #DCE7F4 stop was algebraically --ui-accent-primary at a ≈ 0.12,
+     which is this project's established "visible but not muddy" line. The lead
+     lobe pushes to 0.20 but is anchored off-canvas (at 10% -8%) so the largest
+     value actually on screen lands near 0.15. Green is the darkest brand color
+     and dirties a light surface fastest, so it stays lowest.
+
+     Sizes are percentages, not rem: on a `fixed inset-0` layer that keeps every
+     lobe proportional to the viewport instead of collapsing on a phone. Every
+     ramp ends at `rgba(<same rgb>, 0)` rather than `transparent` so the result
+     doesn't depend on premultiplied gradient interpolation. */
+  --ui-page-mesh:
+    radial-gradient(ellipse 75% 60% at 10% -8%, rgba(42, 117, 179, 0.20) 0%, rgba(42, 117, 179, 0) 62%),
+    radial-gradient(ellipse 60% 55% at 92% 10%, rgba(42, 117, 179, 0.13) 0%, rgba(42, 117, 179, 0) 60%),
+    radial-gradient(ellipse 55% 50% at 82% 88%, rgba(107, 51, 184, 0.11) 0%, rgba(107, 51, 184, 0) 58%),
+    radial-gradient(ellipse 50% 45% at  4% 96%, rgba(26, 122, 74, 0.10) 0%, rgba(26, 122, 74, 0) 55%),
+    radial-gradient(ellipse 95% 75% at 50% 45%, rgba(42, 117, 179, 0.06) 0%, rgba(42, 117, 179, 0) 70%);
+
+  /* Home's content wrapper can't be transparent — it slides over the sticky
+     three.js hero and has to occlude it — so it gets its own opaque copy of the
+     mesh instead. Radii are px because this one is tuned to the wrapper's real
+     ~1300-1500px height, not to the viewport. Reads as a vertical journey:
+     blue -> green -> purple -> blue. */
+  --ui-page-mesh-column:
+    radial-gradient(900px 700px  at 90% 8%,   rgba(42, 117, 179, 0.15) 0%, rgba(42, 117, 179, 0) 64%),
+    radial-gradient(800px 640px  at  4% 38%,  rgba(26, 122, 74, 0.10) 0%, rgba(26, 122, 74, 0) 60%),
+    radial-gradient(900px 720px  at 94% 72%,  rgba(107, 51, 184, 0.12) 0%, rgba(107, 51, 184, 0) 62%),
+    radial-gradient(1000px 800px at 16% 100%, rgba(42, 117, 179, 0.14) 0%, rgba(42, 117, 179, 0) 66%);
+
+  /* Alternating section bands. These replace opaque bg-secondary now that the
+     mesh needs to read through: a band is no longer "slightly darker grey" but
+     "less of the mesh", which is a bigger perceived step than the old 3% gap
+     between #F4F7FA and #E8EEF5. Both themes recede rather than lift. */
+  --ui-veil-band: rgba(206, 220, 237, 0.55);
+  --ui-veil-band-strong: rgba(206, 220, 237, 0.78);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --ui-bg-primary: #16191D;
+  --ui-bg-secondary: #1C2027;
+  --ui-bg-elevated: #22272F;
+  --ui-bg-sunken: #101317;
+
+  --ui-text-primary: #F2F4F7;
+  --ui-text-secondary: #B4BCC7;
+  --ui-text-muted: #7C8695;
+  --ui-text-nav: #C9D1DC;
+
+  --ui-accent-primary: #4F9DDB;
+  --ui-accent-primary-hover: #6FB0E4;
+  --ui-accent-primary-dim: rgba(79, 157, 219, 0.14);
+
+  --ui-accent-secondary: #4FDB8B;
+  --ui-accent-secondary-dim: rgba(79, 219, 139, 0.14);
+
+  /* #8B4FDB is 3.6:1 on charcoal — fine for icons, borders and large type but
+     not body text. Lifted here so it stays usable as a foreground. */
+  --ui-accent-tertiary: #A87BE8;
+  --ui-accent-tertiary-dim: rgba(139, 79, 219, 0.18);
+
+  /* Dark text on the light-blue fill, not white (6.0:1). */
+  --ui-on-accent: #10141A;
+
+  --ui-surface-inverse: #252A32;
+  --ui-surface-inverse-deep: #1A1E24;
+  --ui-text-on-inverse: #F2F4F7;
+  --ui-text-on-inverse-muted: #8792A3;
+  --ui-border-inverse: rgba(255, 255, 255, 0.10);
+
+  /* Intentionally unchanged from :root — inverse panels are dark in both themes. */
+  --ui-accent-primary-on-inverse: #4F9DDB;
+  --ui-accent-secondary-on-inverse: #4FDB8B;
+  --ui-accent-tertiary-on-inverse: #A87BE8;
+
+  --ui-overlay: rgba(6, 8, 11, 0.66);
+  --ui-nav-scrim: rgba(22, 25, 29, 0.82);
+
+  --ui-border-subtle: rgba(79, 157, 219, 0.16);
+  --ui-border-medium: rgba(79, 157, 219, 0.30);
+  --ui-border-strong: rgba(79, 157, 219, 0.48);
+
+  --ui-status-success: #4FDB8B;
+  --ui-status-warning: #E9A23B;
+  --ui-status-danger: #F2695E;
+
+  /* Light-mode shadows vanish on charcoal, so dark mode leans on deeper black
+     plus a brighter hairline for edge definition. */
+  --ui-accent-glow: rgba(79, 157, 219, 0.30);
+  --ui-shadow-color: rgba(0, 0, 0, 0.45);
+  --ui-shadow-card: 0 2px 12px rgba(0, 0, 0, 0.40);
+  --ui-shadow-card-hover: 0 8px 28px rgba(0, 0, 0, 0.55);
+  --ui-badge-accent: rgba(79, 219, 139, 0.14);
+
+  /* Same lobe geometry as :root, higher alpha. Glow on #16191D has far more
+     headroom than tint on #F4F7FA — blue at 0.26 resolves to about #253B4E,
+     a real glow, and still nowhere near washing out text-secondary #B4BCC7.
+     Purple here is the raw #8B4FDB (139,79,219), not the lifted #A87BE8: the
+     lift exists only so purple stays legible as a foreground, and this is a
+     fill. See docs/styling.md. */
+  --ui-page-mesh:
+    radial-gradient(ellipse 75% 60% at 10% -8%, rgba(79, 157, 219, 0.26) 0%, rgba(79, 157, 219, 0) 62%),
+    radial-gradient(ellipse 60% 55% at 92% 10%, rgba(79, 157, 219, 0.17) 0%, rgba(79, 157, 219, 0) 60%),
+    radial-gradient(ellipse 55% 50% at 82% 88%, rgba(139, 79, 219, 0.20) 0%, rgba(139, 79, 219, 0) 58%),
+    radial-gradient(ellipse 50% 45% at  4% 96%, rgba(79, 219, 139, 0.13) 0%, rgba(79, 219, 139, 0) 55%),
+    radial-gradient(ellipse 95% 75% at 50% 45%, rgba(79, 157, 219, 0.08) 0%, rgba(79, 157, 219, 0) 70%);
+
+  --ui-page-mesh-column:
+    radial-gradient(900px 700px  at 90% 8%,   rgba(79, 157, 219, 0.20) 0%, rgba(79, 157, 219, 0) 64%),
+    radial-gradient(800px 640px  at  4% 38%,  rgba(79, 219, 139, 0.12) 0%, rgba(79, 219, 139, 0) 60%),
+    radial-gradient(900px 720px  at 94% 72%,  rgba(139, 79, 219, 0.18) 0%, rgba(139, 79, 219, 0) 62%),
+    radial-gradient(1000px 800px at 16% 100%, rgba(79, 157, 219, 0.18) 0%, rgba(79, 157, 219, 0) 66%);
+
+  --ui-veil-band: rgba(9, 12, 16, 0.50);
+  --ui-veil-band-strong: rgba(9, 12, 16, 0.72);
+}
+
+/* ---------------------------------------------------------------------------
+   LAYER 2 — the Tailwind utility surface.
+
+   `@theme inline` is load-bearing: a plain `@theme` copies literal values into
+   each utility, which would make the `.dark` overrides above inert. `inline`
+   emits `var(--ui-*)` instead, so the cascade does the theming for us.
+   --------------------------------------------------------------------------- */
+@theme inline {
+  /* All three resolve to Roboto on purpose: the site is single-typeface. The
+     tokens stay distinct so `font-display` / `font-mono` remain live hooks if a
+     second face is ever reintroduced. */
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg-primary: var(--ui-bg-primary);
+  --color-bg-secondary: var(--ui-bg-secondary);
+  --color-bg-elevated: var(--ui-bg-elevated);
+  --color-bg-sunken: var(--ui-bg-sunken);
+
+  --color-text-primary: var(--ui-text-primary);
+  --color-text-secondary: var(--ui-text-secondary);
+  --color-text-muted: var(--ui-text-muted);
+  --color-text-nav: var(--ui-text-nav);
+
+  --color-accent-primary: var(--ui-accent-primary);
+  --color-accent-primary-hover: var(--ui-accent-primary-hover);
+  --color-accent-primary-dim: var(--ui-accent-primary-dim);
+
+  --color-accent-secondary: var(--ui-accent-secondary);
+  --color-accent-secondary-dim: var(--ui-accent-secondary-dim);
+
+  --color-accent-tertiary: var(--ui-accent-tertiary);
+  --color-accent-tertiary-dim: var(--ui-accent-tertiary-dim);
+
+  --color-on-accent: var(--ui-on-accent);
+
+  --color-surface-inverse: var(--ui-surface-inverse);
+  --color-surface-inverse-deep: var(--ui-surface-inverse-deep);
+  --color-text-on-inverse: var(--ui-text-on-inverse);
+  --color-text-on-inverse-muted: var(--ui-text-on-inverse-muted);
+  --color-border-inverse: var(--ui-border-inverse);
+  --color-accent-primary-on-inverse: var(--ui-accent-primary-on-inverse);
+  --color-accent-secondary-on-inverse: var(--ui-accent-secondary-on-inverse);
+  --color-accent-tertiary-on-inverse: var(--ui-accent-tertiary-on-inverse);
+
+  --color-overlay: var(--ui-overlay);
+  --color-nav-scrim: var(--ui-nav-scrim);
+
+  --color-border-subtle: var(--ui-border-subtle);
+  --color-border-medium: var(--ui-border-medium);
+  --color-border-strong: var(--ui-border-strong);
+
+  --color-status-success: var(--ui-status-success);
+  --color-status-warning: var(--ui-status-warning);
+  --color-status-danger: var(--ui-status-danger);
+
+  --color-badge-accent: var(--ui-badge-accent);
+
+  /* Section bands. Deliberately no --color-page-mesh companion: a stack of five
+     gradients is not a color and must not enter the color namespace, where it
+     would emit nonsense like `text-page-mesh`. The mesh is consumed as
+     `bg-[image:var(--ui-page-mesh)]`, the same arbitrary-value idiom the
+     existing radial glow blobs use. */
+  --color-veil-band: var(--ui-veil-band);
+  --color-veil-band-strong: var(--ui-veil-band-strong);
+
+  /* These three were referenced in 8 places but never defined, so they emitted
+     no CSS at all. Defining them here restores the intended card styling. */
+  --shadow-card: var(--ui-shadow-card);
+  --shadow-card-hover: var(--ui-shadow-card-hover);
+
+  /* Backs the `animate-fade-in` utility used by the nav drawer, RSVP
+     confirmations and the FAQ accordions. */
+  --animate-fade-in: fade-in 350ms cubic-bezier(0.25, 1, 0.5, 1) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Ambient drift for the two soft lobes inside BackgroundMesh. Translate only,
+     so once rasterized these live on the compositor and cost nothing per frame
+     — which matters because Home runs three.js and GSAP at the same time.
+     Deliberately not `background-position`: that repaints a full-viewport layer
+     on the main thread every frame. Deliberately not `filter: blur` either — a
+     blur forces a render surface, and a radial-gradient is already soft.
+     Periods are coprime-ish so the two never visibly resynchronize. */
+  --animate-mesh-drift-a: mesh-drift-a 48s ease-in-out infinite;
+  --animate-mesh-drift-b: mesh-drift-b 64s ease-in-out infinite;
+
+  @keyframes mesh-drift-a {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(4vw, 3vh, 0); }
+  }
+
+  @keyframes mesh-drift-b {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(-5vw, -3vh, 0); }
+  }
+
+  /* Drives the dots that travel the line-art brain in HackAITeaser.tsx.
+
+     Each signal path carries `pathLength="1"`, so its dash pattern is written
+     in fractions of the path rather than user units. Three things here are
+     load-bearing and will silently break if "simplified":
+
+     1. The dasharray at the call site sums to exactly 1 — one dash period per
+        path. stroke-dashoffset `d` puts the dash at path distance s = -d mod P,
+        so sweeping d from 1 to 0 walks it start-to-end and leaves the pattern
+        exactly in phase at the wrap. Any other range leaves it mid-phase and
+        the loop visibly jumps.
+     2. The dash LENGTH at the call site is 0, not a small fraction. pathLength
+        normalizes the pattern, not the rendering: 0.02 would be a 10-unit dash
+        on the 510-unit silhouette but 1.8 units on a 90-unit sulcus — a fat
+        lozenge on one path and a clean dot on another. A zero-length dash with
+        `stroke-linecap: round` renders a circle whose diameter is the stroke
+        width, identically on every path.
+     3. `linear`. The default `ease` makes every dot lurch at both ends.
+
+     The opacity ramp lives inside this same keyframe so it stays phase-locked
+     to the dashoffset sweep and cannot drift out of sync; it hides the instant
+     the dot teleports from the path end back to the path start.
+     stroke-dashoffset is deliberately NOT declared at 6%/94%, so it still
+     interpolates linearly across the whole run.
+
+     The 6s here is a fallback — every call site overrides animation-duration
+     inline, because duration has to be proportional to each path's real length
+     or dots on long and short paths move at wildly different apparent speeds.
+
+     This animates SVG geometry, which is a repaint rather than a compositor
+     op in every engine. Affordable because the spinning-hexagon markup it
+     replaced was already repainting the same ~300px region every frame. It is
+     also why there is no filter or drop-shadow near it: a filter would re-run
+     a blur over the whole bbox on every one of those frames. The glow is a
+     second, wider, low-stroke-opacity copy of the path instead. */
+  --animate-neural-signal: neural-signal 6s linear infinite;
+
+  @keyframes neural-signal {
+    0%      { stroke-dashoffset: 1; opacity: 0; }
+    6%, 94% { opacity: 1; }
+    100%    { stroke-dashoffset: 0; opacity: 0; }
+  }
+}
+
+@layer base {
+  /* The page gradient moved to BackgroundMesh.tsx. body keeps only the flat
+     fill, which still shows during macOS rubber-band overscroll (the mesh layer
+     stops at the viewport edge) and backs ::-webkit-scrollbar-track below.
+     Don't re-add a background-image here — it would stack a second
+     full-viewport gradient underneath the mesh and tint it. */
+  body {
+    background-color: var(--ui-bg-primary);
+    color: var(--ui-text-secondary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ui-text-primary);
+  }
+}
+
+/* Scroll-triggered reveals — see src/hooks/useReveal.ts.
+
+   THE FOUR KNOBS. Both the single-element form (`[data-reveal]`) and the
+   sequenced form (`[data-reveal-sequence]`) read these, so tuning here changes
+   every reveal on the site at once. */
+:root {
+  --reveal-duration: 1100ms;
+  --reveal-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  /* How far the element travels up into place. Scale this with duration — a
+     long fade over a short distance reads as hanging rather than slow. */
+  --reveal-shift: 28px;
+  /* Gap between consecutive children of a sequenced container. */
+  --reveal-step: 130ms;
+}
+
+/* The hidden state lives INSIDE `no-preference` so that under
+   `prefers-reduced-motion: reduce` nothing is ever hidden in the first place;
+   the accessible path then needs no JS to rescue it. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal],
+  [data-reveal-sequence] > * {
+    opacity: 0;
+    transform: translateY(var(--reveal-shift));
+    transition:
+      opacity var(--reveal-duration) var(--reveal-ease),
+      transform var(--reveal-duration) var(--reveal-ease);
+  }
+
+  /* Sequenced containers stagger their DIRECT children, so a hero's eyebrow,
+     heading, body copy and button row arrive one after another instead of as
+     one block. The container itself never animates — only its children — which
+     is why it carries no `data-reveal`.
+
+     Slots are positional, so reordering the JSX reorders the sequence. Past the
+     8th child the delay stops growing: heroes never run that deep, and a
+     runaway tail would leave content stranded for seconds. */
+  [data-reveal-sequence] > *:nth-child(1) { transition-delay: calc(var(--reveal-offset, 0ms) + 0 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(2) { transition-delay: calc(var(--reveal-offset, 0ms) + 1 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(3) { transition-delay: calc(var(--reveal-offset, 0ms) + 2 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(4) { transition-delay: calc(var(--reveal-offset, 0ms) + 3 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(5) { transition-delay: calc(var(--reveal-offset, 0ms) + 4 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(6) { transition-delay: calc(var(--reveal-offset, 0ms) + 5 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(7) { transition-delay: calc(var(--reveal-offset, 0ms) + 6 * var(--reveal-step)); }
+  [data-reveal-sequence] > *:nth-child(n + 8) { transition-delay: calc(var(--reveal-offset, 0ms) + 7 * var(--reveal-step)); }
+}
+
+/* `transform: none`, deliberately not `translateY(0)`: a lingering transform
+   makes the element a containing block, which offsets getBoundingClientRect()
+   for the officer/project flip-card measurement and re-anchors any
+   position:fixed descendant. */
+[data-reveal][data-revealed],
+[data-reveal-sequence][data-revealed] > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Custom styles for animations and aesthetics */
+.glow-blue-shadow {
+  box-shadow: 0 4px 20px var(--ui-accent-glow);
+}
+
+.glow-blue-shadow-hover:hover {
+  box-shadow: 0 8px 32px var(--ui-accent-glow);
+}
+
+/* Custom scroll bar spacing */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ui-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ui-border-medium);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ui-accent-primary);
+}
+
+/* Simple marquee utility */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

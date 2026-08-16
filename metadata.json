@@ -1,0 +1,6 @@
+{
+  "name": "Artificial Intelligence Club at Ohio State",
+  "description": "The official website for the Artificial Intelligence Club at The Ohio State University, featuring hands-on projects, research showcases, HackAI, and workshops.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -2,12 +2,369 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OSU AI Club</title>
+    <meta name="color-scheme" content="light dark" />
+    <title>Ohio State AI Club</title>
+    <!--
+      Roboto is pulled in by an @import at the top of src/index.css, which means
+      its request cannot start until that stylesheet has already been fetched and
+      parsed. Warming both origins here overlaps the DNS/TLS cost with that wait.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      The boot splash masks its shine with this image, so it is on the critical
+      path for first paint. It lives in public/ rather than assets/ because Vite
+      content-hashes anything imported from assets/, and this file is referenced
+      from static HTML that has no way to learn the hashed name.
+    -->
+    <link rel="preload" as="image" href="/aic-mark.png" />
+    <!--
+      Applies the stored theme BEFORE first paint. Must stay inline and blocking:
+      the module bundle loads too late, so deferring this flashes a white page at
+      every dark-mode visitor. Key must match THEME_STORAGE_KEY in src/theme.ts.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('osu-aic-theme');
+          var dark =
+            stored === 'dark' ||
+            ((stored === 'system' || !stored) &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {
+          /* storage blocked — fall back to the light default */
+        }
+      })();
+    </script>
+    <!--
+      Boot splash styles. Inline for the same reason as the script above, plus a
+      second one: src/index.css opens with an @import of Roboto from Google
+      Fonts, so that stylesheet is render-blocking behind a third-party request.
+      Anything the splash needs has to be here, and it must not depend on a
+      webfont — hence the system monospace stack below.
+
+      The colours are literal copies of --ui-bg-primary / --ui-accent-primary /
+      --ui-accent-primary-hover from src/index.css (:root and .dark). They have
+      to be duplicated because they paint before that file exists. KEEP IN SYNC.
+    -->
+    <style>
+      :root {
+        --sp-bg: #f4f7fa;
+        --sp-accent: #2a75b3;
+        --sp-accent-hi: #6fb0e4;
+        --sp-dim: rgba(22, 25, 29, 0.12);
+        --sp-text: rgba(22, 25, 29, 0.55);
+      }
+      html.dark {
+        --sp-bg: #16191d;
+        --sp-accent: #4f9ddb;
+        --sp-accent-hi: #a8d2f2;
+        --sp-dim: rgba(242, 244, 247, 0.1);
+        --sp-text: rgba(242, 244, 247, 0.55);
+      }
+
+      #aic-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483000;
+        background: var(--sp-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 200ms linear;
+      }
+      #aic-splash.is-faded {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .aic-splash__mark {
+        position: relative;
+        /* Sized so the "CLUB" lettering inside the mark stays legible; it is a
+           wordmark, not a compact monogram, and shrinks badly below ~150px. */
+        width: clamp(150px, 16vw, 210px);
+        /* Intrinsic ratio of assets/images/AI_Logo_Final.png (667x516). */
+        aspect-ratio: 667 / 516;
+        transition:
+          opacity 300ms ease,
+          transform 300ms cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      /* Both layers carry the same mask, which is what clips the sweeping
+         gradient to the logo's silhouette instead of a rectangle. The artwork is
+         a flat near-white shape on transparency, so its alpha is the mask. */
+      .aic-splash__base,
+      .aic-splash__shine {
+        position: absolute;
+        inset: 0;
+        -webkit-mask: url(/aic-mark.png) center / contain no-repeat;
+        mask: url(/aic-mark.png) center / contain no-repeat;
+      }
+      /* Always-visible silhouette, so the logo reads even between sweeps. */
+      .aic-splash__base {
+        background: var(--sp-dim);
+      }
+      .aic-splash__shine {
+        background-image: linear-gradient(
+          105deg,
+          transparent 30%,
+          var(--sp-accent) 44%,
+          var(--sp-accent-hi) 50%,
+          var(--sp-accent) 56%,
+          transparent 70%
+        );
+        /* Width and travel are tuned together: wider background or longer travel
+           buys a longer dark gap between passes, and much past this the mark
+           reads as static for most of the cycle. */
+        background-size: 200% 100%;
+        background-repeat: no-repeat;
+        animation: aic-shine 1.25s linear infinite;
+      }
+      /* Positive -> negative moves the highlight left-to-right across the mark;
+         the transparent tails of the gradient supply the pause between sweeps. */
+      @keyframes aic-shine {
+        from {
+          background-position: 130% 0;
+        }
+        to {
+          background-position: -130% 0;
+        }
+      }
+
+      .aic-splash__meter {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: clamp(48px, 10vh, 96px);
+        text-align: center;
+        color: var(--sp-text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        transition:
+          opacity 300ms ease,
+          transform 300ms cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .aic-splash__label {
+        margin: 0 0 0.7em;
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-indent: 0.28em;
+      }
+      .aic-splash__pct {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: 0.06em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      #aic-splash.is-exiting .aic-splash__mark,
+      #aic-splash.is-exiting .aic-splash__meter {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      /* The band is a sibling of the splash, one layer above it, so it sweeps
+         over the splash rather than being clipped inside it. */
+      #aic-band {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 42vh;
+        z-index: 2147483001;
+        pointer-events: none;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--sp-accent) 14%,
+          var(--sp-accent) 86%,
+          transparent
+        );
+        transform: translateY(120vh);
+      }
+      #aic-band.is-sweeping {
+        transform: translateY(-60vh);
+        transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .aic-splash__shine {
+          animation: none;
+          opacity: 0.55;
+          background-position: 50% 0;
+        }
+        #aic-band {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!--
+      Boot splash. Static markup, not a React component: a component ships inside
+      the ~1MB bundle and so cannot render until the wait it is meant to cover is
+      already over. Living here means it paints off the HTML response, while the
+      bundle is still downloading.
+
+      aria-hidden because the percentage is decorative and a live-updating
+      counter is hostile to screen readers; assistive tech reads #root as usual.
+    -->
+    <div id="aic-splash" aria-hidden="true">
+      <div class="aic-splash__mark">
+        <span class="aic-splash__base"></span>
+        <span class="aic-splash__shine"></span>
+      </div>
+      <div class="aic-splash__meter">
+        <p class="aic-splash__label">LOADING</p>
+        <p class="aic-splash__pct">0%</p>
+      </div>
+    </div>
+    <div id="aic-band" aria-hidden="true"></div>
+    <script>
+      (function () {
+        var splash = document.getElementById('aic-splash');
+        var band = document.getElementById('aic-band');
+        if (!splash || !band) return;
+
+        var SEEN_KEY = 'aic-splash-seen';
+        var root = document.documentElement;
+
+        function remove() {
+          if (splash.parentNode) splash.parentNode.removeChild(splash);
+          if (band.parentNode) band.parentNode.removeChild(band);
+        }
+
+        // Once per session. Leaving window.__aicSplash undefined is the signal
+        // src/splash.ts reads to no-op, so nothing downstream has to branch.
+        var seen = false;
+        try {
+          seen = sessionStorage.getItem(SEEN_KEY) === '1';
+        } catch (e) {
+          /* storage blocked — show the splash rather than guess */
+        }
+        if (seen) {
+          remove();
+          return;
+        }
+
+        // Consumed by useReveal.ts and NeuralNetworkCanvas.tsx: both hold their
+        // entrance animations while this is set, otherwise they play out behind
+        // the opaque splash and are finished before anyone can see them.
+        root.setAttribute('data-booting', '');
+        var prevOverflow = root.style.overflow;
+        root.style.overflow = 'hidden';
+
+        var reduced = false;
+        try {
+          reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        } catch (e) {
+          /* no matchMedia — assume motion is fine */
+        }
+
+        var pctEl = splash.querySelector('.aic-splash__pct');
+        var target = 12;
+        var shown = 0;
+        var ease = 0.08;
+        var done = false;
+
+        // On a warm cache or a fast connection everything resolves in ~400ms,
+        // which would flash the splash and tear it away before the shine had
+        // completed a single 1.5s pass — that reads as a glitch, not an intro.
+        // Hold long enough for one full sweep plus a beat.
+        var MIN_VISIBLE = 1700;
+        var startedAt = Date.now();
+        var finishPending = false;
+
+        // Displayed value chases `target` instead of jumping to it, so the
+        // counter reads as continuous however lumpy the real milestones are.
+        function paint() {
+          shown += (target - shown) * ease;
+          if (target - shown < 0.4) shown = target;
+          pctEl.textContent = Math.round(shown) + '%';
+          if (shown < 100) requestAnimationFrame(paint);
+        }
+        requestAnimationFrame(paint);
+
+        function setProgress(n) {
+          n = Math.max(0, Math.min(100, n));
+          if (n > target) target = n; // monotonic: never walk backwards
+        }
+
+        // How much of the bundle has arrived is not observable from here, so
+        // creep asymptotically toward 65 and let the real milestones reported by
+        // src/splash.ts carry it the rest of the way.
+        var creepId = setInterval(function () {
+          if (target < 65) setProgress(target + (65 - target) * 0.06);
+        }, 120);
+
+        function release() {
+          if (!root.hasAttribute('data-booting')) return;
+          root.removeAttribute('data-booting');
+          root.style.overflow = prevOverflow;
+          try {
+            sessionStorage.setItem(SEEN_KEY, '1');
+          } catch (e) {
+            /* storage blocked — the splash just plays again next load */
+          }
+          window.dispatchEvent(new CustomEvent('aic:boot-complete'));
+        }
+
+        function finish() {
+          if (done || finishPending) return;
+          var wait = MIN_VISIBLE - (Date.now() - startedAt);
+          if (wait > 0) {
+            // Sit at whatever the last real milestone reported until the floor
+            // is reached, then run the exit for real.
+            finishPending = true;
+            setTimeout(function () {
+              finishPending = false;
+              finish();
+            }, wait);
+            return;
+          }
+          done = true;
+          clearInterval(creepId);
+          clearTimeout(safetyId);
+          target = 100;
+          ease = 0.34; // rush the counter so it lands before the exit starts
+
+          if (reduced) {
+            splash.classList.add('is-faded');
+            release();
+            setTimeout(remove, 260);
+            return;
+          }
+
+          setTimeout(function () {
+            splash.classList.add('is-exiting'); // mark + meter lift out
+            setTimeout(function () {
+              band.classList.add('is-sweeping'); // 900ms, bottom -> top
+              // The splash background and the site background are the same
+              // colour, so swapping one for the other mid-sweep is invisible.
+              setTimeout(function () {
+                splash.classList.add('is-faded');
+              }, 260);
+              // Fired as the blue clears the middle of the screen, so the hero
+              // reveal starts behind the trailing edge rather than after it.
+              // Roughly 60% through the sweep — keep it proportional if the
+              // 900ms above changes.
+              setTimeout(release, 440);
+              setTimeout(remove, 630);
+            }, 300);
+          }, 320);
+        }
+
+        // Non-negotiable: a 404'd bundle or a hung image must never strand a
+        // visitor on the splash. Function declarations hoist, so `finish` is
+        // already defined here.
+        var safetyId = setTimeout(finish, 8000);
+
+        window.__aicSplash = { setProgress: setProgress, finish: finish };
+      })();
+    </script>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
