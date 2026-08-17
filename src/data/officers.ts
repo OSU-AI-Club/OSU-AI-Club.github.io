@@ -91,9 +91,9 @@ const OFFICER_RECORDS: OfficerRecord[] = [
     id: 'cynthia-song',
     name: 'Cynthia Song',
     role: 'Technology Director',
-    major: 'Data Analytics',
-    minor: 'Cognitive Science',
-    year: '3rd Year',
+    major: 'Computer Science and Engineering',
+    minor: 'TBD',
+    year: 'TBD Year',
     initials: 'CS',
     bio: 'Co-leads the club\'s technical programming, workshop curriculum, and semester project teams.',
     socials: {}
@@ -128,12 +128,12 @@ const OFFICER_RECORDS: OfficerRecord[] = [
     }
   },
   {
-    id: 'sushmita-sudhan',
-    name: 'Sushmita Sudhan',
+    id: 'sushmita-sudhan-supriya',
+    name: 'Sushmita Sudhan Supriya',
     role: 'Marketing Officer',
-    major: 'Information Systems',
-    minor: 'Economics',
-    year: '3rd Year',
+    major: 'Computer Science and Engineering',
+    minor: 'Business Analytics',
+    year: '2nd Year',
     initials: 'SS',
     bio: 'Runs the club\'s social channels, event promotion, and recruitment campaigns.',
     socials: {}
