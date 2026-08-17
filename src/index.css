@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap');
+/* Roboto is NOT imported here on purpose. An `@import url(...)` of a remote
+   stylesheet cannot be inlined by Vite, so it survives into the built
+   `dist/assets/index-*.css` and puts the font behind a three-hop serial chain:
+   HTML -> 79 kB app CSS -> Google's CSS -> the font files. It is a plain
+   `<link rel="stylesheet">` in index.html instead, which starts the fetch at
+   HTML parse time, in parallel with this file. Keep the weight list there in
+   sync with the families declared below. */
 @import "tailwindcss";
 
 /* Class-based dark mode. Tailwind v4 defaults `dark:` to prefers-color-scheme;

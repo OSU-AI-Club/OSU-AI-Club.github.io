@@ -6,12 +6,23 @@
     <meta name="color-scheme" content="light dark" />
     <title>Ohio State AI Club</title>
     <!--
-      Roboto is pulled in by an @import at the top of src/index.css, which means
-      its request cannot start until that stylesheet has already been fetched and
-      parsed. Warming both origins here overlaps the DNS/TLS cost with that wait.
+      Roboto is requested HERE rather than via an `@import` at the top of
+      src/index.css. Vite cannot inline a remote @import, so from that file it
+      survived into the built CSS and the browser could not even discover the
+      font until it had fetched and parsed the 79 kB app stylesheet — a
+      three-hop serial chain before any text could paint. A link in the head is
+      discovered by the preload scanner immediately and downloads in parallel
+      with the app CSS. The preconnects warm DNS/TLS ahead of both.
+
+      Keep the weight list in sync with the font-family declarations in
+      src/index.css.
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap"
+    />
     <!--
       The boot splash masks its shine with this image, so it is on the critical
       path for first paint. It lives in public/ rather than assets/ because Vite

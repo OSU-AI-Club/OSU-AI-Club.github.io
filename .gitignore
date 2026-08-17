@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+# Build output used to be committed to the repo root and served directly by
+# GitHub Pages. It is now produced by .github/workflows/deploy.yml on every push
+# to master, so a committed copy can only ever be stale and misleading.
+
+.DS_Store
+*.log
+npm-debug.log*
+.env
+.env.local
+.vscode/
+.idea/

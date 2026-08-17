@@ -1,0 +1,75 @@
+# Builds the Vite app and publishes dist/ to GitHub Pages.
+#
+# This exists because GitHub Pages is a static file server: it cannot compile
+# TypeScript or JSX. Serving the repo root directly meant index.html's
+# `<script type="module" src="/src/main.tsx">` never resolved to an executable
+# module, React never mounted, and every visitor got the boot splash followed by
+# a blank page. The deployed artifact must be a build, never the source tree.
+#
+# Requires Settings -> Pages -> Build and deployment -> Source = "GitHub Actions".
+# With "Deploy from a branch" still selected this workflow runs but nothing it
+# produces is ever served.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  # Lets a deploy be re-run from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race. `cancel-in-progress: false` because a half-applied
+# deploy is worse than a queued one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches the version the site is developed against locally.
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Belt-and-braces. The Actions artifact path does not run Jekyll at all,
+      # but this keeps the output correct if Pages is ever switched back to
+      # branch-based serving, where Jekyll would otherwise skip underscore-
+      # prefixed files.
+      - name: Disable Jekyll processing
+        run: touch dist/.nojekyll
+
+      # public/CNAME is copied verbatim into dist/ by Vite. Fail loudly rather
+      # than silently shipping a build that unbinds the custom domain.
+      - name: Verify CNAME survived the build
+        run: test -f dist/CNAME && cat dist/CNAME
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

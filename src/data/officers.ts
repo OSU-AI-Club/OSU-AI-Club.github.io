@@ -64,11 +64,15 @@ const OFFICER_RECORDS: OfficerRecord[] = [
     id: 'maanov-jajodia',
     name: 'Maanov Jajodia',
     role: 'Treasurer',
-    major: 'Computer Science and Engineering, Mathematics',
+    major: 'Computer Science and Engineering',
+    minor: "Robotics and Autonomous Systems",
     year: '3rd Year',
     initials: 'MJ',
-    bio: 'Manages the club budget, sponsor funding, and reimbursements for events and project teams.',
-    socials: {}
+    bio: 'I am working at the Systems and AI Lab at OSU as an Undergraduate Research Assistant. My research interests include Deep Learning and Computer Vision.',
+    socials: {
+      linkedin: "www.linkedin.com/in/maanavj18 ",
+      github: "https://github.com/maanavj18"
+    }
   },
   {
     id: 'harker-lecroy',
