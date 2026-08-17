@@ -6,6 +6,23 @@
     <meta name="color-scheme" content="light dark" />
     <title>Ohio State AI Club</title>
     <!--
+      Static favicon. main.tsx replaces this at runtime with a canvas-drawn copy
+      whose background tracks the active theme, but that upgrade lives in the
+      bundle — so without this tag there is no tab icon until the bundle has
+      downloaded and executed, and none at all if the canvas path throws (it is
+      wrapped in a try/catch that only warns). The browser's implicit fallback
+      does not help either: there is no /favicon.ico.
+
+      It must carry its own dark background rather than being the bare logo:
+      assets/images/AI_Logo_Final.png is a near-white shape on transparency and
+      is invisible against light browser chrome. This file is that logo composited
+      onto the same rounded #16191D square main.tsx falls back to, so the static
+      and dynamic versions look the same. Regenerate both together if the mark
+      changes. Lives in public/ because Vite content-hashes anything under
+      assets/, and static HTML cannot learn the hashed name.
+    -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!--
       Roboto is requested HERE rather than via an `@import` at the top of
       src/index.css. Vite cannot inline a remote @import, so from that file it
       survived into the built CSS and the browser could not even discover the
