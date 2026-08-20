@@ -13,13 +13,11 @@ export const PROJECT_APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQ
 export const HACKAI_REGISTRATION_URL = PROJECT_APPLICATION_URL;
 
 /**
- * "AIC Public Calendar" — the ONLY calendar the website reads.
+ * "AIC Public Calendar" — the one calendar the website reads.
  *
- * Deliberately NOT CLUB_EMAIL. That account's own calendar ("AIC Meetings") is
- * the club's *working* calendar: alongside real events it carries 1:1s and
- * partner meetings whose titles and guest lists name people at outside
- * companies. Publishing it would put those on the public web. So events meant
- * for the site go on this separate calendar, and that one is never synced.
+ * A calendar dedicated to events meant for publication: everything on it is
+ * public by definition, so there is nothing to filter and nothing private that
+ * could reach the site by accident.
  *
  * Changing which calendar the site reads is a one-line edit here — the sync
  * script imports this constant, and PUBLIC_CALENDAR_URL derives from it.

@@ -9,8 +9,7 @@
  * script that lives at script.google.com. Edit it here, then paste it there —
  * or the two drift and nobody can tell which is live.
  *
- * SETUP — do this signed in as osuaiclub@gmail.com, NOT a personal account.
- * The trigger watches the "AIC Public Calendar", not that account's own calendar.
+ * SETUP — do this signed in as the club Google account, NOT a personal one.
  * An installable trigger belongs to whoever installed it and stops firing when
  * that person loses access to the calendar, so a trigger installed by a senior
  * dies at graduation. Full walkthrough in docs/calendar-sync.md.
@@ -26,9 +25,8 @@
 
 var GITHUB_OWNER = 'OSU-AI-Club';
 var GITHUB_REPO = 'OSU-AI-Club.github.io';
-// MUST match GOOGLE_CALENDAR_ID in src/data/general.ts. This is the "AIC Public
-// Calendar", NOT the club account's own "AIC Meetings" calendar — that one holds
-// private 1:1s and partner meetings and is deliberately never synced.
+// "AIC Public Calendar". MUST match GOOGLE_CALENDAR_ID in src/data/general.ts —
+// Google's editor cannot import from the repo, so this copy is kept in step by hand.
 var CALENDAR_ID = '9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com';
 var EVENT_TYPE = 'calendar-updated';
 

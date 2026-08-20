@@ -52,8 +52,7 @@ const OUT_FILE = resolve(HERE, '../src/data/events.generated.json');
 
 /**
  * Imported rather than duplicated: which calendar the site reads is a property
- * of the site, not of this script, and two copies would drift. See the comment
- * on GOOGLE_CALENDAR_ID for why this is NOT the club's own gmail calendar.
+ * of the site, not of this script, and two copies would drift.
  */
 const CALENDAR_ID = GOOGLE_CALENDAR_ID;
 const TIME_ZONE = 'America/New_York';
@@ -416,10 +415,8 @@ function toClubEvent(item: GoogleEvent): MappedEvent {
 
   // A club event announced to the world has no invitee list; a meeting *with*
   // people does. Belt-and-braces on top of using a dedicated public calendar:
-  // if someone ever forwards a meeting invite onto it, this stops the guests'
-  // names and email addresses reaching the public site. Measured against the
-  // club's old working calendar, this one rule separated the single real event
-  // from 18 private 1:1s and partner meetings.
+  // if a meeting invite is ever forwarded onto it, this keeps the guests' names
+  // and email addresses off the public site.
   //
   // The cost: a real club event that has guests invited on it will silently
   // stop publishing. Officers are told not to invite people to public events.

@@ -3,19 +3,10 @@
 Club events on the website come from a Google Calendar named **AIC Public
 Calendar**. Nobody edits event data in code any more.
 
-> ### ⚠️ Two calendars — put events on the right one
+> **AIC Public Calendar** is the only calendar the website reads. Anything on it
+> is public; anything not on it does not appear on the site.
 >
-> | Calendar | Used for | Synced to the site? |
-> |---|---|---|
-> | **AIC Public Calendar** | Events meant for the public — meetings, workshops, speakers, socials | **Yes** |
-> | **AIC Meetings** (`osuaiclub@gmail.com`'s own calendar) | The board's working calendar: 1:1s, advisor check-ins, sponsor and partner calls | **No — never** |
->
-> They are kept separate on purpose. The working calendar's events carry the
-> names, titles and email addresses of people at outside companies, and none of
-> that belongs on a public website. **Do not point the site at it**, and don't
-> copy working meetings onto the public calendar.
->
-> Public calendar ID: `9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com`
+> Calendar ID: `9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com`
 
 **Part 1 is for officers.** Parts 2–5 are for whoever maintains the site.
 
@@ -176,7 +167,7 @@ person loses calendar access — a trigger installed by a senior dies at
 graduation.
 
 The trigger watches **AIC Public Calendar** — `CALENDAR_ID` at the top of
-`Code.gs` — not the account's own calendar.
+`Code.gs`.
 
 1. [script.google.com](https://script.google.com) → **New project**, name it
    "AI Club — Calendar to Website".
@@ -195,8 +186,8 @@ The trigger watches **AIC Public Calendar** — `CALENDAR_ID` at the top of
 
 Work down this list.
 
-1. **Is the event on AIC Public Calendar?** The most common cause by far is an
-   event added to the working calendar instead. The site only reads the public one.
+1. **Is the event on AIC Public Calendar?** That is the only calendar the site
+   reads, and an event added somewhere else will never appear.
 2. **Check the "Synced …" line** under the calendar on the Events page. That's
    when the site last rebuilt.
 3. **Actions tab — is the latest run green?** If it's red, open it and read the
@@ -244,8 +235,8 @@ is "changes take hours" rather than "changes never appear". Create a new token
 
 ### Annual handover checklist
 
-- [ ] The site still reads **AIC Public Calendar**, not the working calendar —
-      check `GOOGLE_CALENDAR_ID` in `src/data/general.ts`
+- [ ] `GOOGLE_CALENDAR_ID` in `src/data/general.ts` still points at
+      **AIC Public Calendar**
 - [ ] The Apps Script project is owned by `osuaiclub@gmail.com`, and
       `installTrigger()` was run from that account
 - [ ] `GITHUB_TOKEN` in the Apps Script properties hasn't expired

@@ -86,8 +86,7 @@ The About page renders three cards per row on desktop, so multiples of three loo
 
 ### Add an event
 
-**Not in code.** Add it to the **AIC Public Calendar** (not the club account's own working
-calendar — see [calendar-sync.md](calendar-sync.md)) and set the event's **color** to choose its
+**Not in code.** Add it to the **AIC Public Calendar** and set the event's **color** to choose its
 category. The site rebuilds within a few minutes.
 
 Full instructions, the color legend, and the debugging checklist are in

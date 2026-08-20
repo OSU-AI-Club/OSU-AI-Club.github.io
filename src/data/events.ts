@@ -3,8 +3,8 @@
  *
  * ┌───────────────────────────────────────────────────────────────────────────┐
  * │ ADDING AN EVENT? Don't edit this file. Add it to "AIC Public Calendar"    │
- * │ and set the event's COLOR to pick its category. NOT the club account's    │
- * │ own calendar — that one is private. See docs/calendar-sync.md.           │
+ * │ and set the event's COLOR to pick its category. The site updates within   │
+ * │ a few minutes. See docs/calendar-sync.md.                                │
  * └───────────────────────────────────────────────────────────────────────────┘
  *
  * HOW THE DATA GETS HERE
