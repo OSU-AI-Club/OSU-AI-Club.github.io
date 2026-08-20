@@ -138,6 +138,37 @@ export function categoryDotClass(category: EventCategory): string {
   }
 }
 
+/**
+ * Tinted background / text / border triple for a small category CHIP — the
+ * badge on an event card.
+ *
+ * This replaced a hardcoded `category === 'Workshop' ? blue : green` check.
+ * That was invisible while every event was a General meeting, but it meant
+ * General, HackAI and Social all rendered green while the accent bar 14px above
+ * them rendered amber, gradient and purple — the card contradicting itself.
+ * Now that categories come from the calendar, all five occur in practice.
+ *
+ * Two things here are deliberate and shouldn't be "fixed":
+ *
+ *  - `warm` uses `bg-status-warning/10` rather than a *-dim token, because
+ *    there is no --color-status-warning-dim in index.css. Add one and this can
+ *    match the others.
+ *  - `gradient` is NOT a gradient, for the same reason categoryDotClass gives:
+ *    two stops have nowhere to resolve across a chip this small, and the blend
+ *    lands on a teal that reads as the Speaker green. Solid primary fill with a
+ *    secondary-toned border keeps both brand colors present and unambiguous.
+ */
+export function categoryBadgeClass(category: EventCategory): string {
+  switch (ACCENT_BY_CATEGORY.get(category)) {
+    case 'primary': return 'bg-accent-primary-dim text-accent-primary border-accent-primary/15';
+    case 'secondary': return 'bg-accent-secondary-dim text-accent-secondary border-accent-secondary/15';
+    case 'tertiary': return 'bg-accent-tertiary-dim text-accent-tertiary border-accent-tertiary/15';
+    case 'warm': return 'bg-status-warning/10 text-status-warning border-status-warning/20';
+    case 'gradient': return 'bg-accent-primary-dim text-accent-primary border-accent-secondary/30';
+    default: return 'bg-bg-primary text-text-muted border-border-subtle';
+  }
+}
+
 /** Plural display label for a category ('Workshop' -> 'Workshops'). */
 export function categoryLabel(category: string): string {
   return LABEL_BY_CATEGORY.get(category) ?? category;

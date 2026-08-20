@@ -97,10 +97,30 @@ fully-connected network of 36 glass spheres in three.js, on the Home page only.
 | `components/FAQ.tsx` | About | Renders `FAQS` from `data/faqs.ts` |
 | `components/EventCalendar.tsx` | Events | Interactive month grid; owns view/selection/focus state, roving-tabindex keyboard nav, month clamp and jump pills |
 | `components/EventCalendarRail.tsx` | Events | Detail panel beside the calendar; presentational, three states (no events at all / nothing on this day / event list) |
+| `components/EventCard.tsx` | Events (grid + rail) | Shared event box; footer is "Add to Calendar" upcoming, "View Recap" or "Event Concluded" once past |
 | `components/TextScramble.tsx` | All page titles | Glitch-in text effect, once on mount |
 | `components/ThemeToggle.tsx` | Navbar (desktop + mobile drawer) | Light/dark switch; see below |
 | `components/Reveal.tsx` | Card grids everywhere | Scroll-reveal wrapper; see [styling.md](styling.md) |
 | `components/CanvasErrorBoundary.tsx` | Home | Keeps a WebGL failure from blanking the site |
+
+## Build-time data sync
+
+Everything in `src/data/` is a hand-written TypeScript module **except events**, which come from the
+club's Google Calendar. `scripts/sync-calendar.ts` runs on CI between `npm ci` and `vite build`,
+fetches the calendar, and writes `src/data/events.generated.json`; Vite inlines that JSON into the
+bundle. `src/data/events.ts` validates it and exports `EVENTS` under the same name the page always
+imported, so nothing downstream changed.
+
+The browser makes **zero** calendar requests and no API key ships to the client — the site is static
+files on GitHub Pages, so there is no server to proxy a request and nowhere safe to put a browser
+key. Officer instructions, setup, and the debugging checklist: [calendar-sync.md](calendar-sync.md).
+
+**One boundary worth knowing about.** `src/utils/date.ts` bans `Intl.DateTimeFormat`, because it runs
+in the visitor's browser where locale and timezone are unknown inputs. `scripts/sync-calendar.ts`
+*uses* it, with `'en-US'` and `'America/New_York'` passed as explicit arguments — it runs once on a
+build machine, not on a visitor's device, and it emits plain `'YYYY-MM-DD'` / `'7:00 PM'` strings
+that `utils/date.ts` then handles unchanged. The rule is about client-side ambient state, and the
+script does not violate it. Don't "fix" either side to match the other.
 
 ## Theming
 

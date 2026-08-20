@@ -31,6 +31,17 @@
  * Intl.DateTimeFormat is deliberately unused: it would need explicit UTC
  * pinning to be safe, and its output varies with the visitor's locale while
  * this site's copy is fixed English.
+ *
+ * ONE PLACE IS EXEMPT, AND IT IS NOT THIS FILE
+ * --------------------------------------------
+ * scripts/sync-calendar.ts *does* use Intl.DateTimeFormat, on purpose. The rule
+ * above exists because this module runs in the visitor's browser, where locale
+ * and timezone are unknown inputs and the same data would render differently
+ * for different people. The sync script runs once, on a CI machine, with
+ * 'en-US' and 'America/New_York' passed as explicit arguments rather than read
+ * from the environment — and its output is still plain 'YYYY-MM-DD' and
+ * '7:00 PM' strings that this module then handles. The contract is intact.
+ * Don't "fix" the script to match this file.
  */
 
 /** A local civil calendar date, 'YYYY-MM-DD'. Not a timestamp; has no timezone. */
@@ -103,6 +114,23 @@ export function isoMonthBadge(iso: ISODate): string {
 export function formatLongDate(iso: ISODate): string {
   const { year, month, day } = parseISODate(iso);
   return `${MONTH_SHORT[month - 1]} ${day}, ${year}`;
+}
+
+/**
+ * An RFC3339 timestamp -> 'Aug 19, 2026', for the "Synced ..." line under the
+ * calendar. Returns '' for anything unparseable, so a malformed snapshot
+ * degrades to hiding the stamp rather than showing garbage.
+ *
+ * Takes the date part by slicing, not by parsing: the input is UTC (it comes
+ * from `new Date().toISOString()` in the sync script) and the display only
+ * needs day resolution, so a timezone conversion would add a failure mode for
+ * no benefit. Being a few hours off around midnight UTC is irrelevant for a
+ * freshness indicator.
+ */
+export function formatSyncStamp(timestamp: string): string {
+  if (typeof timestamp !== 'string') return '';
+  const datePart = timestamp.slice(0, 10);
+  return ISO_PATTERN.test(datePart) ? formatLongDate(datePart) : '';
 }
 
 /** '2026-10-07' -> 'Wednesday, October 7, 2026'. For aria-labels and the rail. */

@@ -18,18 +18,16 @@ interface EventCalendarRailProps {
   activeFilter: string;
   today: ISODate;
   onClear: () => void;
-  /** Shared with the Upcoming grid so an RSVP in either place shows in both. */
-  rsvpStatus: { [key: string]: boolean };
-  onRsvp: (eventId: string, e: React.MouseEvent) => void;
 }
 
 /**
  * The panel beside the calendar grid.
  *
  * Purely presentational — all state lives in EventCalendar. It has three
- * states, and the *first* is the one that ships today: with `EVENTS` empty,
- * every visitor sees the "nothing scheduled" case, so it gets real CTAs rather
- * than an apology.
+ * states. The "nothing scheduled" one gets real CTAs rather than an apology
+ * because it is what a visitor sees when the Google Calendar is bare or a sync
+ * has failed — a dead end otherwise. Keep it wired up even when the calendar is
+ * healthy and it never renders.
  */
 export const EventCalendarRail: React.FC<EventCalendarRailProps> = ({
   selectedISO,
@@ -39,8 +37,6 @@ export const EventCalendarRail: React.FC<EventCalendarRailProps> = ({
   activeFilter,
   today,
   onClear,
-  rsvpStatus,
-  onRsvp,
 }) => {
   const heading = selectedISO
     ? formatFullDate(selectedISO)
@@ -127,8 +123,6 @@ export const EventCalendarRail: React.FC<EventCalendarRailProps> = ({
               key={event.id}
               event={event}
               today={today}
-              isRsvped={rsvpStatus[event.id]}
-              onRsvp={onRsvp}
               idPrefix="event-calendar-rail-card"
             />
           ))}

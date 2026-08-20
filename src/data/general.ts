@@ -12,9 +12,33 @@ export const NEWSLETTER_URL = "https://go.osu.edu/aiclub";
 export const PROJECT_APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3Aj_10MRloCjjvdpF_HnvoOI8poBr6LveJTUvKTZkrhiDuA/viewform?usp=header";
 export const HACKAI_REGISTRATION_URL = PROJECT_APPLICATION_URL;
 
+/**
+ * "AIC Public Calendar" — the one calendar the website reads.
+ *
+ * A calendar dedicated to events meant for publication: everything on it is
+ * public by definition, so there is nothing to filter and nothing private that
+ * could reach the site by accident.
+ *
+ * Changing which calendar the site reads is a one-line edit here — the sync
+ * script imports this constant, and PUBLIC_CALENDAR_URL derives from it.
+ * scripts/apps-script/Code.gs has its own copy that must be kept in step,
+ * because Google's editor cannot import from this repo.
+ *
+ * See docs/calendar-sync.md.
+ */
+export const GOOGLE_CALENDAR_ID =
+  "9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com";
+
+/**
+ * Public view of that calendar. Two jobs: the "Subscribe" CTA on the Events
+ * page, and the fallback target for an event card whose `calendarUrl` is absent.
+ */
+export const PUBLIC_CALENDAR_URL =
+  `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(GOOGLE_CALENDAR_ID)}&ctz=America%2FNew_York`;
+
 export const MEETING_LOCATION = "Enarson 258";
 export const MEETING_DAY = "Wednesdays";
-export const MEETING_TIME = "7:00 PM";
+export const MEETING_TIME = "6:00 PM";
 export const MEETING_SCHEDULE = `${MEETING_DAY} ${MEETING_TIME}`;
 
 export const HACKAI_NAME = "HACKAI 2027";

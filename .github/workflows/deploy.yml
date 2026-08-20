@@ -9,6 +9,19 @@
 # Requires Settings -> Pages -> Build and deployment -> Source = "GitHub Actions".
 # With "Deploy from a branch" still selected this workflow runs but nothing it
 # produces is ever served.
+#
+# EVENTS COME FROM GOOGLE CALENDAR, so this workflow is also the sync mechanism:
+# the build fetches the calendar and bakes it into the bundle. That is why it
+# has four triggers rather than two. See docs/calendar-sync.md.
+#
+#   push                -> a code change
+#   workflow_dispatch   -> a human forcing a rebuild
+#   repository_dispatch -> the Apps Script, seconds after a calendar edit
+#   schedule            -> the safety net for when that trigger is broken
+#
+# Also requires the GOOGLE_CALENDAR_API_KEY repository secret. Without it the
+# sync step warns and keeps the committed snapshot, so the build still passes
+# but the site stops updating.
 name: Deploy to GitHub Pages
 
 on:
@@ -16,6 +29,23 @@ on:
     branches: [master]
   # Lets a deploy be re-run from the Actions tab without an empty commit.
   workflow_dispatch:
+  # Fired by the Apps Script in scripts/apps-script/Code.gs when the club
+  # calendar changes. This is the real freshness mechanism.
+  repository_dispatch:
+    types: [calendar-updated]
+  schedule:
+    # Every 6 hours, at :23. Off-the-hour deliberately — GitHub's scheduler is
+    # heavily contended on the hour and routinely delays those runs by 10+ min.
+    #
+    # 6 hours, not 1: the dispatch above already covers the normal case, so this
+    # only has to bound how stale the site can get while that is broken. Hourly
+    # would mean ~8,760 deployments a year for a calendar that changes weekly.
+    #
+    # GOTCHA: GitHub disables scheduled workflows after 60 days of repository
+    # inactivity and emails an admin. A club repo goes quiet every summer, so
+    # expect this. The Actions tab shows a banner with an "Enable" button; the
+    # other three triggers keep working meanwhile.
+    - cron: '23 */6 * * *'
 
 permissions:
   contents: read
@@ -31,6 +61,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # A fork inherits the schedule but not the secrets, so its scheduled runs
+    # would fail every 6 hours forever. The other triggers stay available.
+    if: github.event_name != 'schedule' || github.repository == 'OSU-AI-Club/OSU-AI-Club.github.io'
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +75,26 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # Between install and build on purpose: it runs through `tsx`, which npm
+      # ci provides, and Vite inlines the JSON it writes at build time.
+      #
+      # Deliberately NOT continue-on-error. A red build here leaves the previous
+      # deployment live — visitors keep seeing the last good calendar — and
+      # sends someone an email. Swallowing the error would show the same page
+      # with nobody alerted, which is how a site silently freezes for months.
+      # The one case that does not fail: a missing API key, which the script
+      # treats as "keep the committed snapshot" so fork PRs still build.
+      - name: Sync events from Google Calendar
+        env:
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+        run: npm run sync:calendar
+
+      # vite build uses esbuild and does not type-check, so this is the only
+      # thing standing between a type error and production. It also covers
+      # scripts/, which tsconfig.json picks up for free (it has no `include`).
+      - name: Type-check
+        run: npm run lint
 
       - name: Build
         run: npm run build

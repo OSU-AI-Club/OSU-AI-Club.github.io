@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-08-20T17:56:50.200Z",
+  "calendarId": "9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com",
+  "window": {
+    "from": "2025-08-01",
+    "to": "2027-09-01"
+  },
+  "events": [
+    {
+      "id": "46tarm6f9aisrtrlsh079rll3a-google-com",
+      "category": "General",
+      "title": "First Meeting",
+      "description": "Meet the new board members and have a peek at what we have planned for the year!",
+      "date": "2026-09-02",
+      "time": "6:00 PM – 7:00 PM",
+      "location": "258 Enarson Classroom Building, Columbus, OH 43210"
+    }
+  ]
+}

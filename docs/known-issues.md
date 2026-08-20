@@ -12,20 +12,34 @@ Things that look like bugs but are known. Read before "fixing" them.
 - **Most officers have empty `socials: {}`.** The previous values pointed at accounts belonging to
   other people or to accounts that don't exist.
 - The **Vice President** entry is a real vacancy (`name: 'TBD'`), not a data error.
-- **`EVENTS` is intentionally empty.** The eight previous entries were placeholder events with
-  invented descriptions and `example.com` links, so they were removed rather than shipped as if real.
-  The Events page renders designed empty states — the calendar still paginates, and the empty rail
-  and both section fallbacks point at Discord and the newsletter. Add real events per
-  [content-and-data.md](content-and-data.md#add-an-event); nothing else needs touching.
+- **`EVENTS` now comes from Google Calendar**, not from a hand-edited array — see
+  [calendar-sync.md](calendar-sync.md). The Events page still has designed empty states, but they are
+  no longer what ships: they are what a visitor sees if the calendar is bare or a sync has failed.
+  Keep them wired up; they are the degraded-state UI, not dead code.
 - Homepage stat counters, HackAI prize amounts, and the Projects hero stat strip are **illustrative
   numbers**, not audited figures.
 
 ## Functional gaps
 
-- **RSVP buttons do nothing but set local state.** `handleRsvp` in `src/pages/Events.tsx` flips a
-  React flag to show "RSVP SECURED"; it never opens `rsvpUrl`, never persists, and resets on reload.
-  The `rsvpUrl` field is currently dead data. Wire it to the real form before the site is relied on
-  for attendance.
+- **There is no RSVP.** The old buttons only flipped a local React flag ("RSVP SECURED") — they never
+  opened a URL, never persisted, and reset on reload — so they were replaced with an **Add to
+  Calendar** link to the event's Google Calendar page. If real attendance tracking is ever needed it
+  has to be a form, not a client-side flag.
+- **"Add to Calendar" opens Google's event page, not a one-click add.** It uses the API's `htmlLink`,
+  so a signed-out visitor meets a sign-in wall. A `calendar/render?action=TEMPLATE&…` URL would be a
+  true one-click add that works signed out; the sync script already has every input it needs.
+- **Multi-day events only appear on their start date** in the calendar grid. `indexEventsByDate()`
+  maps one event to exactly one date, so a span would mean either duplicating the event (breaking id
+  uniqueness) or teaching the calendar about ranges. The card text still shows the full span. HackAI
+  is a two-day event, so this is visible today.
+- **Links inside a calendar event's description are stripped** to plain text by the sync script's
+  HTML flattening. Officers are told to use a `Recap:` directive instead.
+- **The sync window is a rolling ±12 months**, so events silently stop being published a year after
+  they happen, recaps included. A permanent archive would mean merging into the snapshot rather than
+  replacing it.
+- **Scheduled workflows are disabled after 60 days of repository inactivity.** A club repo goes quiet
+  every summer, so expect the 6-hourly rebuild to switch itself off; the Actions tab shows an
+  "Enable workflow" banner. The Apps Script trigger keeps working meanwhile.
 - **"Sandbox Code" on the project modal fires an `alert()`** instead of linking to a repo
   (`src/pages/Projects.tsx`). `ProjectItem` has no `repoUrl` field yet.
 - **Project card images are remote Unsplash URLs** (`ProjectItem.image`). Officer photos were moved to

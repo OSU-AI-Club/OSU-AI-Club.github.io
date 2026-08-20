@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { EVENTS, EVENT_CATEGORIES } from '../data/events';
-import { Clock } from 'lucide-react';
+import { EVENTS, EVENTS_SYNCED_AT, EVENT_CATEGORIES } from '../data/events';
+import { Clock, CalendarPlus } from 'lucide-react';
 import { TextScramble } from '../components/TextScramble';
 import { Reveal } from '../components/Reveal';
 import { EventCalendar } from '../components/EventCalendar';
 import { EventCard } from '../components/EventCard';
 import { useRevealProps, useRevealSequenceProps, sequenceDelay, staggerDelay } from '../hooks/useReveal';
-import { formatLongDate, todayISO } from '../utils/date';
+import { formatLongDate, formatSyncStamp, todayISO } from '../utils/date';
 import {
   ALL_FILTER,
   byDateAsc,
@@ -20,7 +20,8 @@ import {
   MEETING_DAY,
   MEETING_TIME,
   CLUB_DISCORD_URL,
-  NEWSLETTER_URL
+  NEWSLETTER_URL,
+  PUBLIC_CALENDAR_URL
 } from '../data';
 
 export const Events: React.FC = () => {
@@ -32,7 +33,6 @@ export const Events: React.FC = () => {
   const upcomingHeaderReveal = useRevealProps();
   const pastHeaderReveal = useRevealProps();
   const [activeFilter, setActiveFilter] = useState<string>(ALL_FILTER);
-  const [rsvpStatus, setRsvpStatus] = useState<{ [key: string]: boolean }>({});
 
   /**
    * Resolved once per mount and threaded everywhere "past" is decided, so the
@@ -66,11 +66,6 @@ export const Events: React.FC = () => {
   const visibleUpcoming = filteredUpcoming.slice(0, MAX_LISTED);
   const visiblePast = pastEvents.slice(0, MAX_LISTED);
 
-  const handleRsvp = (eventId: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    setRsvpStatus(prev => ({ ...prev, [eventId]: true }));
-  };
-
   return (
     <div id="events-page-root" className="pt-[72px] min-h-screen">
       
@@ -91,7 +86,7 @@ export const Events: React.FC = () => {
             <TextScramble id="events-title-scramble" text="Club Events" delay={sequenceDelay(1)} />
           </h1>
           <p className="font-sans text-[15px] md:text-[17px] text-text-secondary leading-relaxed max-w-xl mb-8">
-            Workshops, speaker sessions, regional hackathons, and social mixers — explore our academic calendar and rsvp below.
+            Workshops, speaker sessions, regional hackathons, and social mixers — explore our academic calendar and add what you like to your own.
           </p>
 
           {/* Weekly Meetings Highlight Text */}
@@ -130,11 +125,23 @@ export const Events: React.FC = () => {
       <section id="events-calendar-section" className="py-20 bg-veil-band border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
 
-          <div className="flex items-center space-x-3 mb-10 select-none" {...calendarHeaderReveal}>
-            <span className="font-sans text-[12px] font-bold text-accent-secondary uppercase tracking-[0.2em]">
+          <div className="flex items-center space-x-3 mb-10" {...calendarHeaderReveal}>
+            <span className="font-sans text-[12px] font-bold text-accent-secondary uppercase tracking-[0.2em] select-none">
               Browse By Date
             </span>
             <div className="flex-1 h-[1px] bg-border-subtle" />
+            {/* Subscribing beats checking back: the visitor's own calendar then
+                updates with ours, no return visit required. */}
+            <a
+              id="events-subscribe-calendar"
+              href={PUBLIC_CALENDAR_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-bg-elevated border border-border-subtle text-text-secondary hover:text-accent-primary hover:border-accent-primary/40 font-sans text-[11px] font-bold tracking-wide transition-all cursor-pointer shadow-sm"
+            >
+              <CalendarPlus className="w-3.5 h-3.5" />
+              <span>Subscribe</span>
+            </a>
           </div>
 
           {/* The whole module reveals as one unit rather than per-cell. Note the
@@ -145,9 +152,23 @@ export const Events: React.FC = () => {
               events={EVENTS}
               activeFilter={activeFilter}
               today={today}
-              rsvpStatus={rsvpStatus}
-              onRsvp={handleRsvp}
             />
+
+            {/* The cheapest diagnostic on the page. An officer who added an
+                event and doesn't see it can tell "the sync is stale" from "I
+                forgot to hit save" without opening the Actions tab. */}
+            <p className="mt-5 text-center font-sans text-[11.5px] text-text-muted select-none">
+              Subscribe for up-to-date events on our {' '}
+              <a
+                href={PUBLIC_CALENDAR_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent-primary font-semibold hover:underline"
+              >
+                Google Calendar
+              </a>
+              {formatSyncStamp(EVENTS_SYNCED_AT) && ` · ${formatSyncStamp(EVENTS_SYNCED_AT)}`}
+            </p>
           </div>
         </div>
       </section>
@@ -187,12 +208,7 @@ export const Events: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {visibleUpcoming.map((item, idx) => (
               <Reveal key={item.id} delay={staggerDelay(idx)}>
-                <EventCard
-                  event={item}
-                  today={today}
-                  isRsvped={rsvpStatus[item.id]}
-                  onRsvp={handleRsvp}
-                />
+                <EventCard event={item} today={today} />
               </Reveal>
             ))}
           </div>
@@ -253,16 +269,22 @@ export const Events: React.FC = () => {
                   </p>
                 </div>
 
+                {/* Only when a recap actually exists — this used to render
+                    href="#", promising a recap and scrolling to the top. */}
                 <div className="pt-4 mt-auto border-t border-border-subtle/50 flex justify-end">
-                  <a
-                    href={item.recapUrl || '#'}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-accent-primary text-xs font-bold hover:underline inline-flex items-center space-x-1"
-                  >
-                    <span>View Recap</span>
-                    <span>→</span>
-                  </a>
+                  {item.recapUrl ? (
+                    <a
+                      href={item.recapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-accent-primary text-xs font-bold hover:underline inline-flex items-center space-x-1"
+                    >
+                      <span>View Recap</span>
+                      <span>→</span>
+                    </a>
+                  ) : (
+                    <span className="text-text-muted text-xs font-bold select-none">Recap coming soon</span>
+                  )}
                 </div>
               </div>
               </Reveal>
