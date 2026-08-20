@@ -43,10 +43,6 @@ interface EventCalendarProps {
   activeFilter: string;
   /** Hoisted from the page so every subtree agrees on "now". */
   today: ISODate;
-  /** Lifted to Events.tsx and passed through to the rail's EventCard so an
-   *  RSVP made there stays in sync with the Upcoming grid. */
-  rsvpStatus: { [key: string]: boolean };
-  onRsvp: (eventId: string, e: React.MouseEvent) => void;
 }
 
 /** Reused for every cell with no events, so we don't allocate 42 arrays a render. */
@@ -71,17 +67,16 @@ function isWithinBounds(iso: ISODate, bounds: Bounds | null): boolean {
 /**
  * Interactive month calendar for the Events page.
  *
- * Ships with `EVENTS` empty, so the no-events path is the primary one rather
- * than an edge case: `bounds` is null, month navigation is unclamped, the jump
- * strip doesn't render, and the rail shows its CTA state. As soon as real
- * events exist all three turn themselves on.
+ * The no-events path is fully designed rather than an edge case: `bounds` is
+ * null, month navigation is unclamped, the jump strip doesn't render, and the
+ * rail shows its CTA state. Events now come from Google Calendar, so that path
+ * is no longer what ships — it is what a visitor sees if the calendar is bare
+ * or a sync has failed. Keep it; it is the degraded-state UI, not dead code.
  */
 export const EventCalendar: React.FC<EventCalendarProps> = ({
   events,
   activeFilter,
   today,
-  rsvpStatus,
-  onRsvp,
 }) => {
   /**
    * The months containing events, from the UNFILTERED list. A filter-dependent
@@ -437,8 +432,6 @@ export const EventCalendar: React.FC<EventCalendarProps> = ({
         activeFilter={activeFilter}
         today={today}
         onClear={() => setSelectedISO(null)}
-        rsvpStatus={rsvpStatus}
-        onRsvp={onRsvp}
       />
     </div>
   );

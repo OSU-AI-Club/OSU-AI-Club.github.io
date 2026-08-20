@@ -50,10 +50,14 @@ assets/                 # Source images, imported by JS (NOT a static public/ di
 ├── profiles/           # Officer headshots, square crops
 └── sponsors/           # Sponsor logos for the marquee
 docs/                   # You are here
+scripts/
+├── sync-calendar.ts    # Fetches Google Calendar at build time -> events.generated.json
+└── apps-script/        # Code.gs — pasted into script.google.com; triggers a rebuild on edit
 src/
 ├── main.tsx            # Entry point; builds the favicon on a canvas at runtime
 ├── App.tsx             # Page state + layout shell
 ├── data/               # ★ ALL site content lives here — general/officers/events/projects/faqs
+│                       #   events.generated.json is GENERATED; see docs/calendar-sync.md
 ├── types.ts            # Officer / ClubEvent / ProjectItem interfaces
 ├── index.css           # ★ ALL color tokens live here (light + dark)
 ├── theme.ts            # Light/dark store; persists preference, follows the OS

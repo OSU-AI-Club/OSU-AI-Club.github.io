@@ -51,8 +51,8 @@ editing these constants — the string "HackAI 2027" should not appear literally
 | Export | Type | Rendered by |
 | --- | --- | --- |
 | `OFFICERS` | `Officer[]` | About page — flip cards |
-| `EVENTS` | `ClubEvent[]` | Events page — calendar, upcoming grid, recap strip. **Empty by design**; split by date, not a flag |
-| `EVENT_CATEGORIES` | `{id, label, accent}[]` | Events page filter pills, calendar legend, all accent colors |
+| `EVENTS` | `ClubEvent[]` | Events page — calendar, upcoming grid, recap strip. **Synced from Google Calendar, not hand-edited** — see [calendar-sync.md](calendar-sync.md). Split by date, not a flag |
+| `EVENT_CATEGORIES` | `{id, label, accent, googleColorIds}[]` | Events page filter pills, calendar legend, all accent colors, and the Google Calendar color map. Lives in `src/data/event-categories.ts` |
 | `PROJECTS` | `ProjectItem[]` | Projects page — search/filter grid |
 | `FAQS` | `{q, a}[]` | `FAQ.tsx`, on the About page |
 | `HACKAI_FAQS` | `{q, a}[]` | HackAI page accordion |
@@ -86,46 +86,44 @@ The About page renders three cards per row on desktop, so multiples of three loo
 
 ### Add an event
 
-`EVENTS` in [`src/data/events.ts`](../src/data/events.ts) is **currently empty on purpose** — the
-previous entries were placeholder content with invented descriptions and `example.com` links. The
-Events page renders designed empty states until real events are added. Append one like this:
+**Not in code.** Add it to the **AIC Public Calendar** (not the club account's own working
+calendar — see [calendar-sync.md](calendar-sync.md)) and set the event's **color** to choose its
+category. The site rebuilds within a few minutes.
 
-```ts
-{
-  id: 'pytorch-intro',        // kebab-case, unique — used as the React key
-  category: 'Workshop',       // an id from EVENT_CATEGORIES (same file)
-  title: 'Intro to PyTorch & Neural Networks',
-  description: 'One or two sentences shown on the event card.',
-  date: '2026-10-07',         // YYYY-MM-DD — the ONLY date field
-  time: MEETING_TIME,         // or a literal, e.g. 'Weekend-long'
-  location: MEETING_LOCATION, // or a literal, e.g. 'Ohio Union Ballroom'
-  rsvpUrl: 'https://...',
-  recapUrl: 'https://...',    // optional; shown once the event is past
-}
-```
+Full instructions, the color legend, and the debugging checklist are in
+[calendar-sync.md](calendar-sync.md) — that is the file to read (and to hand to new officers).
 
-**`date` is the single source of truth for everything time-related.** The `OCT` / `07` card badge,
-the `Oct 7, 2026` recap-strip label, the weekday, the calendar cell it lands in, and whether the
-event counts as past are all derived from it at render time by [`src/utils/date.ts`](../src/utils/date.ts).
-There used to be separate `dateString`, `day`, and `month` fields; they drifted out of sync because
-nothing checked them. **Do not add them back.**
+`src/data/events.ts` no longer holds any event data. It reads and validates
+`src/data/events.generated.json`, which `scripts/sync-calendar.ts` writes during the CI build.
+**Do not edit that JSON by hand** — the next build overwrites it.
+
+**`date` is still the single source of truth for everything time-related.** The `OCT` / `07` card
+badge, the `Oct 7, 2026` recap-strip label, the weekday, the calendar cell it lands in, and whether
+the event counts as past are all derived from it at render time by
+[`src/utils/date.ts`](../src/utils/date.ts). There used to be separate `dateString`, `day`, and
+`month` fields; they drifted out of sync because nothing checked them. **Do not add them back.**
 
 Past-ness is derived too — an event moves itself into the "Past Events Highlights" strip once its
-date passes, no edit required. The optional `isPast` field is an **override**, for pinning an event
-on the wrong side of that line (e.g. holding a just-finished event out of the strip until its
-`recapUrl` exists). Leave it off unless you specifically need that.
+date passes. The optional `isPast` field is an **override** for pinning an event on the wrong side of
+that line. The sync script never emits it; it exists as a manual escape hatch.
 
 Ordering does not matter; the page sorts by date.
 
 ### Add an event category
 
-`EVENT_CATEGORIES` at the top of [`src/data/events.ts`](../src/data/events.ts) is the one category
-list. Adding a row there adds the filter pill, the calendar legend entry, and the accent color
-everywhere at once:
+`EVENT_CATEGORIES` in [`src/data/event-categories.ts`](../src/data/event-categories.ts) is the one
+category list. Adding a row there adds the filter pill, the calendar legend entry, the accent color,
+and the Google Calendar colors that map to it — all at once:
 
 ```ts
-{ id: 'Career', label: 'Career Nights', accent: 'tertiary' },
+{ id: 'Career', label: 'Career Nights', accent: 'tertiary', googleColorIds: ['3'] },
 ```
+
+`googleColorIds` is how an officer picks the category: they set the event's color in Google Calendar
+and the sync script reads it back. The first id is the canonical one; the rest are forgiving aliases.
+**Every id must appear at most once across the whole table.** Also add a case to `categoryBadgeClass`
+alongside `categoryAccentClass` and `categoryDotClass`, and update the legend in
+[calendar-sync.md](calendar-sync.md).
 
 `accent` is a design-token name — `'primary'` (blue), `'secondary'` (green), `'tertiary'` (purple),
 `'warm'` (amber), or `'gradient'` (the blue/green split HackAI uses) — not a raw Tailwind class, so

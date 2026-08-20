@@ -1,16 +1,14 @@
 import React from 'react';
-import { MapPin, Clock, ArrowRight, CheckCircle } from 'lucide-react';
+import { MapPin, Clock, ArrowRight, CalendarPlus } from 'lucide-react';
 import type { ClubEvent } from '../types';
 import { type ISODate, isoDayNumber, isoMonthBadge } from '../utils/date';
-import { categoryAccentClass, isEventPast } from '../utils/events';
+import { categoryAccentClass, categoryBadgeClass, isEventPast } from '../utils/events';
+import { PUBLIC_CALENDAR_URL } from '../data/general';
 
 interface EventCardProps {
   event: ClubEvent;
   /** Threaded down rather than read here — see the single todayISO() call in Events.tsx. */
   today: ISODate;
-  /** Ignored once the event is past — the footer switches to a recap link instead. */
-  isRsvped?: boolean;
-  onRsvp?: (eventId: string, e: React.MouseEvent) => void;
   /**
    * Distinguishes DOM ids between the two places this card can render at once
    * — the upcoming grid and the calendar rail can both show the next event on
@@ -22,8 +20,18 @@ interface EventCardProps {
 
 /**
  * The full event card: color bar, floating date badge, category tag, title,
- * complete (untruncated) description, metadata footer, and an RSVP button
- * that becomes a recap link once the event is past.
+ * complete (untruncated) description, metadata footer, and a footer action
+ * that depends on which side of today the event falls.
+ *
+ * The footer has three states, not two:
+ *   upcoming        -> "Add to Calendar", linking to the event on Google Calendar
+ *   past + recap    -> "View Recap"
+ *   past, no recap  -> an inert "Event concluded" block
+ *
+ * That third state exists because the recap link used to render `href="#"` when
+ * `recapUrl` was missing — a link that promised a recap and scrolled to the top
+ * of the page. It stays a filled block rather than nothing so cards keep equal
+ * heights in the 3-column grid.
  *
  * This is "the box component" — originally built for the Upcoming Events
  * grid and now shared with EventCalendarRail so a day selected on the
@@ -32,8 +40,6 @@ interface EventCardProps {
 export const EventCard: React.FC<EventCardProps> = ({
   event,
   today,
-  isRsvped,
-  onRsvp,
   idPrefix = 'event-card-item',
   className = '',
 }) => {
@@ -59,12 +65,9 @@ export const EventCard: React.FC<EventCardProps> = ({
             </span>
           </div>
 
-          {/* Category Badge tag */}
-          <span className={`inline-block px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider rounded-md border ${
-            event.category === 'Workshop'
-              ? 'bg-accent-primary-dim text-accent-primary border-accent-primary/10'
-              : 'bg-accent-secondary/10 text-accent-secondary border-accent-secondary/15'
-          }`}>
+          {/* Category Badge tag — color comes from the accent system, so it
+              always agrees with the bar above and the calendar dots. */}
+          <span className={`inline-block px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider rounded-md border ${categoryBadgeClass(event.category)}`}>
             {event.category}
           </span>
 
@@ -96,31 +99,40 @@ export const EventCard: React.FC<EventCardProps> = ({
         </div>
 
         {past ? (
+          event.recapUrl ? (
+            <a
+              id={`${idPrefix}-recap-${event.id}`}
+              href={event.recapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full mt-2 py-3 bg-bg-primary hover:bg-accent-primary-dim border border-border-subtle text-text-secondary hover:text-accent-primary text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+            >
+              <span>View Recap</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          ) : (
+            <div
+              id={`${idPrefix}-concluded-${event.id}`}
+              className="w-full mt-2 py-3 bg-bg-primary border border-border-subtle text-text-muted text-xs font-bold rounded-xl flex items-center justify-center select-none"
+            >
+              <span>Event Concluded</span>
+            </div>
+          )
+        ) : (
+          /* Google's own page for the event, where a visitor can copy it into
+             their calendar. Falls back to the club calendar for any event
+             without one — a hand-seeded entry, or a snapshot predating the
+             field. Never renders a dead href. */
           <a
-            id={`${idPrefix}-recap-${event.id}`}
-            href={event.recapUrl || '#'}
+            id={`${idPrefix}-add-to-calendar-${event.id}`}
+            href={event.calendarUrl ?? PUBLIC_CALENDAR_URL}
             target="_blank"
             rel="noreferrer"
-            className="w-full mt-2 py-3 bg-bg-primary hover:bg-accent-primary-dim border border-border-subtle text-text-secondary hover:text-accent-primary text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
-          >
-            <span>View Recap</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        ) : isRsvped ? (
-          <div id={`${idPrefix}-rsvp-success-${event.id}`} className="mt-2 py-2 w-full bg-accent-secondary/15 border border-accent-secondary/20 text-accent-secondary text-xs rounded-xl font-bold flex items-center justify-center space-x-1.5 select-none animate-fade-in">
-            <CheckCircle className="w-4 h-4" />
-            <span>RSVP SECURED</span>
-          </div>
-        ) : (
-          <button
-            type="button"
-            id={`${idPrefix}-rsvp-action-${event.id}`}
-            onClick={(e) => onRsvp?.(event.id, e)}
             className="w-full mt-2 py-3 bg-accent-primary-dim hover:bg-accent-primary text-accent-primary hover:text-on-accent text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all cursor-pointer shadow-sm hover:shadow-md"
           >
-            <span>Confirm Attendance RSVP</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+            <CalendarPlus className="w-3.5 h-3.5" />
+            <span>Add to Calendar</span>
+          </a>
         )}
       </div>
     </div>

@@ -14,6 +14,8 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "allowJs": true,
+    // src/data/events.ts imports events.generated.json — see docs/calendar-sync.md.
+    "resolveJsonModule": true,
     "jsx": "react-jsx",
     "paths": {
       "@/*": [

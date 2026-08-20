@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "generatedAt": "",
+  "calendarId": "9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com",
+  "window": { "from": "", "to": "" },
+  "_comment": "GENERATED FILE — do not edit by hand. Written by scripts/sync-calendar.ts (npm run sync:calendar) and overwritten on every CI build. Empty until the first successful sync: every event on the site comes from the club Google Calendar, and nothing is hardcoded here. An empty array renders the Events page's designed empty states. See docs/calendar-sync.md.",
+  "events": []
+}
