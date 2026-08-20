@@ -29,6 +29,7 @@
  * from forks, where repository secrets are unavailable by design.
  */
 
+import { config as loadEnv } from 'dotenv';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -49,6 +50,16 @@ import {
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_FILE = resolve(HERE, '../src/data/events.generated.json');
+
+/**
+ * Load .env so a local run picks up the API key without exporting it into the
+ * shell every time. `quiet` suppresses dotenv's startup banner.
+ *
+ * .env is gitignored — the key must never be committed. On CI there is no .env
+ * and the key arrives as a repository secret in the environment instead, which
+ * this call leaves untouched: dotenv does not overwrite existing variables.
+ */
+loadEnv({ quiet: true });
 
 /**
  * Imported rather than duplicated: which calendar the site reads is a property
