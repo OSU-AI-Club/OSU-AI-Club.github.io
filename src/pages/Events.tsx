@@ -158,7 +158,7 @@ export const Events: React.FC = () => {
                 event and doesn't see it can tell "the sync is stale" from "I
                 forgot to hit save" without opening the Actions tab. */}
             <p className="mt-5 text-center font-sans text-[11.5px] text-text-muted select-none">
-              Synced from our{' '}
+              Subscribe for up-to-date events on our {' '}
               <a
                 href={PUBLIC_CALENDAR_URL}
                 target="_blank"
