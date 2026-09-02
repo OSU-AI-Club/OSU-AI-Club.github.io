@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 // Defines the chronological layout order of the site navigation architecture
-const PAGE_ORDER = ['home', 'about', 'hackai', 'projects', 'events', 'getinvolved'];
+const PAGE_ORDER = [
+  'home',
+  'about',
+  'hackai',
+  'projects',
+  'events',
+  'newsletter',
+  'researchexpo',
+  'getinvolved',
+];
 
 interface PageTransitionProps {
   activePage: string;

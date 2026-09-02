@@ -1,12 +1,8 @@
 import React from 'react';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { useRevealProps } from '../hooks/useReveal';
-import {
-  HACKAI_NAME,
-  HACKAI_DATE_FULL,
-  HACKAI_LOCATION_FULL
-} from '../data';
+import { HACKAI_NAME } from '../data';
 
 /**
  * Circuit-board brain for the teaser's visualizer panel, drawn in a 200x180
@@ -231,12 +227,14 @@ export const HackAITeaser: React.FC<HackAITeaserProps> = ({ onNavigate }) => {
               </h3>
 
               <p className="font-sans text-[15px] md:text-[17px] text-text-on-inverse-muted leading-relaxed max-w-lg mb-8">
-                36 Hours. 100+ Builders. $5,000+ in prizes. Combine prompt compilers, image diffusion, reinforcement learning, and LLM fine-tunes to build systems that reshape computing.
+                25 Hours. 100+ Builders. $2,000 in prizes. Combine prompt compilers, image diffusion, reinforcement learning, and LLM fine-tunes to build systems that reshape computing.
               </p>
             </div>
 
-            {/* Date/Location Details row and CTA button */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 w-full mt-auto">
+            {/* CTA button. No date/location row alongside it: the HackAI page
+                itself no longer states either, and the teaser must not be the
+                one place on the site still advertising them. */}
+            <div className="flex w-full mt-auto">
               <button
                 id="teaser-hack-cta-btn"
                 onClick={() => {
@@ -244,20 +242,9 @@ export const HackAITeaser: React.FC<HackAITeaserProps> = ({ onNavigate }) => {
                 }}
                 className="px-8 py-3.5 bg-accent-primary hover:bg-accent-primary-hover text-on-accent text-[14px] font-bold rounded-full shadow-[0_4px_20px_var(--ui-accent-glow)] hover:shadow-[0_6px_28px_var(--ui-accent-glow)] transition-all duration-200 transform hover:-translate-y-0.5 flex items-center space-x-2 w-fit cursor-pointer"
               >
-                <span>Explore & Register</span>
+                <span>Explore HackAI</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-
-              <div className="flex items-center space-x-5 text-[13px] md:text-[14px] text-text-on-inverse/70 font-mono">
-                <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4 text-accent-secondary" />
-                  <span>{HACKAI_DATE_FULL}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-accent-secondary" />
-                  <span>{HACKAI_LOCATION_FULL}</span>
-                </div>
-              </div>
             </div>
           </div>
 

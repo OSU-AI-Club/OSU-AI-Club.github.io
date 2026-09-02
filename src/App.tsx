@@ -6,6 +6,8 @@ import { About } from './pages/About';
 import { Events } from './pages/Events';
 import { HackAI } from './pages/HackAI';
 import { Projects } from './pages/Projects';
+import { Newsletter } from './pages/Newsletter';
+import { ResearchExpo } from './pages/ResearchExpo';
 import { GetInvolved } from './pages/GetInvolved';
 import { SmoothScrollProvider } from './components/SmoothScrollProvider';
 import { PageTransition } from './components/PageTransition';
@@ -26,6 +28,10 @@ export default function App() {
         return <HackAI />;
       case 'projects':
         return <Projects />;
+      case 'newsletter':
+        return <Newsletter />;
+      case 'researchexpo':
+        return <ResearchExpo />;
       case 'getinvolved':
         return <GetInvolved onNavigate={setActivePage} />;
       default:

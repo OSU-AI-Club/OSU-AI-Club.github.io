@@ -12,12 +12,11 @@ Things that look like bugs but are known. Read before "fixing" them.
 - **Most officers have empty `socials: {}`.** The previous values pointed at accounts belonging to
   other people or to accounts that don't exist.
 - The **Vice President** entry is a real vacancy (`name: 'TBD'`), not a data error.
-- **`EVENTS` now comes from Google Calendar**, not from a hand-edited array — see
-  [calendar-sync.md](calendar-sync.md). The Events page still has designed empty states, but they are
-  no longer what ships: they are what a visitor sees if the calendar is bare or a sync has failed.
-  Keep them wired up; they are the degraded-state UI, not dead code.
-- Homepage stat counters, HackAI prize amounts, and the Projects hero stat strip are **illustrative
-  numbers**, not audited figures.
+- **The Events page is a Google Calendar iframe**, not custom UI over synced data. It renders
+  light-only in both themes (Google provides no dark mode for embeds), which is why it sits in an
+  explicit white card. If the page looks blank, check the calendar is still shared publicly with
+  *See all event details*.
+- Homepage stat counters and HackAI prize amounts are **illustrative numbers**, not audited figures.
 
 ## Functional gaps
 
@@ -40,11 +39,14 @@ Things that look like bugs but are known. Read before "fixing" them.
 - **Scheduled workflows are disabled after 60 days of repository inactivity.** A club repo goes quiet
   every summer, so expect the 6-hourly rebuild to switch itself off; the Actions tab shows an
   "Enable workflow" banner. The Apps Script trigger keeps working meanwhile.
-- **"Sandbox Code" on the project modal fires an `alert()`** instead of linking to a repo
-  (`src/pages/Projects.tsx`). `ProjectItem` has no `repoUrl` field yet.
-- **Project card images are remote Unsplash URLs** (`ProjectItem.image`). Officer photos were moved to
-  bundled assets for exactly this reason — remote images break, cost a round trip, and leak referrers.
-  Project images should follow, into `assets/projects/`.
+- **The Projects page is a placeholder.** `src/pages/Projects.tsx` renders its hero plus an
+  "under construction" notice; the project grid, filter sidebar and flip-card detail modal were
+  removed because `PROJECTS` in `src/data/projects.ts` is empty. The data file and the
+  `ProjectItem` type are kept for the rebuild — see git history for the previous implementation.
+  Two things to fix when it returns: the old "Sandbox Code" button fired an `alert()` because
+  `ProjectItem` has no `repoUrl` field, and `ProjectItem.image` took remote Unsplash URLs where
+  officer photos long since moved to bundled assets (remote images break, cost a round trip, and
+  leak referrers) — put project images in `assets/projects/`.
 - **No deep linking.** See [architecture.md](architecture.md#navigation-state-not-a-router). A host
   serving anything other than `index.html` for unknown paths will 404.
 
@@ -87,8 +89,8 @@ Things that look like bugs but are known. Read before "fixing" them.
 
 ## Accessibility
 
-- Officer and project cards are clickable `<div>`s with no `role`, `tabIndex`, or keyboard handler —
-  the flip-card modals are mouse-only to open. `Escape` does close them.
+- Officer cards are clickable `<div>`s with no `role`, `tabIndex`, or keyboard handler — the
+  flip-card modal is mouse-only to open. `Escape` does close it.
 - Under `prefers-reduced-motion: reduce`, the custom scroll, the scroll reveals, and the hero's
   ambient rotation all back off. `PageTransition`'s slide and the hero's node pulse still run
   regardless of that preference.

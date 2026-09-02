@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Trophy, Sparkles, BrainCircuit, Users, Terminal, Code2, Play } from 'lucide-react';
+import { Trophy, Sparkles, BrainCircuit, Users, Terminal, Code2, Play } from 'lucide-react';
 import { TextScramble } from '../components/TextScramble';
 import { Reveal } from '../components/Reveal';
 import { useRevealProps, useRevealSequenceProps, sequenceDelay, staggerDelay } from '../hooks/useReveal';
 import {
   HACKAI_NAME,
-  HACKAI_DATE_FULL,
-  HACKAI_LOCATION_FULL,
   HACKAI_BANNER_BADGE,
-  HACKAI_FAQS,
-  HACKAI_REGISTRATION_URL
+  HACKAI_FAQS
 } from '../data';
 
 export const HackAI: React.FC = () => {
@@ -25,17 +22,20 @@ export const HackAI: React.FC = () => {
     setExpandedFaq(prev => (prev === idx ? null : idx));
   };
 
+  // Prizes are per challenge subject, not overall: the same podium is paid out
+  // in each of the three subjects, so these three cards describe nine awards.
+  // `cash` is therefore always followed by the per-subject qualifier in the UI
+  // — dropping it would read as a single event-wide payout.
+  const CHALLENGE_SUBJECT_COUNT = 3;
+
   const prizes = [
-    { rank: '1st Place Overall', cash: '$5,000', label: 'Grand Prize Sweepstakes', cardBg: 'bg-[linear-gradient(135deg,var(--ui-surface-inverse)_0%,var(--ui-surface-inverse-deep)_100%)] border-accent-secondary-on-inverse/35' },
-    { rank: '2nd Place Overall', cash: '$3,000', label: 'Silver Medalist', cardBg: 'bg-bg-secondary border-border-subtle' },
-    { rank: '3rd Place Overall', cash: '$1,500', label: 'Bronze Medalist', cardBg: 'bg-bg-secondary border-border-subtle' },
-    { rank: 'Best Novel UI Agent', cash: '$1,000', label: 'Generative Human Interface', cardBg: 'bg-bg-secondary border-border-subtle' },
-    { rank: 'Best Applied CV Pipeline', cash: '$1,000', label: 'Sensor Vision Tracking', cardBg: 'bg-bg-secondary border-border-subtle' },
-    { rank: 'Best Undergrad Track', cash: '$500', label: 'Emerging Freshmen Team', cardBg: 'bg-bg-secondary border-border-subtle' },
+    { rank: '1st Place', cash: '$300', label: 'Awarded in each challenge subject', cardBg: 'bg-[linear-gradient(135deg,var(--ui-surface-inverse)_0%,var(--ui-surface-inverse-deep)_100%)] border-accent-secondary-on-inverse/35' },
+    { rank: '2nd Place', cash: '$200', label: 'Awarded in each challenge subject', cardBg: 'bg-bg-secondary border-border-subtle' },
+    { rank: '3rd Place', cash: '$100', label: 'Awarded in each challenge subject', cardBg: 'bg-bg-secondary border-border-subtle' },
   ];
 
   const schedule = [
-    { time: 'Saturday 8:30 AM', title: 'Check-In & Registration opens', desc: `Arrive at ${HACKAI_LOCATION_FULL}, pick up event credentials and swag kits.` },
+    { time: 'Saturday 8:30 AM', title: 'Check-In & Registration opens', desc: 'Arrive at the venue, pick up event credentials and swag kits.' },
     { time: 'Saturday 9:00 AM', title: 'Opening ceremony & keynote address', desc: 'Hear from our corporate research sponsors and reveal the prompt dataset.' },
     { time: 'Sunday 11:00 AM', title: 'Mentor office hours & workshop block', desc: 'Drop-in debugging with industry mentors plus beginner tracks on APIs and deployment.' },
     { time: 'Sunday 4:00 PM', title: 'Hacking deadline & submissions lock', desc: 'All notebooks and project code repositories must be committed onto GitHub.' },
@@ -45,7 +45,7 @@ export const HackAI: React.FC = () => {
   return (
     <div id="hackai-page-root" className="pt-[72px] min-h-screen">
       
-      {/* 1. HACKAI HERO WITH DETAILS */}
+      {/* 1. HACKAI HERO */}
       <section
         id="hackai-hero"
         className="py-16 md:py-24 border-b border-border-subtle relative overflow-hidden flex flex-col items-center justify-center text-center"
@@ -59,31 +59,9 @@ export const HackAI: React.FC = () => {
             <TextScramble id="hackai-title-scramble" text={HACKAI_NAME} delay={sequenceDelay(1)} />
           </h1>
           
-          <p className="font-sans text-[16px] md:text-[18px] text-text-secondary leading-relaxed max-w-2xl mb-10 text-center">
+          <p className="font-sans text-[16px] md:text-[18px] text-text-secondary leading-relaxed max-w-2xl text-center">
             HackAI is a 2-day hackathon where teams of 1-4 students can choose from challenges or tackle their own projects with the help of artificial intelligence. Mentors will be provided throughout the day, and judging will occur on the second day to determine the best AI projects of HackAI 2027. Tutorials, datasets, and meals will be provided.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-mono text-text-primary mb-12">
-            <div className="flex items-center space-x-2 bg-bg-elevated/60 border border-border-subtle px-4 py-2.5 rounded-full shadow-sm">
-              <Calendar className="w-4 h-4 text-accent-primary" />
-              <span>{HACKAI_DATE_FULL}</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-bg-elevated/60 border border-border-subtle px-4 py-2.5 rounded-full shadow-sm">
-              <MapPin className="w-4 h-4 text-accent-primary" />
-              <span>{HACKAI_LOCATION_FULL}</span>
-            </div>
-          </div>
-
-          <a
-            id="scrolldown-register-btn"
-            href={HACKAI_REGISTRATION_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="px-8 py-4 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-sm font-bold rounded-full shadow-[0_4px_16px_var(--ui-accent-glow)] hover:shadow-[0_6px_24px_var(--ui-accent-glow)] transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer flex items-center space-x-2 inline-flex"
-          >
-            <span>Register for HackAI</span>
-            <span className="font-mono">→</span>
-          </a>
         </div>
       </section>
 
@@ -94,10 +72,11 @@ export const HackAI: React.FC = () => {
             Prize Pool Stakes
           </span>
           <h2 className="font-display text-[32px] md:text-[46px] font-extrabold text-text-primary tracking-tight">
-            $12,000+ Team Cash Prizes
+            $2,000 in Total Cash Prizes
           </h2>
           <p className="font-sans text-sm text-text-secondary mt-3">
-            Grand cash prizes and specialized category badges sponsored by our corporate computing sponsors.
+            {CHALLENGE_SUBJECT_COUNT} challenge subjects, released before the event. Each one is
+            judged on its own and pays out its own full podium.
           </p>
         </div>
 
@@ -121,6 +100,9 @@ export const HackAI: React.FC = () => {
                   
                   <div className={`font-mono text-[38px] md:text-[48px] font-extrabold tracking-tight leading-none mt-4 ${isGrand ? 'text-on-inverse' : 'text-accent-primary'}`}>
                     {item.cash}
+                    <span className={`font-sans text-[13px] font-semibold tracking-normal ml-2 ${isGrand ? 'text-on-inverse-muted' : 'text-text-secondary'}`}>
+                      per subject
+                    </span>
                   </div>
                 </div>
 

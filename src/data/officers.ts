@@ -31,6 +31,11 @@ type OfficerRecord = Omit<Officer, 'photo'>;
 // NOTE: bios below are neutral role descriptions. Replace them with copy each
 // officer has written and approved — do not invent internships, labs or research
 // interests for a named person.
+//
+// The expanded card on the About page renders three equal sections: `bio`,
+// `workExperience` and `funFact`. The last two are optional and unset here on
+// purpose — the same rule applies, so they stay empty (the card shows a
+// "Coming soon." placeholder) until each officer supplies their own copy.
 const OFFICER_RECORDS: OfficerRecord[] = [
   {
     id: 'anirudh-chinthagunta',
@@ -88,25 +93,16 @@ const OFFICER_RECORDS: OfficerRecord[] = [
     }
   },
   {
-    id: 'cynthia-song',
-    name: 'Cynthia Song',
-    role: 'Technology Director',
-    major: 'Computer Science and Engineering',
-    minor: 'TBD',
-    year: 'TBD Year',
-    initials: 'CS',
-    bio: 'Co-leads the club\'s technical programming, workshop curriculum, and semester project teams.',
-    socials: {}
-  },
-  {
     id: 'evan-menges',
     name: 'Evan Menges',
-    role: 'Technology Director',
+    role: 'Chief Technology Officer',
     major: 'Electrical Engineering, Economics',
     minor: 'Nuclear Engineering',
     year: '4th Year',
     initials: 'EM',
     bio: 'Co-leads the club\'s technical programming, maintains this website, and manages the club\'s developer tooling.',
+    workExperience: 'Machine Learning Engineer Researcher @ National Taiwan University, High-Voltage Materials Engineer @ OSU, Energy Sector Analyst Intern @ Holos Ventures LLC',
+    funFact: 'I used to have 9 cats.',
     socials: {
       linkedin: 'https://www.linkedin.com/in/evan-menges/',
       github: 'https://github.com/3venthatguy',

@@ -12,9 +12,9 @@
  */
 
 import aiLogo from '../assets/images/AI_Logo_Final.png';
-import lab99Logo from '../assets/sponsors/99PLabs_Logo_Final.png';
-import ciscoLogo from '../assets/sponsors/Cisco_logo_blue_2016.svg.png';
-import janeStreetLogo from '../assets/sponsors/Jane_Street_Logo.png';
+// Straight from data/sponsors rather than the barrel: this module runs at boot,
+// and the barrel would drag officers/projects/faqs into that path for nothing.
+import { SPONSORS } from './data/sponsors';
 
 interface SplashApi {
   setProgress: (n: number) => void;
@@ -35,7 +35,20 @@ declare global {
  * waiting on it, and holding the splash open for off-screen assets is the one
  * way a loading screen can make a slow connection feel worse rather than better.
  */
-const CRITICAL_IMAGES = [aiLogo, lab99Logo, ciscoLogo, janeStreetLogo];
+/**
+ * Only the logos the marquee shows first — the roster is long and the same rule
+ * applies inside it: the tenth sponsor scrolls in later and nobody is waiting on
+ * it. Derived from SPONSORS rather than imported by filename so that editing the
+ * roster (or an `assets/sponsors/` rename) can never break this module.
+ */
+const PRELOADED_SPONSOR_COUNT = 3;
+
+const CRITICAL_IMAGES = [
+  aiLogo,
+  ...SPONSORS.slice(0, PRELOADED_SPONSOR_COUNT)
+    .map((sponsor) => sponsor.logo)
+    .filter((logo): logo is string => Boolean(logo)),
+];
 
 /** Progress is handed over from the inline script's creep at this point. */
 const MOUNT_PROGRESS = 70;

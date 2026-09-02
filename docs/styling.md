@@ -119,7 +119,8 @@ If you put an accent color inside an inverse panel, reach for the `-on-inverse` 
 ### Status and effects
 
 `status-success` / `status-warning` / `status-danger` replace the old `green-500` / `orange-500` /
-`#dc2626`. `badge-accent` backs the metric pill on the Projects modal.
+`#dc2626`. `badge-accent` is defined for metric pills but is currently unused — it backed the
+metric pill on the removed Projects modal.
 
 Effects are variables rather than tokens because they go inside arbitrary values:
 
@@ -274,8 +275,8 @@ such an element silently kills its hover. The wrapper keeps the two transforms o
 
 - `StatsBar` — `divide-y`/`divide-x` draws separators between *direct* children; wrapping each stat
   cell removes them. The whole band reveals as one unit instead.
-- `Footer`, `AboutSection`, `Projects` — children carry `lg:col-span-*`. A wrapper without the span
-  collapses the 12-col layout.
+- `Footer`, `AboutSection` — children carry `lg:col-span-*`. A wrapper without the span collapses
+  the 12-col layout.
 
 Where a wrapper *is* used inside a stretch grid (`GetInvolved`'s three boxes), **both** the wrapper
 and the card need `h-full`, or the boxes stop matching heights.
@@ -283,13 +284,13 @@ and the card need `h-full`, or the boxes stop matching heights.
 ### Details worth preserving
 
 - The revealed state is `transform: none`, not `translateY(0)`. A lingering transform makes the
-  element a containing block, which offsets `getBoundingClientRect()` for the officer/project
-  flip-card measurement and re-anchors `position: fixed` descendants.
+  element a containing block, which offsets `getBoundingClientRect()` for the officer flip-card
+  measurement and re-anchors `position: fixed` descendants.
 - The hidden state lives **inside** `@media (prefers-reduced-motion: no-preference)`, so under
   `reduce` nothing is ever hidden and the accessible path needs no JS to rescue it. The hook also
   starts revealed if `IntersectionObserver` is missing — content at `opacity: 0` must never strand.
-- In `About` and `Projects`, the `<Reveal>` wraps *both* branches of the card/placeholder swap. If it
-  unmounted with the card, closing the modal would replay that card's reveal.
+- In `About`, the `<Reveal>` wraps *both* branches of the card/placeholder swap. If it unmounted
+  with the card, closing the modal would replay that card's reveal.
 - `staggerDelay(idx)` caps at 8 steps so a 9-card grid doesn't trail by half a second.
 
 ## Conventions in the JSX
@@ -301,9 +302,9 @@ and the card need `h-full`, or the boxes stop matching heights.
   `officer-card-shell-${id}`, `footer-contact`). Nothing scrolls to `#footer-contact` any more since
   the "Contact Us" tab was replaced by the Get Involved page, but it is kept as a deep-link target.
   Don't rename these casually.
-- **Fixed card dimensions.** Officer cards are `300×380`, project cards `h-[420px]`. The flip-to-modal
-  animation measures the card with `getBoundingClientRect()` and animates from those exact numbers,
-  so changing a card's size means checking the expanded state too.
+- **Fixed card dimensions.** Officer cards are `300×380`. The flip-to-modal animation measures the
+  card with `getBoundingClientRect()` and animates from those exact numbers, so changing a card's
+  size means checking the expanded state too.
 - Pages start with `pt-[72px]` to clear the fixed navbar.
 - Tailwind v4's dynamic spacing scale means `w-5.5`, `h-4.5`, and `duration-350` are valid. Utilities
   it does *not* generate (`leading-zero`, `animate-duration-200`) silently do nothing — verify a class

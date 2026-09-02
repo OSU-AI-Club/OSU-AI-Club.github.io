@@ -203,13 +203,6 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
               >
                 Pitch a Talk
               </a>
-              <button
-                id="get-involved-projects-cta"
-                onClick={() => onNavigate('projects')}
-                className="h-11 px-5 border border-accent-secondary text-accent-secondary hover:bg-accent-secondary-dim font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                Browse Project Teams
-              </button>
             </div>
           </div>
           </Reveal>

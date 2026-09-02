@@ -12,8 +12,8 @@ Everything is split by concern so each file stays small and easy to edit:
 | --- | --- |
 | [`data/general.ts`](../src/data/general.ts) | Contact links, meeting time/place, HackAI event details |
 | [`data/officers.ts`](../src/data/officers.ts) | `OFFICERS` and the headshot-matching helper |
-| [`data/events.ts`](../src/data/events.ts) | `EVENTS` |
-| [`data/projects.ts`](../src/data/projects.ts) | `PROJECTS` |
+| [`data/sponsors.ts`](../src/data/sponsors.ts) | `SPONSORS` and the logo-matching helper |
+| [`data/projects.ts`](../src/data/projects.ts) | `PROJECTS` — currently empty and unrendered, see below |
 | [`data/faqs.ts`](../src/data/faqs.ts) | `FAQS`, `HACKAI_FAQS` |
 | [`data/index.ts`](../src/data/index.ts) | Barrel file — re-exports everything above so `import ... from '../data'` still works unchanged |
 
@@ -25,18 +25,18 @@ that to whichever files actually define the export. Only reach into a specific f
 
 | Export | Value / purpose | Rendered by |
 | --- | --- | --- |
-| `CLUB_EMAIL` | Officer contact address | `Footer.tsx`, `Projects.tsx` |
+| `CLUB_EMAIL` | Officer contact address | `Footer.tsx`, `Projects.tsx`, `GetInvolved.tsx` |
 | `CLUB_DISCORD_URL` | Discord invite | `Footer.tsx` |
 | `CLUB_INSTAGRAM_URL` | Instagram profile | `Footer.tsx` |
 | `CLUB_LINKEDIN_URL` | Club LinkedIn page | `Footer.tsx` |
 | `NEWSLETTER_URL` | Newsletter signup (`go.osu.edu/aiclub`) | `Footer.tsx` |
-| `PROJECT_APPLICATION_URL` | Google Form for project-team signups | `Projects.tsx`, default `applyUrl` for every project |
+| `PROJECT_APPLICATION_URL` | Google Form for project-team signups | `GetInvolved.tsx`, default `applyUrl` for every project |
 | `HACKAI_REGISTRATION_URL` | HackAI registration — currently aliased to the same Google Form | `HackAI.tsx` |
 
 ### Meeting time & place
 
 `MEETING_LOCATION`, `MEETING_DAY`, `MEETING_TIME`, and the derived `MEETING_SCHEDULE`. Referenced on
-Home, Events, Projects, and inside `HACKAI_FAQS`. **Change these four in one place and the whole site
+Home, Events, and inside `HACKAI_FAQS`. **Change these four in one place and the whole site
 follows** — never hardcode a room or time in a component.
 
 ### HackAI event details
@@ -46,14 +46,13 @@ follows** — never hardcode a room or time in a component.
 pill/eyebrow styling; the `_FULL` variants are title case for body copy. Bumping the year means
 editing these constants — the string "HackAI 2027" should not appear literally anywhere else.
 
-### The three collections
+### The collections
 
 | Export | Type | Rendered by |
 | --- | --- | --- |
 | `OFFICERS` | `Officer[]` | About page — flip cards |
-| `EVENTS` | `ClubEvent[]` | Events page — calendar, upcoming grid, recap strip. **Synced from Google Calendar, not hand-edited** — see [calendar-sync.md](calendar-sync.md). Split by date, not a flag |
-| `EVENT_CATEGORIES` | `{id, label, accent, googleColorIds}[]` | Events page filter pills, calendar legend, all accent colors, and the Google Calendar color map. Lives in `src/data/event-categories.ts` |
-| `PROJECTS` | `ProjectItem[]` | Projects page — search/filter grid |
+| `SPONSORS` | `Sponsor[]` | `SponsorsBar.tsx` — homepage logo marquee |
+| `PROJECTS` | `ProjectItem[]` | Nothing — the Projects page is a placeholder (see below) |
 | `FAQS` | `{q, a}[]` | `FAQ.tsx`, on the About page |
 | `HACKAI_FAQS` | `{q, a}[]` | HackAI page accordion |
 
@@ -86,55 +85,18 @@ The About page renders three cards per row on desktop, so multiples of three loo
 
 ### Add an event
 
-**Not in code.** Add it to the **AIC Public Calendar** and set the event's **color** to choose its
-category. The site rebuilds within a few minutes.
+**Not in code, and not in this repo at all.** Add it to the **AIC Public Calendar** (the club Google
+Calendar). The Events page iframes that calendar directly from Google, so the event appears on the
+site immediately — there is no sync, no snapshot and no rebuild.
 
-Full instructions, the color legend, and the debugging checklist are in
-[calendar-sync.md](calendar-sync.md) — that is the file to read (and to hand to new officers).
+Two things to know:
 
-`src/data/events.ts` no longer holds any event data. It reads and validates
-`src/data/events.generated.json`, which `scripts/sync-calendar.ts` writes during the CI build.
-**Do not edit that JSON by hand** — the next build overwrites it.
+- The calendar must stay **public** with *See all event details*, or the embed renders blank.
+- The embed is Google's own UI. Event colors, categories, recap links and card styling are no longer
+  interpreted by the site — what Google shows is what visitors see.
 
-**`date` is still the single source of truth for everything time-related.** The `OCT` / `07` card
-badge, the `Oct 7, 2026` recap-strip label, the weekday, the calendar cell it lands in, and whether
-the event counts as past are all derived from it at render time by
-[`src/utils/date.ts`](../src/utils/date.ts). There used to be separate `dateString`, `day`, and
-`month` fields; they drifted out of sync because nothing checked them. **Do not add them back.**
-
-Past-ness is derived too — an event moves itself into the "Past Events Highlights" strip once its
-date passes. The optional `isPast` field is an **override** for pinning an event on the wrong side of
-that line. The sync script never emits it; it exists as a manual escape hatch.
-
-Ordering does not matter; the page sorts by date.
-
-### Add an event category
-
-`EVENT_CATEGORIES` in [`src/data/event-categories.ts`](../src/data/event-categories.ts) is the one
-category list. Adding a row there adds the filter pill, the calendar legend entry, the accent color,
-and the Google Calendar colors that map to it — all at once:
-
-```ts
-{ id: 'Career', label: 'Career Nights', accent: 'tertiary', googleColorIds: ['3'] },
-```
-
-`googleColorIds` is how an officer picks the category: they set the event's color in Google Calendar
-and the sync script reads it back. The first id is the canonical one; the rest are forgiving aliases.
-**Every id must appear at most once across the whole table.** Also add a case to `categoryBadgeClass`
-alongside `categoryAccentClass` and `categoryDotClass`, and update the legend in
-[calendar-sync.md](calendar-sync.md).
-
-`accent` is a design-token name — `'primary'` (blue), `'secondary'` (green), `'tertiary'` (purple),
-`'warm'` (amber), or `'gradient'` (the blue/green split HackAI uses) — not a raw Tailwind class, so
-styling stays out of the content layer. `categoryAccentClass()` and `categoryDotClass()` in
-[`src/utils/events.ts`](../src/utils/events.ts) map it to the utilities. The
-`ClubEvent['category']` type is derived from this array, so a typo in an event's `category` is a
-compile error.
-
-**Give each category a distinct accent.** All five are currently spoken for, so a sixth category
-needs a new color token in `index.css` plus a case in both mapper functions. Don't reach for grey —
-the calendar's "+N more" overflow dot already uses it, and reusing it would make a category dot read
-as an overflow marker. Two categories sharing an accent defeats the point of the legend.
+The calendar the page embeds is set by `GOOGLE_CALENDAR_ID` in
+[`src/data/general.ts`](../src/data/general.ts); `GOOGLE_CALENDAR_EMBED_URL` derives from it.
 
 Small round marks (calendar dots, rail bullets, legend swatches) go through `categoryDotClass`, which
 renders HackAI as a blue core with a green ring rather than a gradient — a two-stop gradient has
@@ -143,12 +105,16 @@ green. The wide card accent bar keeps the real gradient via `categoryAccentClass
 
 ### Add a project
 
-Append to `PROJECTS`. `tags` populate the "Core Technology" filter pills automatically; `category`
-populates "Domain Category". `stats` is a free-form headline metric string. `image` is currently a
-remote Unsplash URL for every project — see [known-issues.md](known-issues.md).
+**Not currently possible without rebuilding the page.** `PROJECTS` is empty and nothing reads it:
+`src/pages/Projects.tsx` renders its hero plus an "under construction" notice, and the grid, filter
+sidebar and detail modal that consumed the data were removed. `data/projects.ts` and the
+`ProjectItem` type are deliberately kept in place for the rebuild.
 
-Per-project roadmap milestones are **not** in `data/projects.ts`: they live in `getProjectMilestones()` in
-`src/pages/Projects.tsx`, keyed by project `id`, with a generic fallback.
+To restore the showcase, recover the previous `Projects.tsx` from git history and repopulate
+`PROJECTS` — the entries are still there, commented out, as a shape reference. Note that per-project
+roadmap milestones were never in `data/projects.ts`; they lived in a `getProjectMilestones()` helper
+inside the page, keyed by project `id`, with a generic fallback. Folding them into `ProjectItem` is
+the better design.
 
 ## Images and assets
 
@@ -186,8 +152,40 @@ styled, so leaving the photo off is a valid state, not a bug.
 
 ### Sponsor logos
 
-Drop the file in `assets/sponsors/`, then import it and add an entry to the `sponsors` array in
-`src/components/SponsorsBar.tsx`. The array is duplicated 6× to fill the marquee — leave that alone.
+Same glob-by-`id` mechanism as headshots — `SponsorsBar.tsx` contains **no logo imports** and no
+per-sponsor code at all. Everything comes from `SPONSORS` in
+[`src/data/sponsors.ts`](../src/data/sponsors.ts):
+
+- **Swap a logo:** replace `assets/sponsors/<id>.<ext>` with the new file. The extension may change
+  (`.png` → `.webp` is fine); nothing in code needs editing.
+- **Add a sponsor:** add `{ id: 'acme-corp', name: 'Acme Corp' }` to `SPONSOR_RECORDS` and drop
+  `assets/sponsors/acme-corp.png` beside the others. Array order is display order.
+- **Remove one:** delete its row. The image file can stay — an image nothing imports is never
+  shipped.
+
+An entry with no matching file renders its `name` as a text wordmark on the same white plate. That
+fallback is intentional and styled, so a roster entry can land before its artwork does.
+
+Two things the component derives, so that adding logos can't break the band:
+
+- The marquee keyframe translates `-50%`, so the row is built as **exactly two identical halves**,
+  each padded by repetition to at least `MIN_TILES_PER_HALF`. Any other multiple visibly jumps at
+  the loop point.
+- Scroll duration is computed from `MARQUEE_SPEED_PX_PER_SEC`, not fixed — a hardcoded duration
+  means "cross the row in 25s", so every sponsor added would silently speed the band up. Turn that
+  constant, not the CSS.
+
+`src/splash.ts` preloads the first `PRELOADED_SPONSOR_COUNT` logos off the same list, so a rename or
+reorder can't leave a dead import behind it.
+
+Logos sit on a **white plate in both themes** because they are dark-on-transparent artwork that
+would disappear on a charcoal tile. A white-on-transparent logo will vanish on it — recolor the
+source or ask the sponsor for a dark variant. Alternate crops that shouldn't render live in
+`assets/sponsors/unused/`, which the glob skips because it does not recurse.
+
+> Every name in `SPONSORS` is a public claim about a real company, under a band labelled
+> **"Presenting Partners"**. Only list an organization the club actually has a sponsorship or
+> partnership with, and change that label in `SponsorsBar.tsx` if the relationship is weaker.
 
 ## Content that is *not* in `data/`
 
@@ -198,7 +196,6 @@ Some copy is still inline in components. If you can't find a string in `src/data
 - **Mission statement** — `src/components/MissionStatement.tsx`
 - **"Who We Are" blurb and category tiles** — `src/components/AboutSection.tsx`
 - **HackAI prize table and weekend schedule** — `prizes` and `schedule` arrays in `src/pages/HackAI.tsx`
-- **Projects page hero stat strip** (`4 Active`, `28 Total`, …) — inline JSX in `src/pages/Projects.tsx`
 - **Hero headline and subheading** — inline JSX in `src/pages/Home.tsx`
 - **Footer legal/contact copy** — `src/components/Footer.tsx`
 

@@ -89,10 +89,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div id="hero-ctas-row" className="flex flex-wrap items-center gap-4">
               <button
                 id="hero-primary-cta"
-                onClick={() => onNavigate('projects')}
+                onClick={() => onNavigate('getinvolved')}
                 className="h-[52px] px-8 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-[15px] font-semibold rounded-full flex items-center space-x-2 shadow-[0_4px_20px_var(--ui-accent-glow)] hover:shadow-[0_8px_32px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                <span>Explore Projects</span>
+                <span>Get Involved</span>
                 <span className="text-[18px] leading-none mb-0.5">›</span>
               </button>
 
@@ -157,10 +157,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
              {/* Two Pill buttons matching specified references */}
             <div className="flex flex-wrap items-center gap-4">
               <button
-                onClick={() => onNavigate('projects')}
+                onClick={() => onNavigate('getinvolved')}
                 className="h-[48px] px-6 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-[14px] font-semibold rounded-full flex items-center space-x-2 shadow-[0_4px_20px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer animate-none"
               >
-                <span>Explore Projects</span>
+                <span>Get Involved</span>
                 <span className="text-[16px] leading-none mb-0.5">›</span>
               </button>
 

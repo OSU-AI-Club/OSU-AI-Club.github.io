@@ -78,11 +78,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
     };
   }, []);
 
+  // Order here is the visual left-to-right order AND must match `PAGE_ORDER` in
+  // PageTransition.tsx, which reads index distance to pick a slide direction.
+  // Reorder one without the other and pages start sliding the wrong way.
   const navItems = [
     { label: 'About Us', id: 'about' },
     { label: 'HackAI', id: 'hackai' },
     { label: 'Projects', id: 'projects' }, // on home page, anchors to projects list
     { label: 'Events', id: 'events' },
+    { label: 'Newsletter', id: 'newsletter' },
+    { label: 'Research Expo', id: 'researchexpo' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -131,8 +136,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
             </div>
           </div>
 
-          {/* Center: Desktop Nav Links */}
-          <div id="desktop-nav-links" className="hidden md:flex items-center space-x-10 shrink-0">
+          {/* Center: Desktop Nav Links
+              `lg`, not `md`: six links plus the logo and the Get Involved CTA
+              overflow a tablet-width header, so tablets get the drawer instead.
+              The gap tightens with the same reasoning — keep both in step with
+              the length of `navItems`. */}
+          <div id="desktop-nav-links" className="hidden lg:flex items-center gap-x-7 xl:gap-x-9 shrink-0">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
               return (
@@ -155,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
           {/* Right rail: theme toggle + CTA on desktop, hamburger on mobile */}
           <div className="flex-1 flex justify-end items-center">
 
-            <div className="hidden md:flex items-center space-x-3">
+            <div className="hidden lg:flex items-center space-x-3">
               <ThemeToggle />
               <button
                 id="nav-join-cta-button"
@@ -168,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
             </div>
 
             {/* Mobile Hamburguer */}
-            <div className="md:hidden flex items-center space-x-2">
+            <div className="lg:hidden flex items-center space-x-2">
               <ThemeToggle />
               <button
                 id="mobile-menu-toggle"
@@ -187,9 +196,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation-drawer"
-          className="fixed inset-0 top-[72px] bg-bg-primary/95 backdrop-blur-2xl z-40 flex flex-col px-6 py-8 md:hidden shadow-lg animate-fade-in border-t border-border-subtle"
+          className="fixed inset-0 top-[72px] bg-bg-primary/95 backdrop-blur-2xl z-40 flex flex-col px-6 py-8 lg:hidden shadow-lg animate-fade-in border-t border-border-subtle overflow-y-auto"
         >
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-5">
             {navItems.map((item) => (
               <button
                 key={item.id}

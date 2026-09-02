@@ -11,6 +11,73 @@ import { TextScramble } from '../components/TextScramble';
 import { Reveal } from '../components/Reveal';
 import { useRevealProps, useRevealSequenceProps, sequenceDelay, staggerDelay } from '../hooks/useReveal';
 
+// Body copy is clamped to exactly this many lines (12.5px text on 1.6 line
+// height = 20px a line), so every panel is the same height whatever the officer
+// wrote. Changing either value here means changing the other.
+const DETAIL_LINE_HEIGHT = 20;
+const DETAIL_LINES = 4;
+const DETAIL_BODY_HEIGHT = DETAIL_LINE_HEIGHT * DETAIL_LINES;
+
+/**
+ * One fixed-height panel on the back of an expanded officer card.
+ *
+ * Overflow is cut, not scrolled, with the final visible line faded out so the
+ * cut reads as deliberate rather than as a rendering bug. The fade is a mask,
+ * so it works over any card background and in either theme — a gradient
+ * overlay would have to know the background colour.
+ *
+ * The mask is applied only when the text actually overflows: worn
+ * unconditionally it would dim the last line of a two-line fun fact that has
+ * nothing hidden behind it. That is why this measures instead of always
+ * fading — `scrollHeight` of the copy against the panel's fixed height.
+ */
+const OfficerDetail: React.FC<{ label: string; body?: string }> = ({ label, body }) => {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isClipped, setIsClipped] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+
+    // 1px of slack: sub-pixel line boxes otherwise report a phantom overflow
+    // on text that fits exactly.
+    const measure = () => setIsClipped(el.scrollHeight > DETAIL_BODY_HEIGHT + 1);
+    measure();
+
+    // Webfonts land after first paint and reflow the copy, which changes
+    // whether it overflows. Re-measure when the text box resizes.
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [body]);
+
+  // Opaque until the last line, then fading to nothing at its baseline.
+  const fade = `linear-gradient(to bottom, #000 ${DETAIL_BODY_HEIGHT - DETAIL_LINE_HEIGHT}px, rgba(0,0,0,0.45) ${DETAIL_BODY_HEIGHT - 7}px, transparent ${DETAIL_BODY_HEIGHT}px)`;
+
+  return (
+    <section className="shrink-0">
+      <span className="font-sans text-[9px] font-bold text-text-muted uppercase tracking-widest block mb-1">
+        {label}
+      </span>
+      <div
+        className="overflow-hidden"
+        style={{
+          height: `${DETAIL_BODY_HEIGHT}px`,
+          ...(isClipped ? { maskImage: fade, WebkitMaskImage: fade } : {}),
+        }}
+      >
+        <p
+          ref={textRef}
+          className={`font-sans text-[12.5px] ${body ? 'text-text-secondary' : 'text-text-muted italic'}`}
+          style={{ lineHeight: `${DETAIL_LINE_HEIGHT}px` }}
+        >
+          {body || 'Coming soon.'}
+        </p>
+      </div>
+    </section>
+  );
+};
+
 interface AboutProps {
   onNavigate?: (page: string) => void;
 }
@@ -106,7 +173,9 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
           style={{
             position: 'fixed',
             width: animState === 'active' ? 'max(300px, min(500px, 92vw))' : `${initialRect.width}px`,
-            height: animState === 'active' ? '450px' : `${initialRect.height}px`,
+            // Sized to hold the header, three fixed-height detail panels and
+            // the socials row — clamped to the viewport on short screens.
+            height: animState === 'active' ? 'min(545px, 90vh)' : `${initialRect.height}px`,
             top: animState === 'active' ? '50%' : `${initialRect.top}px`,
             left: animState === 'active' ? '50%' : `${initialRect.left}px`,
             transform: animState === 'active' ? 'translate(-50%, -50%)' : 'translate(0, 0)',
@@ -255,14 +324,16 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                {/* Biography paragraph with scrolling */}
-                <div className="my-3 text-left flex-grow overflow-y-auto max-h-[220px] pr-1 scrollbar-thin">
-                  <span className="font-sans text-[9px] font-bold text-text-muted uppercase tracking-widest block mb-1">
-                    Biography
-                  </span>
-                  <p className="font-sans text-[12.5px] leading-[1.6] text-text-secondary">
-                    {expandedOfficer.bio}
-                  </p>
+                {/* Biography / Work Experience / Fun Fact, three panels of
+                    identical fixed height. Nothing here scrolls: text past the
+                    panel is cut off and the last visible line fades out, and
+                    the socials row below points at the profiles that carry the
+                    full story. Fixed heights are the point — a long bio must
+                    not buy itself more room than a short one. */}
+                <div className="my-3 text-left flex-grow min-h-0 overflow-hidden flex flex-col gap-2">
+                  <OfficerDetail label="Biography" body={expandedOfficer.bio} />
+                  <OfficerDetail label="Work Experience" body={expandedOfficer.workExperience} />
+                  <OfficerDetail label="Fun Fact" body={expandedOfficer.funFact} />
                 </div>
 
                 {/* Social and OSU indicator row at bottom */}

@@ -35,7 +35,7 @@ run both before committing.
 - **React 19** + **Vite 6**, TypeScript, client-side only
 - **Tailwind CSS v4** via `@tailwindcss/vite` — configured in CSS, *not* a `tailwind.config.js`
 - **three.js** + **GSAP** — only used by `src/components/NeuralNetworkCanvas.tsx`
-- **motion** (Framer Motion) — only used for modal backdrops in `About.tsx` / `Projects.tsx`
+- **motion** (Framer Motion) — only used for the modal backdrop in `About.tsx`
 - **lucide-react** — all icons
 
 `@google/genai`, `express`, and `dotenv` are in `package.json` but **not imported anywhere**. They are
@@ -50,20 +50,18 @@ assets/                 # Source images, imported by JS (NOT a static public/ di
 ├── profiles/           # Officer headshots, square crops
 └── sponsors/           # Sponsor logos for the marquee
 docs/                   # You are here
-scripts/
-├── sync-calendar.ts    # Fetches Google Calendar at build time -> events.generated.json
-└── apps-script/        # Code.gs — pasted into script.google.com; triggers a rebuild on edit
 src/
 ├── main.tsx            # Entry point; builds the favicon on a canvas at runtime
 ├── App.tsx             # Page state + layout shell
-├── data/               # ★ ALL site content lives here — general/officers/events/projects/faqs
-│                       #   events.generated.json is GENERATED; see docs/calendar-sync.md
-├── types.ts            # Officer / ClubEvent / ProjectItem interfaces
+├── data/               # ★ ALL site content lives here — general/officers/projects/faqs
+│                       #   Events are NOT here; the page embeds Google Calendar live
+├── types.ts            # Officer / Sponsor / ProjectItem interfaces
 ├── index.css           # ★ ALL color tokens live here (light + dark)
 ├── theme.ts            # Light/dark store; persists preference, follows the OS
 ├── hooks/              # useReveal — shared scroll-reveal observer
 ├── vite-env.d.ts       # Types image imports (`import x from './y.png'`)
-├── pages/              # Home, About, Events, HackAI, Projects, GetInvolved
+├── pages/              # Home, About, Events, HackAI, Projects, Newsletter,
+│                       #   ResearchExpo, GetInvolved
 └── components/         # Shared and section-level components
 index.html              # Vite entry HTML + pre-paint theme script
 vite.config.ts          # Plugins, `@` alias, HMR toggle

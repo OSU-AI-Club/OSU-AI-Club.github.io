@@ -79,6 +79,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
               { label: 'Our Story & Officers', id: 'about' },
               { label: `${HACKAI_NAME}`, id: 'hackai' },
               { label: 'Events Calendar', id: 'events' },
+              { label: 'Newsletter', id: 'newsletter' },
+              { label: 'Research Expo', id: 'researchexpo' },
               { label: 'Get Involved', id: 'getinvolved' },
             ].map((link) => (
               <button

@@ -3,11 +3,11 @@
 // the relevant file instead of this one:
 //   general.ts  — club contact links, meeting info, HackAI event details
 //   officers.ts — officer roster (OFFICERS)
-//   events.ts   — upcoming & past events (EVENTS)
+//   sponsors.ts — sponsor logo roster (SPONSORS)
 //   projects.ts — semester project showcase (PROJECTS)
 //   faqs.ts     — general and HackAI-specific FAQs (FAQS, HACKAI_FAQS)
 export * from './general';
 export * from './officers';
-export * from './events';
+export * from './sponsors';
 export * from './projects';
 export * from './faqs';

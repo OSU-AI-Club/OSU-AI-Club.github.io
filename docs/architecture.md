@@ -10,7 +10,8 @@ App.tsx
 ├── Navbar          (fixed, 72px tall, above everything)
 └── SmoothScrollProvider
     └── PageTransition        (the animated container)
-        ├── <main> → Home | About | Events | HackAI | Projects | GetInvolved
+        ├── <main> → Home | About | Events | HackAI | Projects
+        │              | Newsletter | ResearchExpo | GetInvolved
         └── Footer            (passed in as the `footer` prop)
 ```
 
@@ -25,9 +26,16 @@ Consequences to keep in mind:
   Any static host must be configured to serve `index.html` for all routes.
 - The browser back button does not move between pages.
 - Navigation is a prop: `onNavigate('about')`. Every page and the Navbar/Footer receive it.
-- Page IDs are the bare strings `home`, `about`, `events`, `hackai`, `projects`, `getinvolved`.
-  Adding a page means touching three places: the `switch` in `App.tsx`, `PAGE_ORDER` in
-  `PageTransition.tsx` (drives slide direction), and the nav/footer link lists.
+- Page IDs are the bare strings `home`, `about`, `events`, `hackai`, `projects`, `newsletter`,
+  `researchexpo`, `getinvolved`. Adding a page means touching three places: the `switch` in
+  `App.tsx`, `PAGE_ORDER` in `PageTransition.tsx` (drives slide direction), and the nav/footer link
+  lists. `navItems` in `Navbar.tsx` should stay in the same relative order as `PAGE_ORDER`, or the
+  slide direction stops matching the visual left-to-right order of the tabs.
+- `Newsletter`, `ResearchExpo`, and `Projects` are published tabs with placeholder bodies — they
+  render their hero plus the shared `UnderConstruction` notice (`src/components/UnderConstruction.tsx`).
+- The desktop nav rail is `lg:`, not `md:`. Six links plus the logo and the Get Involved CTA overflow
+  a tablet-width header, so tablets fall back to the mobile drawer. Adding another tab means checking
+  that breakpoint and the `gap-x-*` on `#desktop-nav-links` again.
 - Every page root adds `pt-[72px]` to clear the fixed navbar. Home is the exception — its hero sits
   *behind* the navbar deliberately.
 
@@ -52,7 +60,8 @@ Consequences to keep in mind:
 `src/components/PageTransition.tsx` runs a fixed ~1030 ms sequence on every page change:
 fade/slide out (500 ms) → swap the mounted page + scroll to top → repaint tick (30 ms) → fade/slide
 in (500 ms). Slide direction comes from each page's index in `PAGE_ORDER`
-(`home, about, hackai, projects, events, getinvolved`); later index slides "forward".
+(`home, about, hackai, projects, events, newsletter, researchexpo, getinvolved`); later index
+slides "forward".
 
 The scroll reset is deliberately timed to land in the middle of that sequence, while the container
 is at opacity 0, so the jump is never seen. Anything that should hide during navigation must
@@ -91,36 +100,28 @@ fully-connected network of 36 glass spheres in three.js, on the Home page only.
 | `components/NeuralNetworkCanvas.tsx` | Home | three.js + GSAP hero |
 | `components/StatsBar.tsx` | Home | Count-up numbers; **targets are hardcoded in the file**, not `data/` |
 | `components/MissionStatement.tsx` | Home | Mission copy hardcoded in the file |
-| `components/SponsorsBar.tsx` | Home | Sponsor logo marquee; logos imported from `assets/sponsors/` |
+| `components/SponsorsBar.tsx` | Home | Sponsor logo marquee; renders `SPONSORS` from `data/sponsors.ts` — no logo imports of its own |
 | `components/HackAITeaser.tsx` | Home | Pulls `HACKAI_*` constants from `data/general.ts` |
 | `components/AboutSection.tsx` | About | "Who We Are" block; copy hardcoded in the file |
 | `components/FAQ.tsx` | About | Renders `FAQS` from `data/faqs.ts` |
-| `components/EventCalendar.tsx` | Events | Interactive month grid; owns view/selection/focus state, roving-tabindex keyboard nav, month clamp and jump pills |
-| `components/EventCalendarRail.tsx` | Events | Detail panel beside the calendar; presentational, three states (no events at all / nothing on this day / event list) |
-| `components/EventCard.tsx` | Events (grid + rail) | Shared event box; footer is "Add to Calendar" upcoming, "View Recap" or "Event Concluded" once past |
 | `components/TextScramble.tsx` | All page titles | Glitch-in text effect, once on mount |
 | `components/ThemeToggle.tsx` | Navbar (desktop + mobile drawer) | Light/dark switch; see below |
 | `components/Reveal.tsx` | Card grids everywhere | Scroll-reveal wrapper; see [styling.md](styling.md) |
 | `components/CanvasErrorBoundary.tsx` | Home | Keeps a WebGL failure from blanking the site |
 
-## Build-time data sync
+## Events
 
-Everything in `src/data/` is a hand-written TypeScript module **except events**, which come from the
-club's Google Calendar. `scripts/sync-calendar.ts` runs on CI between `npm ci` and `vite build`,
-fetches the calendar, and writes `src/data/events.generated.json`; Vite inlines that JSON into the
-bundle. `src/data/events.ts` validates it and exports `EVENTS` under the same name the page always
-imported, so nothing downstream changed.
+Events are not built, stored or synced. The Events page iframes the **AIC Public Calendar** straight
+from Google (`GOOGLE_CALENDAR_EMBED_URL` in `src/data/general.ts`), so Google serves the data live
+and a calendar edit is visible on the site immediately — no rebuild, no API key, no snapshot, and
+nothing in `src/data/` to keep in step.
 
-The browser makes **zero** calendar requests and no API key ships to the client — the site is static
-files on GitHub Pages, so there is no server to proxy a request and nowhere safe to put a browser
-key. Officer instructions, setup, and the debugging checklist: [calendar-sync.md](calendar-sync.md).
+The tradeoff, chosen deliberately: the embed is Google's UI, not ours, so there are no custom event
+cards, no category colors and no recap links. It also renders light-only in both themes, which is
+why `Events.tsx` frames it in an explicit white card rather than filter-hacking it dark.
 
-**One boundary worth knowing about.** `src/utils/date.ts` bans `Intl.DateTimeFormat`, because it runs
-in the visitor's browser where locale and timezone are unknown inputs. `scripts/sync-calendar.ts`
-*uses* it, with `'en-US'` and `'America/New_York'` passed as explicit arguments — it runs once on a
-build machine, not on a visitor's device, and it emits plain `'YYYY-MM-DD'` / `'7:00 PM'` strings
-that `utils/date.ts` then handles unchanged. The rule is about client-side ambient state, and the
-script does not violate it. Don't "fix" either side to match the other.
+Officers add events by putting them on the AIC Public Calendar. The calendar must stay public with
+*See all event details* or the iframe renders blank.
 
 ## Theming
 
