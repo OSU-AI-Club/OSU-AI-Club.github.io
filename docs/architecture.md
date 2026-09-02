@@ -111,8 +111,9 @@ fully-connected network of 36 glass spheres in three.js, on the Home page only.
 
 ## Events
 
-Events are not built, stored or synced. The Events page iframes the **AIC Public Calendar** straight
-from Google (`GOOGLE_CALENDAR_EMBED_URL` in `src/data/general.ts`), so Google serves the data live
+Events are not built, stored or synced. The Events page iframes the club's public Google Calendars —
+overlaid in a single embed titled **AIC Public Calendar** — straight from Google
+(`GOOGLE_CALENDARS` / `GOOGLE_CALENDAR_EMBED_URL` in `src/data/general.ts`), so Google serves the data live
 and a calendar edit is visible on the site immediately — no rebuild, no API key, no snapshot, and
 nothing in `src/data/` to keep in step.
 

@@ -85,18 +85,21 @@ The About page renders three cards per row on desktop, so multiples of three loo
 
 ### Add an event
 
-**Not in code, and not in this repo at all.** Add it to the **AIC Public Calendar** (the club Google
-Calendar). The Events page iframes that calendar directly from Google, so the event appears on the
-site immediately — there is no sync, no snapshot and no rebuild.
+**Not in code, and not in this repo at all.** Add it to one of the club's public Google Calendars.
+The Events page iframes those calendars directly from Google, so the event appears on the site
+immediately — there is no sync, no snapshot and no rebuild.
 
 Two things to know:
 
-- The calendar must stay **public** with *See all event details*, or the embed renders blank.
+- Each calendar must stay **public** with *See all event details*, or its events drop out of the
+  embed.
 - The embed is Google's own UI. Event colors, categories, recap links and card styling are no longer
   interpreted by the site — what Google shows is what visitors see.
 
-The calendar the page embeds is set by `GOOGLE_CALENDAR_ID` in
-[`src/data/general.ts`](../src/data/general.ts); `GOOGLE_CALENDAR_EMBED_URL` derives from it.
+The calendars the page overlays are listed in `GOOGLE_CALENDARS` in
+[`src/data/general.ts`](../src/data/general.ts); `GOOGLE_CALENDAR_EMBED_URL` derives from that list.
+Google pairs each `src` with the `color` at the same position, so add or remove entries as whole
+rows.
 
 Small round marks (calendar dots, rail bullets, legend swatches) go through `categoryDotClass`, which
 renders HackAI as a blue core with a green ring rather than a gradient — a two-stop gradient has
