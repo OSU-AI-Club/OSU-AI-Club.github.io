@@ -4,8 +4,8 @@ import {
   Instagram,
   Linkedin,
   Users,
-  Presentation,
-  Handshake,
+  Trophy,
+  FolderKanban,
   Clock,
   MapPin,
 } from 'lucide-react';
@@ -21,8 +21,9 @@ import {
   CLUB_INSTAGRAM_URL,
   CLUB_LINKEDIN_URL,
   NEWSLETTER_URL,
-  PROJECT_APPLICATION_URL,
   HACKAI_NAME,
+  HACKAI_DATE_FULL,
+  HACKAI_LOCATION_FULL,
 } from '../data';
 
 interface GetInvolvedProps {
@@ -33,7 +34,6 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
   // Sequenced, not all-at-once: the hero's eyebrow, heading, copy and buttons
   // each get their own slot. See `useRevealSequenceProps`.
   const heroReveal = useRevealSequenceProps();
-  const applyStripReveal = useRevealProps();
   const contactHeaderReveal = useRevealProps();
   const inPersonReveal = useRevealProps();
 
@@ -151,32 +151,32 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
           </div>
           </Reveal>
 
-          {/* --- Present Your Work --- */}
+          {/* --- See HackAI --- */}
           {/* Wrapper and card both carry h-full: the grid is `items-stretch`, and
               without it the three boxes stop matching heights. */}
           <Reveal delay={60} className="h-full">
           <div
-            id="pathway-present-your-work"
+            id="pathway-see-hackai"
             className="h-full bg-bg-elevated border border-border-subtle rounded-2xl p-8 flex flex-col shadow-card hover:shadow-card-hover hover:border-accent-secondary/25 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-accent-secondary-dim text-accent-secondary flex items-center justify-center mb-5 shrink-0">
-              <Presentation className="w-6 h-6" />
+              <Trophy className="w-6 h-6" />
             </div>
 
             <h2 className="font-display text-[22px] font-extrabold text-text-primary tracking-tight mb-2">
-              Present Your Work
+              See HackAI
             </h2>
             <p className="font-sans text-[13.5px] text-text-secondary leading-relaxed mb-6">
-              Our meetings are member-driven. If you are working on something with AI in it, we want
-              you at the front of the room — polished or not.
+              {HACKAI_NAME} is our annual AI hackathon — a weekend of building, mentorship, and live
+              demos, {HACKAI_DATE_FULL} at {HACKAI_LOCATION_FULL}.
             </p>
 
             <ul className="flex flex-col gap-3.5 mb-8 flex-grow">
               {[
-                { label: 'Research talks', body: 'Share a paper, a lab project, or a result you are still arguing with.' },
-                { label: 'Build demos', body: 'Ten minutes on something you made. Broken demos are welcome and instructive.' },
-                { label: 'Workshops', body: 'Teach a tool you know well — PyTorch, RAG, MLOps, prompt engineering.' },
-                { label: 'Semester showcase', body: 'Project teams demo their prototypes at the end-of-semester mixer.' },
+                { label: 'Free to attend', body: 'Meals, snacks, swag, and compute credits are covered all weekend.' },
+                { label: 'Open to all students', body: 'Any university, any major, no prior experience required.' },
+                { label: 'Teams of 1–4', body: 'Bring a team or find one at our team-formation sessions.' },
+                { label: 'Workshops & mentors', body: 'Beginner workshops and on-site mentors to help you ship.' },
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-secondary shrink-0 mt-[7px]" />
@@ -188,51 +188,44 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
               ))}
             </ul>
 
-            <div className="rounded-xl bg-bg-secondary/60 border border-border-subtle p-4 mb-5">
-              <p className="font-sans text-[12.5px] text-text-secondary leading-relaxed">
-                Email us a sentence or two on your topic and roughly how long you need. We will find
-                you a slot — no formal proposal required.
-              </p>
-            </div>
-
             <div className="flex flex-col gap-2.5 mt-auto">
-              <a
-                id="get-involved-pitch-talk-cta"
-                href={`mailto:${CLUB_EMAIL}?subject=${encodeURIComponent('Talk proposal for a general meeting')}`}
+              <button
+                id="get-involved-hackai-cta"
+                onClick={() => onNavigate('hackai')}
                 className="h-11 px-5 bg-accent-secondary hover:opacity-90 text-on-accent font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
               >
-                Pitch a Talk
-              </a>
+                See HackAI
+              </button>
             </div>
           </div>
           </Reveal>
 
-          {/* --- Sponsorships --- */}
+          {/* --- Browse Projects --- */}
           {/* Wrapper and card both carry h-full: the grid is `items-stretch`, and
               without it the three boxes stop matching heights. */}
           <Reveal delay={120} className="h-full">
           <div
-            id="pathway-sponsorships"
+            id="pathway-browse-projects"
             className="h-full bg-bg-elevated border border-border-subtle rounded-2xl p-8 flex flex-col shadow-card hover:shadow-card-hover hover:border-accent-tertiary/25 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-accent-tertiary-dim text-accent-tertiary flex items-center justify-center mb-5 shrink-0">
-              <Handshake className="w-6 h-6" />
+              <FolderKanban className="w-6 h-6" />
             </div>
 
             <h2 className="font-display text-[22px] font-extrabold text-text-primary tracking-tight mb-2">
-              Sponsorships
+              Browse Projects
             </h2>
             <p className="font-sans text-[13.5px] text-text-secondary leading-relaxed mb-6">
-              Sponsors fund {HACKAI_NAME}, our semester project teams, compute credits, and the food
-              that keeps a room of students in it past 9 PM.
+              Semester project teams are where members build real AI systems together, from first
+              idea to working prototype.
             </p>
 
             <ul className="flex flex-col gap-3.5 mb-8 flex-grow">
               {[
-                { label: 'Recruiting access', body: 'Reach students who ship — resume drops, tech talks, and office hours on campus.' },
-                { label: 'Brand presence', body: 'Logo placement on this site, event signage, and hackathon materials.' },
-                { label: 'Sponsor a challenge', body: `Put your own problem statement and prize track in front of ${HACKAI_NAME} teams.` },
-                { label: 'Mentorship', body: 'Send engineers to mentor project teams or judge the hackathon.' },
+                { label: 'See past work', body: 'Look through what club teams have built.' },
+                { label: 'Hear the pitches', body: 'Team leads pitch their projects at the Projects Kickoff.' },
+                { label: 'Pitch your own', body: 'Have an idea? Bring it and recruit a team.' },
+                { label: 'All levels welcome', body: 'Teams are matched to your interests and experience.' },
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-tertiary shrink-0 mt-[7px]" />
@@ -244,55 +237,18 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
               ))}
             </ul>
 
-            <div className="rounded-xl bg-bg-secondary/60 border border-border-subtle p-4 mb-5">
-              <p className="font-sans text-[12.5px] text-text-secondary leading-relaxed">
-                Tiers and benefits are tailored per partner. Reach out and we will send the current
-                sponsorship packet.
-              </p>
-            </div>
-
             <div className="flex flex-col gap-2.5 mt-auto">
-              <a
-                id="get-involved-sponsor-cta"
-                href={`mailto:${CLUB_EMAIL}?subject=${encodeURIComponent('Sponsorship inquiry')}`}
+              <button
+                id="get-involved-projects-cta"
+                onClick={() => onNavigate('projects')}
                 className="h-11 px-5 bg-accent-tertiary hover:opacity-90 text-on-accent font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
               >
-                Request the Packet
-              </a>
-              <button
-                id="get-involved-hackai-cta"
-                onClick={() => onNavigate('hackai')}
-                className="h-11 px-5 border border-accent-tertiary text-accent-tertiary hover:bg-accent-tertiary-dim font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                See {HACKAI_NAME}
+                Browse Projects
               </button>
             </div>
           </div>
           </Reveal>
 
-        </div>
-
-        {/* Secondary note: applying to a project team */}
-        <div className="mt-10 rounded-2xl border border-dashed border-border-medium bg-bg-secondary/40 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5" {...applyStripReveal}>
-          <div>
-            <h3 className="font-display text-[17px] font-extrabold text-text-primary tracking-tight">
-              Ready to build something this semester?
-            </h3>
-            <p className="font-sans text-[13px] text-text-secondary leading-relaxed mt-1.5 max-w-xl">
-              Project teams form at the start of each semester. Apply once and we will match you to a
-              team based on your interests and experience level.
-            </p>
-          </div>
-          <a
-            id="get-involved-apply-cta"
-            href={PROJECT_APPLICATION_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="h-11 px-6 shrink-0 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-[13px] font-bold rounded-full flex items-center justify-center gap-2 transition-all duration-200 transform hover:-translate-y-0.5 shadow-[0_4px_14px_var(--ui-accent-glow)] cursor-pointer"
-          >
-            <span>Apply to a Project Team</span>
-            <span className="font-mono">→</span>
-          </a>
         </div>
       </section>
 

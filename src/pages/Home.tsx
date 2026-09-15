@@ -5,10 +5,11 @@ import { StatsBar } from '../components/StatsBar';
 import { MissionStatement } from '../components/MissionStatement';
 import { SponsorsBar } from '../components/SponsorsBar';
 import { HackAITeaser } from '../components/HackAITeaser';
+import { ResearchExpoTeaser } from '../components/ResearchExpoTeaser';
 import { TextScramble } from '../components/TextScramble';
-import { MEETING_DAY, MEETING_TIME, MEETING_LOCATION } from '../data';
+import { MEETING_DAY, MEETING_TIME, MEETING_LOCATION, GOOGLE_CALENDAR_AGENDA_EMBED_URL } from '../data';
 import { Clock } from 'lucide-react';
-import { useRevealSequenceProps, sequenceDelay } from '../hooks/useReveal';
+import { useRevealProps, useRevealSequenceProps, sequenceDelay } from '../hooks/useReveal';
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -19,6 +20,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   // each get their own slot. See `useRevealSequenceProps`.
   const heroReveal = useRevealSequenceProps();
   const mobileHeroReveal = useRevealSequenceProps();
+  const upcomingEventsReveal = useRevealProps();
 
   return (
     <div id="homepage-root">
@@ -97,6 +99,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </button>
 
               <button
+                onClick={() => onNavigate('hackai')}
+                className="h-[48px] px-6 bg-accent-secondary hover:bg-accent-secondary-hover text-on-accent font-sans text-[14px] font-semibold rounded-full flex items-center space-x-2 shadow-[0_4px_20px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer animate-none"
+              >
+                <span>Hack AI</span>
+                <span className="text-[16px] leading-none mb-0.5">›</span>
+              </button>
+
+              <button
                 id="hero-secondary-cta"
                 onClick={() => onNavigate('about')}
                 className="h-[52px] px-8 bg-transparent hover:bg-accent-primary-dim border border-accent-primary text-accent-primary hover:border-accent-primary-hover font-sans text-[15px] font-semibold rounded-full flex items-center space-x-2 transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
@@ -165,6 +175,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </button>
 
               <button
+                onClick={() => onNavigate('hackai')}
+                className="h-[48px] px-6 bg-accent-secondary hover:bg-accent-secondary-hover text-on-accent font-sans text-[14px] font-semibold rounded-full flex items-center space-x-2 shadow-[0_4px_20px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer animate-none"
+              >
+                <span>Hack AI</span>
+                <span className="text-[16px] leading-none mb-0.5">›</span>
+              </button>
+
+              <button
                 onClick={() => onNavigate('about')}
                 className="h-[48px] px-6 bg-transparent hover:bg-accent-primary-dim border border-accent-primary text-accent-primary hover:border-accent-primary-hover font-sans text-[14px] font-semibold rounded-full flex items-center space-x-2 transform hover:-translate-y-0.5 transition-all duration-250 cursor-pointer"
               >
@@ -184,9 +202,43 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* 5. SPONSORS BAR */}
       <SponsorsBar />
 
+      {/* UPCOMING EVENTS — white frame for the same reason as Events.tsx:
+          Google's embed is light-only. */}
+      <section id="home-upcoming-events" className="py-20 md:py-24">
+        <div className="max-w-4xl mx-auto px-6 md:px-16 flex flex-col items-center text-center" {...upcomingEventsReveal}>
+          <span className="font-sans text-[12px] font-bold text-accent-secondary uppercase tracking-[0.2em] block mb-3">
+            What's Next
+          </span>
+          <h2 className="font-display text-[30px] md:text-[40px] font-extrabold text-text-primary tracking-tight mb-10">
+            Upcoming Events
+          </h2>
+
+          <div className="w-full bg-white rounded-2xl shadow-card border border-border-subtle p-2 md:p-3 overflow-hidden">
+            <iframe
+              id="home-google-calendar-embed"
+              title="AIC General Calendar"
+              src={GOOGLE_CALENDAR_AGENDA_EMBED_URL}
+              loading="lazy"
+              className="w-full h-[480px] md:h-[600px] border-0 rounded-xl block"
+            />
+          </div>
+
+          <button
+            id="home-events-cta"
+            onClick={() => onNavigate('events')}
+            className="mt-10 h-[48px] px-7 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-[14px] font-semibold rounded-full flex items-center space-x-2 shadow-[0_4px_20px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+          >
+            <span>View All Events</span>
+            <span className="text-[16px] leading-none mb-0.5">›</span>
+          </button>
+        </div>
+      </section>
+
 
       {/* 8. HACKAI TEASER PROMO BLOCK */}
       <HackAITeaser onNavigate={onNavigate} />
+
+      <ResearchExpoTeaser onNavigate={onNavigate} />
       </div>
 
     </div>

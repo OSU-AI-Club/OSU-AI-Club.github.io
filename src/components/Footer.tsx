@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
           </div>
 
           <p className="font-sans text-[14px] text-text-secondary leading-relaxed mb-8 max-w-sm">
-            The official student-led engineering & research incubator for Artificial Intelligence and Machine Learning at The Ohio State University, Dreese Laboratories.
+            The official student-led engineering & research organization for Artificial Intelligence at The Ohio State University.
           </p>
 
           {/* Subscribe to our Newsletter Button */}
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
           <div className="flex flex-col space-y-3.5 text-sm font-medium">
             {[
               { label: 'Campus Homepage', id: 'home' },
-              { label: 'Our Story & Officers', id: 'about' },
+              { label: 'About Us', id: 'about' },
               { label: `${HACKAI_NAME}`, id: 'hackai' },
               { label: 'Events Calendar', id: 'events' },
               { label: 'Newsletter', id: 'newsletter' },
@@ -126,7 +126,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">Discord Server</span>
+                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">Discord</span>
                 <span className="text-xs text-text-muted">Join 500+ active campus members</span>
               </div>
             </a>
@@ -160,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
                 <Linkedin className="w-4 h-4 text-accent-primary" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">LinkedIn Professional</span>
+                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">LinkedIn</span>
                 <span className="text-xs text-text-muted">Connect with our alumni network</span>
               </div>
             </a>
@@ -175,7 +175,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
                 <Mail className="w-4 h-4 text-accent-primary" />
               </div>
               <div className="flex flex-col">
-                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">Contact Officers</span>
+                <span className="font-sans font-bold text-text-primary group-hover:text-accent-primary">Contact Us</span>
                 <span className="text-xs text-text-muted">{CLUB_EMAIL}</span>
               </div>
             </a>
@@ -191,8 +191,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
           © {new Date().getFullYear()} Artificial Intelligence Club at The Ohio State University. All rights reserved.
         </div>
         <div className="flex items-center space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-accent-primary transition-colors">Constitution</a>
-          <a href="#" className="hover:text-accent-primary transition-colors">Dreese Lab Access</a>
           <div className="flex items-center text-[10px] uppercase font-mono font-bold text-accent-secondary">
             <span className="w-2 h-2 rounded-full bg-accent-secondary inline-block mr-1.5 animate-pulse" />
             Campus Active

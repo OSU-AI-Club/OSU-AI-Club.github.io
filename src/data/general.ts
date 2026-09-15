@@ -25,12 +25,12 @@ export const HACKAI_REGISTRATION_URL = PROJECT_APPLICATION_URL;
  * a one-row edit here; GOOGLE_CALENDAR_EMBED_URL derives from this list.
  */
 export const GOOGLE_CALENDARS = [
-  { id: "9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com", color: "#ef6c00" },
-  { id: "06abf7bd4168934416b396493776eb4ec240f37741c3e24bb80fcd251c666a69@group.calendar.google.com", color: "#c0ca33" },
-  { id: "2c6d8f2d79132b77fc72ceb1886017cf3c102940f897953c11ac11a34ad55204@group.calendar.google.com", color: "#0b8043" },
-  { id: "813da2eeca08d8dfa170bb795de2172dab6c7fae0aa2c391fadc8b19f5efd6e8@group.calendar.google.com", color: "#8e24aa" },
-  { id: "cb239286a7cfe93fd30afe95f000d670c8ae69ea7a32007752c1597b27ed67dc@group.calendar.google.com", color: "#7cb342" },
-  { id: "38d09b5cffc4cb55f1c79e253fde2e5b40acb0dc751c81dac9a3af3b5995ea8b@group.calendar.google.com", color: "#4285f4" },
+  { name: "General Meetings", id: "9d4d51bcbbf901443d1e32bdb25ed366eff8d8078f2799868c6e8f9b6ed3a943@group.calendar.google.com", color: "#ef6c00" },
+  { name: "HackAI", id: "06abf7bd4168934416b396493776eb4ec240f37741c3e24bb80fcd251c666a69@group.calendar.google.com", color: "#c0ca33" },
+  { name: "Holidays", id: "2c6d8f2d79132b77fc72ceb1886017cf3c102940f897953c11ac11a34ad55204@group.calendar.google.com", color: "#0b8043" },
+  { name: "Social Events", id: "813da2eeca08d8dfa170bb795de2172dab6c7fae0aa2c391fadc8b19f5efd6e8@group.calendar.google.com", color: "#8e24aa" },
+  { name: "Speakers", id: "cb239286a7cfe93fd30afe95f000d670c8ae69ea7a32007752c1597b27ed67dc@group.calendar.google.com", color: "#7cb342" },
+  { name: "Workshops", id: "38d09b5cffc4cb55f1c79e253fde2e5b40acb0dc751c81dac9a3af3b5995ea8b@group.calendar.google.com", color: "#4285f4" },
 ] as const;
 
 /**
@@ -45,6 +45,17 @@ export const GOOGLE_CALENDAR_EMBED_URL =
   `&showPrint=0&title=AIC%20Public%20Calendar` +
   GOOGLE_CALENDARS.map(c => `&src=${encodeURIComponent(c.id)}`).join('') +
   GOOGLE_CALENDARS.map(c => `&color=${encodeURIComponent(c.color)}`).join('');
+
+// Google's embed has no "listed but unchecked" option, so a calendar is hidden
+// by leaving it out of the URL entirely.
+const HOME_AGENDA_CALENDARS = GOOGLE_CALENDARS.filter(c => c.name !== "Holidays");
+
+/** Home page's upcoming-events list: agenda view, no date navigation, no holidays. */
+export const GOOGLE_CALENDAR_AGENDA_EMBED_URL =
+  `https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York` +
+  `&mode=AGENDA&showPrint=0&showNav=0&title=AIC%20General%20Calendar` +
+  HOME_AGENDA_CALENDARS.map(c => `&src=${encodeURIComponent(c.id)}`).join('') +
+  HOME_AGENDA_CALENDARS.map(c => `&color=${encodeURIComponent(c.color)}`).join('');
 
 export const MEETING_LOCATION = "Hitchcock 035";
 export const MEETING_DAY = "Wednesdays";

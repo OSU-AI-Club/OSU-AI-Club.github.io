@@ -11,9 +11,8 @@ interface StatItem {
 export const StatsBar: React.FC = () => {
   const statsList: StatItem[] = [
     { target: 120, suffix: '+', label: 'Active Members' },
-    { target: 10, suffix: '', label: 'Years Active' },
-    { target: 1, suffix: '', label: 'Projects Launched' },
-    { target: 5, suffix: 'K', prefix: '$', label: 'HackAI Prize Pool' }
+    { target: new Date().getFullYear() - 2017, suffix: '', label: 'Years Active' },
+    { target: 2, suffix: 'K', prefix: '$', label: 'HackAI Prize Pool' }
   ];
 
   const [counts, setCounts] = useState<number[]>([0, 0, 0, 0]);
@@ -62,7 +61,7 @@ export const StatsBar: React.FC = () => {
       {...(triggered ? { 'data-revealed': '' } : {})}
       className="bg-bg-elevated border-y border-border-subtle shadow-card py-6 md:py-8 z-20 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-border-subtle/50">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-border-subtle/50">
         {statsList.map((item, idx) => (
           <div
             key={idx}
