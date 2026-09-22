@@ -1,6 +1,9 @@
 import { ProjectItem } from '../types';
 import { PROJECT_APPLICATION_URL } from './general';
 
+// Dead data: the incubator roster is published from the club's Notion board
+// (NOTION_SPONSORED_PROJECTS_URL in ./general), not from this array. Kept only as
+// a shape reference — populating it renders nothing.
 export const PROJECTS: ProjectItem[] = [
   // {
   //   id: 'buckeye-chatbot',

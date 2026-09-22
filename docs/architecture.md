@@ -31,8 +31,10 @@ Consequences to keep in mind:
   `App.tsx`, `PAGE_ORDER` in `PageTransition.tsx` (drives slide direction), and the nav/footer link
   lists. `navItems` in `Navbar.tsx` should stay in the same relative order as `PAGE_ORDER`, or the
   slide direction stops matching the visual left-to-right order of the tabs.
-- `Newsletter`, `ResearchExpo`, and `Projects` are published tabs with placeholder bodies — they
-  render their hero plus the shared `UnderConstruction` notice (`src/components/UnderConstruction.tsx`).
+- `Newsletter` and `ResearchExpo` are published tabs with placeholder bodies — they render their hero
+  plus the shared `UnderConstruction` notice (`src/components/UnderConstruction.tsx`). `Projects` (the
+  incubator page) is built out, but uses that same notice at *section* level for its sponsored-projects
+  roster, via the component's `heading` prop, until the Notion board is published.
 - The desktop nav rail is `lg:`, not `md:`. Six links plus the logo and the Get Involved CTA overflow
   a tablet-width header, so tablets fall back to the mobile drawer. Adding another tab means checking
   that breakpoint and the `gap-x-*` on `#desktop-nav-links` again.

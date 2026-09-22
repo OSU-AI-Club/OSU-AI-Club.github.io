@@ -13,6 +13,21 @@ export const PROJECT_APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQ
 export const HACKAI_REGISTRATION_URL = PROJECT_APPLICATION_URL;
 
 /**
+ * Incubator sponsorship application. Deliberately its own form, not
+ * PROJECT_APPLICATION_URL — that one is for joining an existing team, this one
+ * is for a team asking the club to back its project.
+ */
+export const INCUBATOR_APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfYCuIXLisadro-GGryF1YAH6Wjxiq29ZWc4mxVDz9YWKgljA/viewform?usp=dialog";
+
+/**
+ * Public Notion page listing the projects the incubator currently sponsors.
+ * Empty until that board is published: the Incubator page shows an
+ * under-development notice while this is falsy and iframes it once set, so
+ * going live is a one-line edit here.
+ */
+export const NOTION_SPONSORED_PROJECTS_URL = "";
+
+/**
  * The calendars the website shows, overlaid in one embed under the "AIC Public
  * Calendar" title. Each is dedicated to events meant for publication:
  * everything on them is public by definition, so there is nothing to filter and

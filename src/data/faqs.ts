@@ -1,4 +1,4 @@
-import { HACKAI_DATE_FULL, HACKAI_NAME, MEETING_TIME, MEETING_DAY, MEETING_LOCATION } from './general';
+import { CLUB_EMAIL, HACKAI_DATE_FULL, HACKAI_NAME, MEETING_TIME, MEETING_DAY, MEETING_LOCATION } from './general';
 
 export const FAQS = [
   {
@@ -55,5 +55,32 @@ export const HACKAI_FAQS = [
   {
     q: "How is submission judging structured?",
     a: "Projects are exhibited in a high-energy, interactive science-fair demo layout. Teams pitch their software live to judges from experts, research sponsors, and faculty members who grade based on creativity, technical capability, and product design."
+  }
+];
+
+export const INCUBATOR_FAQS = [
+  {
+    q: "What is the AIC Project Incubator?",
+    a: "It is how the club puts real backing behind student-led AI projects. Sponsored teams get access to AIC's network of contacts, university systems and compute resources, and marketing support — both to professors across departments and to fellow students looking to join a team."
+  },
+  {
+    q: "Who can apply for sponsorship?",
+    a: "Any Ohio State student, in any major and at any level. Apply on your own or as an existing team — there is no minimum team size."
+  },
+  {
+    q: "What kinds of projects are eligible?",
+    a: "Projects of all sizes. Small ones built for fun, educational projects meant to teach other students, sponsorship work already running for another organization, potential startups, and established businesses are all in scope."
+  },
+  {
+    q: "Do I need a working prototype to apply?",
+    a: "No. Whether you are starting from an idea or already have something running, sponsorship is built to help at either point — earlier teams tend to lean on introductions and teammate recruiting, further-along teams on systems and compute."
+  },
+  {
+    q: "What does sponsorship actually get me?",
+    a: "Three things: introductions through AIC's network of contacts, access to university systems and compute resources, and marketing — to professors across departments who can advise or open doors, and to students looking for a team to join."
+  },
+  {
+    q: "How do I apply?",
+    a: `Fill out the sponsorship form linked above. If you are unsure whether your project is a fit, email us at ${CLUB_EMAIL} before applying and we will talk it through.`
   }
 ];

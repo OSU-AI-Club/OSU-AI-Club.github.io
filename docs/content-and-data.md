@@ -13,8 +13,8 @@ Everything is split by concern so each file stays small and easy to edit:
 | [`data/general.ts`](../src/data/general.ts) | Contact links, meeting time/place, HackAI event details |
 | [`data/officers.ts`](../src/data/officers.ts) | `OFFICERS` and the headshot-matching helper |
 | [`data/sponsors.ts`](../src/data/sponsors.ts) | `SPONSORS` and the logo-matching helper |
-| [`data/projects.ts`](../src/data/projects.ts) | `PROJECTS` — currently empty and unrendered, see below |
-| [`data/faqs.ts`](../src/data/faqs.ts) | `FAQS`, `HACKAI_FAQS` |
+| [`data/projects.ts`](../src/data/projects.ts) | `PROJECTS` — empty and unrendered; the incubator roster comes from Notion, see below |
+| [`data/faqs.ts`](../src/data/faqs.ts) | `FAQS`, `HACKAI_FAQS`, `INCUBATOR_FAQS` |
 | [`data/index.ts`](../src/data/index.ts) | Barrel file — re-exports everything above so `import ... from '../data'` still works unchanged |
 
 Components should keep importing from `'../data'` (or `'./data'`) as before — the barrel file resolves
@@ -30,8 +30,10 @@ that to whichever files actually define the export. Only reach into a specific f
 | `CLUB_INSTAGRAM_URL` | Instagram profile | `Footer.tsx` |
 | `CLUB_LINKEDIN_URL` | Club LinkedIn page | `Footer.tsx` |
 | `NEWSLETTER_URL` | Newsletter signup (`go.osu.edu/aiclub`) | `Footer.tsx` |
-| `PROJECT_APPLICATION_URL` | Google Form for project-team signups | `GetInvolved.tsx`, default `applyUrl` for every project |
-| `HACKAI_REGISTRATION_URL` | HackAI registration — currently aliased to the same Google Form | `HackAI.tsx` |
+| `PROJECT_APPLICATION_URL` | Google Form for project-team signups | Nothing today — kept as the default `applyUrl` for every project |
+| `HACKAI_REGISTRATION_URL` | HackAI registration — currently aliased to the same Google Form | Nothing today |
+| `INCUBATOR_APPLICATION_URL` | Google Form for incubator *sponsorship* applications — a different form from `PROJECT_APPLICATION_URL` | `Projects.tsx` |
+| `NOTION_SPONSORED_PROJECTS_URL` | Public Notion page listing sponsored projects. Empty for now; `Projects.tsx` shows an under-development notice while it is falsy and iframes it once set | `Projects.tsx` |
 
 ### Meeting time & place
 
@@ -52,9 +54,10 @@ editing these constants — the string "HackAI 2027" should not appear literally
 | --- | --- | --- |
 | `OFFICERS` | `Officer[]` | About page — flip cards |
 | `SPONSORS` | `Sponsor[]` | `SponsorsBar.tsx` — homepage logo marquee |
-| `PROJECTS` | `ProjectItem[]` | Nothing — the Projects page is a placeholder (see below) |
-| `FAQS` | `{q, a}[]` | `FAQ.tsx`, on the About page |
-| `HACKAI_FAQS` | `{q, a}[]` | HackAI page accordion |
+| `PROJECTS` | `ProjectItem[]` | Nothing — the incubator roster comes from Notion (see below) |
+| `FAQS` | `{q, a}[]` | `FAQ.tsx` default, on the About page |
+| `HACKAI_FAQS` | `{q, a}[]` | HackAI page accordion (an inline copy of `FAQ.tsx`'s markup) |
+| `INCUBATOR_FAQS` | `{q, a}[]` | `<FAQ id="incubator-faqs" items={INCUBATOR_FAQS} …>` on the Projects page |
 
 ## How to make common changes
 
@@ -106,18 +109,20 @@ renders HackAI as a blue core with a green ring rather than a gradient — a two
 nowhere to resolve on a 6px circle and blends into something indistinguishable from the Speaker
 green. The wide card accent bar keeps the real gradient via `categoryAccentClass`.
 
-### Add a project
+### Add a sponsored project
 
-**Not currently possible without rebuilding the page.** `PROJECTS` is empty and nothing reads it:
-`src/pages/Projects.tsx` renders its hero plus an "under construction" notice, and the grid, filter
-sidebar and detail modal that consumed the data were removed. `data/projects.ts` and the
-`ProjectItem` type are deliberately kept in place for the rebuild.
+**Not in this repo.** The incubator roster is published from the club's Notion board, not from
+`data/projects.ts`. Add the project in Notion and the page picks it up — there is no build step.
 
-To restore the showcase, recover the previous `Projects.tsx` from git history and repopulate
-`PROJECTS` — the entries are still there, commented out, as a shape reference. Note that per-project
-roadmap milestones were never in `data/projects.ts`; they lived in a `getProjectMilestones()` helper
-inside the page, keyed by project `id`, with a generic fallback. Folding them into `ProjectItem` is
-the better design.
+To turn the embed on for the first time, set `NOTION_SPONSORED_PROJECTS_URL` in `data/general.ts` to
+the public Notion page URL. `src/pages/Projects.tsx` branches on it: while it is empty the
+sponsored-projects section shows a section-level `UnderConstruction` notice, and once set it iframes
+the page inside the same white frame the Events calendar uses (the embed renders in its own theme, so
+it is presented as a deliberate light panel rather than filter-hacked into dark mode).
+
+`PROJECTS` in `data/projects.ts` is empty and nothing reads it — the grid, filter sidebar and detail
+modal that consumed it were removed. The file and the `ProjectItem` type are kept only as a shape
+reference; see git history for the old implementation.
 
 ## Images and assets
 

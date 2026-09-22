@@ -11,6 +11,11 @@ interface UnderConstructionProps {
   id: string;
   /** One sentence on what will live here once the page is built. */
   blurb: string;
+  /**
+   * Headline. Defaults to the page-level wording; pass a section-level one when
+   * the rest of the page around this notice is already live.
+   */
+  heading?: string;
   /** Defaults to a mailto the club. Pass an http(s) URL and it opens in a new tab. */
   ctaHref?: string;
   ctaLabel?: string;
@@ -27,6 +32,7 @@ interface UnderConstructionProps {
 export const UnderConstruction: React.FC<UnderConstructionProps> = ({
   id,
   blurb,
+  heading = 'This page is under construction',
   ctaHref = `mailto:${CLUB_EMAIL}`,
   ctaLabel = 'Email the club',
 }) => {
@@ -40,7 +46,7 @@ export const UnderConstruction: React.FC<UnderConstructionProps> = ({
             <Construction className="w-6 h-6" />
           </div>
           <span className="font-display font-black text-xl text-text-primary block mt-5">
-            This page is under construction
+            {heading}
           </span>
           <p className="font-sans text-[13px] text-text-secondary leading-relaxed mt-2.5 max-w-md mx-auto">
             {blurb}
