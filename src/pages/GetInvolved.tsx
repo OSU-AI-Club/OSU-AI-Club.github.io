@@ -20,7 +20,6 @@ import {
   CLUB_DISCORD_URL,
   CLUB_INSTAGRAM_URL,
   CLUB_LINKEDIN_URL,
-  NEWSLETTER_URL,
   HACKAI_NAME,
   HACKAI_DATE_FULL,
   HACKAI_LOCATION_FULL,
@@ -137,15 +136,6 @@ export const GetInvolved: React.FC<GetInvolvedProps> = ({ onNavigate }) => {
                 className="h-11 px-5 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 transform hover:-translate-y-0.5 shadow-[0_4px_14px_var(--ui-accent-glow)] cursor-pointer"
               >
                 Join the Discord
-              </a>
-              <a
-                id="get-involved-newsletter-cta"
-                href={NEWSLETTER_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="h-11 px-5 border border-accent-primary text-accent-primary hover:bg-accent-primary-dim font-sans text-[13px] font-bold rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                Subscribe to the Newsletter
               </a>
             </div>
           </div>

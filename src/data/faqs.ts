@@ -1,4 +1,13 @@
-import { CLUB_EMAIL, HACKAI_DATE_FULL, HACKAI_NAME, MEETING_TIME, MEETING_DAY, MEETING_LOCATION } from './general';
+import {
+  CLUB_EMAIL,
+  HACKAI_DATE_FULL,
+  HACKAI_NAME,
+  MEETING_TIME,
+  MEETING_DAY,
+  MEETING_LOCATION,
+  RESEARCH_EXPO_NAME,
+  RESEARCH_EXPO_TERM,
+} from './general';
 
 export const FAQS = [
   {
@@ -82,5 +91,39 @@ export const INCUBATOR_FAQS = [
   {
     q: "How do I apply?",
     a: `Fill out the sponsorship form linked above. If you are unsure whether your project is a fit, email us at ${CLUB_EMAIL} before applying and we will talk it through.`
+  }
+];
+
+// Answers deliberately don't interpolate RESEARCH_EXPO_DATE/_TIME/_LOCATION:
+// while those are "TBD" they would read as "TBD at TBD". The page's event
+// details cards are where those values surface.
+export const RESEARCH_EXPO_FAQS = [
+  {
+    q: `What is the ${RESEARCH_EXPO_NAME}?`,
+    a: "An event where Ohio State researchers and outside companies and organizations present the AI projects they are working on. Students get a direct look at where the field is heading, and presenters get to meet students they may want to recruit."
+  },
+  {
+    q: "Who presents at the Expo?",
+    a: "Researchers from labs across Ohio State — faculty, graduate students, and undergraduates working on AI — alongside external companies and organizations showing their latest developments."
+  },
+  {
+    q: "Who can attend, and does it cost anything?",
+    a: "Any Ohio State student, in any major and at any level. Attending is free."
+  },
+  {
+    q: "Do I need AI experience to attend?",
+    a: "No. Presenters are there to explain their work to a student audience, so come curious. It is a good way to find out which corners of AI interest you before committing to a class, lab, or project."
+  },
+  {
+    q: "Will presenters be recruiting?",
+    a: "Yes — recruiting is part of why organizations and labs come. Bring a resume and questions about internships, full-time roles, and research positions."
+  },
+  {
+    q: "When and where is it?",
+    a: `The next Expo is in ${RESEARCH_EXPO_TERM}. The date, time, and location are still being finalized; they will be posted at the top of this page and on the club's Events calendar as soon as they are confirmed.`
+  },
+  {
+    q: "How can my lab, company, or organization present?",
+    a: `Email us at ${CLUB_EMAIL} with who you are and what you would like to present, and we will follow up with details.`
   }
 ];

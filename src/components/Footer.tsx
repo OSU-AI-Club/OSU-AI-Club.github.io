@@ -8,7 +8,6 @@ import {
   CLUB_DISCORD_URL,
   CLUB_INSTAGRAM_URL,
   CLUB_LINKEDIN_URL,
-  NEWSLETTER_URL,
 } from '../data';
 
 interface FooterProps {
@@ -36,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
 
       <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-12 gap-16 pb-16">
         
-        {/* Col 1 (5/12): Brand logo, bio, newsletter */}
+        {/* Col 1 (5/12): Brand logo, bio */}
         <div className="lg:col-span-5 flex flex-col items-start" {...brandReveal}>
           <div className="flex items-center mb-6">
             <div className="w-9 h-9 flex items-center justify-center bg-surface-inverse rounded-xl shadow-md">
@@ -49,23 +48,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
             </div>
           </div>
 
-          <p className="font-sans text-[14px] text-text-secondary leading-relaxed mb-8 max-w-sm">
+          <p className="font-sans text-[14px] text-text-secondary leading-relaxed max-w-sm">
             The official student-led engineering & research organization for Artificial Intelligence at The Ohio State University.
           </p>
-
-          {/* Subscribe to our Newsletter Button */}
-          <div className="w-full max-w-sm">
-            <a
-              id="footer-newsletter-button"
-              href={NEWSLETTER_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center h-11 px-6 bg-accent-primary hover:bg-accent-primary-hover text-on-accent font-sans text-xs font-bold rounded-full shadow-[0_4px_14px_var(--ui-accent-glow)] hover:shadow-[0_6px_20px_var(--ui-accent-glow)] transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
-            >
-              <span>Subscribe to our Newsletter</span>
-              <span className="ml-2 font-mono">→</span>
-            </a>
-          </div>
         </div>
 
         {/* Col 2 (3/12): Quick Links */}
@@ -78,9 +63,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, activePage }) => {
               { label: 'Campus Homepage', id: 'home' },
               { label: 'About Us', id: 'about' },
               { label: `${HACKAI_NAME}`, id: 'hackai' },
-              { label: 'Events Calendar', id: 'events' },
-              { label: 'Newsletter', id: 'newsletter' },
               { label: 'Research Expo', id: 'researchexpo' },
+              { label: 'Events Calendar', id: 'events' },
               { label: 'Get Involved', id: 'getinvolved' },
             ].map((link) => (
               <button

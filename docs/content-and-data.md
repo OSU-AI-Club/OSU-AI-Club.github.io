@@ -10,11 +10,11 @@ Everything is split by concern so each file stays small and easy to edit:
 
 | File | Contents |
 | --- | --- |
-| [`data/general.ts`](../src/data/general.ts) | Contact links, meeting time/place, HackAI event details |
+| [`data/general.ts`](../src/data/general.ts) | Contact links, meeting time/place, HackAI and Research Expo event details |
 | [`data/officers.ts`](../src/data/officers.ts) | `OFFICERS` and the headshot-matching helper |
 | [`data/sponsors.ts`](../src/data/sponsors.ts) | `SPONSORS` and the logo-matching helper |
 | [`data/projects.ts`](../src/data/projects.ts) | `PROJECTS` — empty and unrendered; the incubator roster comes from Notion, see below |
-| [`data/faqs.ts`](../src/data/faqs.ts) | `FAQS`, `HACKAI_FAQS`, `INCUBATOR_FAQS` |
+| [`data/faqs.ts`](../src/data/faqs.ts) | `FAQS`, `HACKAI_FAQS`, `INCUBATOR_FAQS`, `RESEARCH_EXPO_FAQS` |
 | [`data/index.ts`](../src/data/index.ts) | Barrel file — re-exports everything above so `import ... from '../data'` still works unchanged |
 
 Components should keep importing from `'../data'` (or `'./data'`) as before — the barrel file resolves
@@ -29,7 +29,6 @@ that to whichever files actually define the export. Only reach into a specific f
 | `CLUB_DISCORD_URL` | Discord invite | `Footer.tsx` |
 | `CLUB_INSTAGRAM_URL` | Instagram profile | `Footer.tsx` |
 | `CLUB_LINKEDIN_URL` | Club LinkedIn page | `Footer.tsx` |
-| `NEWSLETTER_URL` | Newsletter signup (`go.osu.edu/aiclub`) | `Footer.tsx` |
 | `PROJECT_APPLICATION_URL` | Google Form for project-team signups | Nothing today — kept as the default `applyUrl` for every project |
 | `HACKAI_REGISTRATION_URL` | HackAI registration — currently aliased to the same Google Form | Nothing today |
 | `INCUBATOR_APPLICATION_URL` | Google Form for incubator *sponsorship* applications — a different form from `PROJECT_APPLICATION_URL` | `Projects.tsx` |
@@ -48,6 +47,15 @@ follows** — never hardcode a room or time in a component.
 pill/eyebrow styling; the `_FULL` variants are title case for body copy. Bumping the year means
 editing these constants — the string "HackAI 2027" should not appear literally anywhere else.
 
+### Research Expo event details
+
+`RESEARCH_EXPO_NAME`, `RESEARCH_EXPO_TERM` (e.g. `"Fall 2026"`), `RESEARCH_EXPO_DATE`,
+`RESEARCH_EXPO_TIME`, `RESEARCH_EXPO_LOCATION`, and the derived `RESEARCH_EXPO_BANNER_BADGE`. The
+date, time and location are `"TBD"` until confirmed; the Research Expo page renders a `"TBD"` value
+muted, and the badge reads "DETAILS TBD" while the date is unset. Replace each `"TBD"` with the
+title-case string it should display. `RESEARCH_EXPO_FAQS` intentionally does not interpolate these
+three, so no FAQ answer ever reads "TBD at TBD".
+
 ### The collections
 
 | Export | Type | Rendered by |
@@ -58,6 +66,7 @@ editing these constants — the string "HackAI 2027" should not appear literally
 | `FAQS` | `{q, a}[]` | `FAQ.tsx` default, on the About page |
 | `HACKAI_FAQS` | `{q, a}[]` | HackAI page accordion (an inline copy of `FAQ.tsx`'s markup) |
 | `INCUBATOR_FAQS` | `{q, a}[]` | `<FAQ id="incubator-faqs" items={INCUBATOR_FAQS} …>` on the Projects page |
+| `RESEARCH_EXPO_FAQS` | `{q, a}[]` | `<FAQ id="research-expo-faqs" items={RESEARCH_EXPO_FAQS} …>` on the Research Expo page |
 
 ## How to make common changes
 
@@ -141,6 +150,7 @@ shipped at all.
 | `assets/images/` | `AI_Logo_Final.png` | `main.tsx` (favicon), `Navbar.tsx`, `Footer.tsx` |
 | `assets/profiles/` | Officer headshots | `data/officers.ts` |
 | `assets/sponsors/` | Sponsor logos | `SponsorsBar.tsx` |
+| `assets/researchexpo_gallery/` | Research Expo photos — globbed and sorted by filename, so dropping a file in adds it to the page gallery | `ResearchExpo.tsx`, `ResearchExpoTeaser.tsx` (`speaking-event.webp` by name) |
 
 ### Officer headshots
 

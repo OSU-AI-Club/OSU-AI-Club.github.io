@@ -5,10 +5,9 @@ const PAGE_ORDER = [
   'home',
   'about',
   'hackai',
+  'researchexpo',
   'projects',
   'events',
-  'newsletter',
-  'researchexpo',
   'getinvolved',
 ];
 

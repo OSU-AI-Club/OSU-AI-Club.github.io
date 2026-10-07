@@ -84,10 +84,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
   const navItems = [
     { label: 'About Us', id: 'about' },
     { label: 'HackAI', id: 'hackai' },
+    { label: 'Research Expo', id: 'researchexpo' },
     { label: 'Projects', id: 'projects' }, // on home page, anchors to projects list
     { label: 'Events', id: 'events' },
-    { label: 'Newsletter', id: 'newsletter' },
-    { label: 'Research Expo', id: 'researchexpo' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -137,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePage, onNavigate }) => {
           </div>
 
           {/* Center: Desktop Nav Links
-              `lg`, not `md`: six links plus the logo and the Get Involved CTA
+              `lg`, not `md`: five links plus the logo and the Get Involved CTA
               overflow a tablet-width header, so tablets get the drawer instead.
               The gap tightens with the same reasoning — keep both in step with
               the length of `navItems`. */}

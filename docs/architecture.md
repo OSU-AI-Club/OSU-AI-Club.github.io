@@ -10,8 +10,8 @@ App.tsx
 ├── Navbar          (fixed, 72px tall, above everything)
 └── SmoothScrollProvider
     └── PageTransition        (the animated container)
-        ├── <main> → Home | About | Events | HackAI | Projects
-        │              | Newsletter | ResearchExpo | GetInvolved
+        ├── <main> → Home | About | HackAI | ResearchExpo | Projects
+        │              | Events | GetInvolved
         └── Footer            (passed in as the `footer` prop)
 ```
 
@@ -26,16 +26,15 @@ Consequences to keep in mind:
   Any static host must be configured to serve `index.html` for all routes.
 - The browser back button does not move between pages.
 - Navigation is a prop: `onNavigate('about')`. Every page and the Navbar/Footer receive it.
-- Page IDs are the bare strings `home`, `about`, `events`, `hackai`, `projects`, `newsletter`,
-  `researchexpo`, `getinvolved`. Adding a page means touching three places: the `switch` in
+- Page IDs are the bare strings `home`, `about`, `hackai`, `researchexpo`, `projects`, `events`,
+  `getinvolved`. Adding a page means touching three places: the `switch` in
   `App.tsx`, `PAGE_ORDER` in `PageTransition.tsx` (drives slide direction), and the nav/footer link
   lists. `navItems` in `Navbar.tsx` should stay in the same relative order as `PAGE_ORDER`, or the
   slide direction stops matching the visual left-to-right order of the tabs.
-- `Newsletter` and `ResearchExpo` are published tabs with placeholder bodies — they render their hero
-  plus the shared `UnderConstruction` notice (`src/components/UnderConstruction.tsx`). `Projects` (the
-  incubator page) is built out, but uses that same notice at *section* level for its sponsored-projects
-  roster, via the component's `heading` prop, until the Notion board is published.
-- The desktop nav rail is `lg:`, not `md:`. Six links plus the logo and the Get Involved CTA overflow
+- `Projects` (the incubator page) is built out, but uses the shared `UnderConstruction` notice
+  (`src/components/UnderConstruction.tsx`) at *section* level for its sponsored-projects roster, via
+  the component's `heading` prop, until the Notion board is published. It is the only user today.
+- The desktop nav rail is `lg:`, not `md:`. Five links plus the logo and the Get Involved CTA overflow
   a tablet-width header, so tablets fall back to the mobile drawer. Adding another tab means checking
   that breakpoint and the `gap-x-*` on `#desktop-nav-links` again.
 - Every page root adds `pt-[72px]` to clear the fixed navbar. Home is the exception — its hero sits
@@ -62,7 +61,7 @@ Consequences to keep in mind:
 `src/components/PageTransition.tsx` runs a fixed ~1030 ms sequence on every page change:
 fade/slide out (500 ms) → swap the mounted page + scroll to top → repaint tick (30 ms) → fade/slide
 in (500 ms). Slide direction comes from each page's index in `PAGE_ORDER`
-(`home, about, hackai, projects, events, newsletter, researchexpo, getinvolved`); later index
+(`home, about, hackai, researchexpo, projects, events, getinvolved`); later index
 slides "forward".
 
 The scroll reset is deliberately timed to land in the middle of that sequence, while the container

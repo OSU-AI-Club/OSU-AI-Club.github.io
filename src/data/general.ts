@@ -1,4 +1,5 @@
-// Club-wide constants: contact links, meeting info, and HackAI event details.
+// Club-wide constants: contact links, meeting info, and HackAI and Research Expo
+// event details.
 // These are referenced across officers.ts, events.ts, projects.ts, and faqs.ts,
 // so keep them here rather than duplicating literals in each file.
 
@@ -6,7 +7,6 @@ export const CLUB_EMAIL = "osuaiclub@gmail.com";
 export const CLUB_DISCORD_URL = "https://discord.com/invite/GPCmTECWRu";
 export const CLUB_INSTAGRAM_URL = "http://www.instagram.com/ohiostateaiclub";
 export const CLUB_LINKEDIN_URL = "https://www.linkedin.com/company/artificial-intelligence-club/about/";
-export const NEWSLETTER_URL = "https://go.osu.edu/aiclub";
 
 /** Shared Google Form backing both project-team and HackAI signups. */
 export const PROJECT_APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd3Aj_10MRloCjjvdpF_HnvoOI8poBr6LveJTUvKTZkrhiDuA/viewform?usp=header";
@@ -84,3 +84,22 @@ export const HACKAI_LOCATION_BADGE = "FONTANA LAB";
 export const HACKAI_LOCATION_FULL = "Fontana Lab";
 export const HACKAI_DATE_SHORT = "FEB 20–21";
 export const HACKAI_BANNER_BADGE = `✦ ${HACKAI_DATE_BADGE} — ${HACKAI_LOCATION_BADGE}`;
+
+export const RESEARCH_EXPO_NAME = "AI Research Expo";
+export const RESEARCH_EXPO_TERM = "Fall 2026";
+
+/**
+ * Still being finalized for Fall 2026. Replace each "TBD" once it is confirmed;
+ * the Research Expo page and its hero badge read from these.
+ * Write them as they should appear in body copy (e.g. "Nov 14, 2026",
+ * "5:00–8:00 PM", "Ohio Union, Archie Griffin Ballroom").
+ */
+export const RESEARCH_EXPO_DATE: string = "TBD";
+export const RESEARCH_EXPO_TIME: string = "TBD";
+export const RESEARCH_EXPO_LOCATION: string = "TBD";
+
+/** Hero pill. Falls back to "DETAILS TBD" until a date is set, rather than "— TBD". */
+export const RESEARCH_EXPO_BANNER_BADGE =
+  `✦ ${RESEARCH_EXPO_TERM.toUpperCase()} — ${
+    RESEARCH_EXPO_DATE === "TBD" ? "DETAILS TBD" : RESEARCH_EXPO_DATE.toUpperCase()
+  }`;

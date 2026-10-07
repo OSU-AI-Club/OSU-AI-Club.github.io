@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { useRevealProps } from '../hooks/useReveal';
 import speakingEvent from '../../assets/researchexpo_gallery/speaking-event.webp';
+import { RESEARCH_EXPO_NAME, RESEARCH_EXPO_TERM } from '../data';
 
 interface ResearchExpoTeaserProps {
   onNavigate: (page: string) => void;
@@ -20,10 +21,10 @@ export const ResearchExpoTeaser: React.FC<ResearchExpoTeaserProps> = ({ onNaviga
 
         <div id="research-expo-promo-headers" className="mb-10 text-left" {...headingReveal}>
           <span className="font-sans text-[12px] font-bold text-accent-secondary uppercase tracking-[0.2em] block mb-3">
-            Undergraduate Research
+            Research & Industry
           </span>
           <h2 className="font-display text-[32px] md:text-[48px] font-extrabold text-text-primary tracking-tight">
-            Student AI Research, On Stage
+            AI Research, On Stage
           </h2>
         </div>
 
@@ -39,17 +40,17 @@ export const ResearchExpoTeaser: React.FC<ResearchExpoTeaserProps> = ({ onNaviga
           <div className="flex-1 p-8 md:p-14 flex flex-col justify-between items-start z-10 relative">
             <div className="w-full">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-accent-tertiary-on-inverse/15 text-accent-tertiary-on-inverse mb-5 border border-accent-tertiary-on-inverse/20">
-                Coming Soon
+                {RESEARCH_EXPO_TERM}
               </span>
 
               {/* `text-text-on-inverse`, not `text-on-inverse` — see HackAITeaser. */}
               <h3 className="font-display text-[44px] md:text-[64px] font-extrabold text-text-on-inverse leading-none tracking-tighter mb-4">
-                AI Research Expo
+                {RESEARCH_EXPO_NAME}
               </h3>
 
               <p className="font-sans text-[15px] md:text-[17px] text-text-on-inverse-muted leading-relaxed max-w-lg mb-8">
-                A showcase for student AI research at Ohio State — posters, live demos, and lightning
-                talks from club members and from labs across campus.
+                Ohio State researchers and outside companies and organizations present their AI
+                projects, show students what is new in the field, and recruit.
               </p>
             </div>
 

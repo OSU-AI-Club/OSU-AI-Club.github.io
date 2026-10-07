@@ -60,8 +60,8 @@ src/
 ├── theme.ts            # Light/dark store; persists preference, follows the OS
 ├── hooks/              # useReveal — shared scroll-reveal observer
 ├── vite-env.d.ts       # Types image imports (`import x from './y.png'`)
-├── pages/              # Home, About, Events, HackAI, Projects, Newsletter,
-│                       #   ResearchExpo, GetInvolved
+├── pages/              # Home, About, Events, HackAI, ResearchExpo, Projects,
+│                       #   GetInvolved
 └── components/         # Shared and section-level components
 index.html              # Vite entry HTML + pre-paint theme script
 vite.config.ts          # Plugins, `@` alias, HMR toggle

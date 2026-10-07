@@ -25,9 +25,9 @@ interface UnderConstructionProps {
  * Placeholder body for a page whose tab is published but whose content is not
  * ready yet.
  *
- * Deliberately shared: three pages use it today, and a visitor who lands on two
- * of them should meet the same notice rather than two near-copies that drift
- * apart as one gets edited.
+ * Deliberately shared: only the Projects page uses it today (at section level),
+ * but the next unfinished page or section should reuse it rather than grow a
+ * near-copy that drifts apart as one gets edited.
  */
 export const UnderConstruction: React.FC<UnderConstructionProps> = ({
   id,
